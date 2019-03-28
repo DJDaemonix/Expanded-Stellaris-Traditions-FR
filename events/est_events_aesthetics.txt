@@ -1,0 +1,1567 @@
+namespace = est_aesthetics
+
+### AESTHETICS ###
+
+#Aesthetics adopt, adds/removes bonus when monument/temple built/destroyed
+planet_event = {
+	id = est_aesthetics.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		Or = {
+			And = {
+				owner = {
+					has_non_swapped_tradition = tr_est_aesthetics_adopt
+				}
+				from = {
+					Or = {
+						has_building = building_autochthon_monument
+						has_building = building_heritage_site
+						has_building = building_hypercomms_forum
+						has_building = building_autocurating_vault
+						has_prev_building = building_autochthon_monument
+						has_prev_building = building_heritage_site
+						has_prev_building = building_hypercomms_forum
+						has_prev_building = building_autocurating_vault
+					}
+				}
+			}
+			And = {
+				owner = {
+					has_swapped_tradition = tr_est_aesthetics_adopt_spiritualist
+				}
+				from = {
+					Or = {
+						has_building = building_temple
+						has_building = building_holotemple
+						has_building = building_sacred_nexus
+						has_building = building_citadel_of_faith
+						has_prev_building = building_temple
+						has_prev_building = building_holotemple
+						has_prev_building = building_sacred_nexus
+						has_prev_building = building_citadel_of_faith
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				owner = {
+					has_non_swapped_tradition = tr_est_aesthetics_adopt
+				}
+			}
+			if = {
+				limit = {
+					from = {
+						Or = {
+							has_building = building_autochthon_monument
+							has_building = building_heritage_site
+							has_building = building_hypercomms_forum
+							has_building = building_autocurating_vault							
+						}
+					}
+				}
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_aesthetics_adopt
+						}
+					}
+					add_modifier = {
+						modifier = mod_est_aesthetics_adopt
+						days = -1
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_modifier = mod_est_aesthetics_adopt
+					}
+					remove_modifier = mod_est_aesthetics_adopt
+				}
+			}
+		}	
+		if = {
+			limit = {
+				owner = {
+					has_swapped_tradition = tr_est_aesthetics_adopt_spiritualist
+				}
+			}
+			if = {
+				limit = {
+					from = {
+						Or = {
+							has_building = building_temple
+							has_building = building_holotemple
+							has_building = building_sacred_nexus
+							has_building = building_citadel_of_faith							
+						}
+					}
+				}
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_aesthetics_adopt
+						}
+					}
+					add_modifier = {
+						modifier = mod_est_aesthetics_adopt
+						days = -1
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_modifier = mod_est_aesthetics_adopt
+					}
+				}
+				remove_modifier = mod_est_aesthetics_adopt
+			}
+		}	
+	}
+}
+
+#Aesthetics adopt, adds/removes bonus when monument/temple exists/don't exist on transfered planet (or new owner do not have tradition).
+planet_event = {
+	id = est_aesthetics.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		Or = {
+			And = {
+				has_modifier = mod_est_aesthetics_adopt
+				owner = {
+					Not = {
+						has_non_swapped_tradition = tr_est_aesthetics_adopt
+						has_swapped_tradition = tr_est_aesthetics_adopt_spiritualist					
+					}
+				}
+			}
+			And = {
+				owner = {
+					Or = {
+						has_non_swapped_tradition = tr_est_aesthetics_adopt
+						has_swapped_tradition = tr_est_aesthetics_adopt_spiritualist					
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_modifier = mod_est_aesthetics_adopt
+				owner = {
+					Not = {
+						has_non_swapped_tradition = tr_est_aesthetics_adopt
+						has_swapped_tradition = tr_est_aesthetics_adopt_spiritualist					
+					}
+				}			
+			}
+			remove_modifier = "mod_est_aesthetics_adopt"
+		}
+		else = {
+			if = {
+				limit = {
+					Or = {
+						And = {
+							owner = {
+								has_non_swapped_tradition = tr_est_aesthetics_adopt
+							}
+							Or = {
+								has_building = building_autochthon_monument
+								has_building = building_heritage_site
+								has_building = building_hypercomms_forum
+								has_building = building_autocurating_vault
+							}		
+						}
+						And = {
+							owner = {
+								has_swapped_tradition = tr_est_aesthetics_adopt_spiritualist
+							}
+							Or = {
+								has_building = building_temple
+								has_building = building_holotemple
+								has_building = building_sacred_nexus
+								has_building = building_citadel_of_faith
+							}		
+						}
+					}
+				}
+				add_modifier = {
+					modifier = mod_est_aesthetics_adopt
+					days = -1
+				}					
+			}
+		}
+	}
+}
+
+#Aesthetics 2, trigger event for countries.
+event = {
+	id = est_aesthetics.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_aesthetics_2_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {	
+				has_non_swapped_tradition = tr_est_aesthetics_2
+				Not = {
+					has_country_flag = flag_est_aesthetics_2_event_active
+				}
+			}
+			set_country_flag = flag_est_aesthetics_2_event_active
+			switch = {
+				trigger = has_policy_flag
+				
+				est_aesthetics_guild_of_artists_0 = {
+					set_country_flag = est_aesthetics_guild_of_artists_0_options 
+				}
+				est_aesthetics_guild_of_artists_1 = {
+					random_list = {
+						80 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_2 = {
+					random_list = {
+						65 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						35 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_3 = {
+					random_list = {
+						55 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						35 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						10 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_4 = {
+					random_list = {
+						45 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						40 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						15 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_5 = {
+					random_list = {
+						35 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						40 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						15 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+						10 = { set_country_flag = est_aesthetics_guild_of_artists_3_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_6 = {
+					random_list = {
+						30 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						35 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+						15 = { set_country_flag = est_aesthetics_guild_of_artists_3_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_7 = {
+					random_list = {
+						25 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						30 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+						15 = { set_country_flag = est_aesthetics_guild_of_artists_3_options }
+						10 = { set_country_flag = est_aesthetics_guild_of_artists_4_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_8 = {
+					random_list = {
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						25 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_3_options }
+						15 = { set_country_flag = est_aesthetics_guild_of_artists_4_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_9 = {
+					random_list = {
+						15 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_3_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_4_options }
+						5 =  { set_country_flag = est_aesthetics_guild_of_artists_5_options }
+					}
+				}
+				est_aesthetics_guild_of_artists_10 = {
+					random_list = {
+						10 = { set_country_flag = est_aesthetics_guild_of_artists_0_options }
+						15 = { set_country_flag = est_aesthetics_guild_of_artists_1_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_2_options }
+						25 = { set_country_flag = est_aesthetics_guild_of_artists_3_options }
+						20 = { set_country_flag = est_aesthetics_guild_of_artists_4_options }
+						10 = { set_country_flag = est_aesthetics_guild_of_artists_5_options }
+					}
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_country_flag = est_aesthetics_guild_of_artists_0_options
+					}
+				}		
+				while = {
+					limit = {
+						Not = {
+							has_country_flag = est_aesthetics_guild_of_artists_0_options
+						}
+					} 
+					country_event = {
+						id = est_aesthetics.4
+					}
+				}
+				country_event = {
+					id = est_aesthetics.5
+				}
+			}
+			else = {
+				remove_country_flag = flag_est_aesthetics_2_event_active
+			}
+			remove_country_flag = est_aesthetics_guild_of_artists_0_options
+		}
+	}
+}
+
+#Aesthetics 2, sets option flags.
+country_event = {
+	id = est_aesthetics.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		random_list = {
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_1
+						has_modifier = mod_est_aesthetics_2_1
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_1
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_2
+						has_modifier = mod_est_aesthetics_2_2
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_2
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_3
+						has_country_flag = flag_est_aesthetics_5_3
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_3
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_4
+						Not = {
+							any_neighbor_country = {
+								Not = {
+									has_opinion_modifier = { 
+										who = root
+										modifier = opinion_tr_est_aesthetics_2_4
+									}
+								}
+							}
+						}
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_4
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_5
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_5
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_6
+						has_modifier = mod_est_aesthetics_2_6
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_6
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_7
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_7
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_8
+						has_modifier = mod_est_aesthetics_2_8
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_8
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_9
+						has_modifier = mod_est_aesthetics_2_9
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_9
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_10
+						has_modifier = mod_est_aesthetics_2_10
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_10
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_11
+						has_modifier = mod_est_aesthetics_2_11
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_11
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_12
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_12
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_13
+						has_modifier = mod_est_aesthetics_2_13
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_13
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_14
+						has_modifier = mod_est_aesthetics_2_14
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_14
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_15
+						has_modifier = mod_est_aesthetics_2_15
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_15
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_16
+						has_modifier = mod_est_aesthetics_2_16
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_16
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_17
+						has_modifier = mod_est_aesthetics_2_17
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_17
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_18
+						has_modifier = mod_est_aesthetics_2_18
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_18
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_19
+						has_modifier = mod_est_aesthetics_2_19
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_19
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = est_aesthetics_guild_of_artists_1_options
+						has_country_flag = flag_est_aesthetics_2_option_20
+						has_country_flag = flag_est_aesthetics_5_20_been_used
+						has_modifier = mod_est_aesthetics_2_20
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_20
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_21
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_21
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_22
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_22
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_23
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_23
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = est_aesthetics_guild_of_artists_1_options
+						has_country_flag = flag_est_aesthetics_2_option_24
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_24
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_25
+						has_modifier = mod_est_aesthetics_2_25
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_25
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_26
+						has_modifier = mod_est_aesthetics_2_26
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_26
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_27
+						has_modifier = mod_est_aesthetics_2_27
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_27
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_28
+						has_modifier = mod_est_aesthetics_2_28
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_28
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_29
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_29
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_30
+						has_modifier = mod_est_aesthetics_2_30
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_30
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					Or = {
+						has_country_flag = flag_est_aesthetics_2_option_31
+						Not = {
+							any_neighbor_country = {
+								Not = {
+									has_opinion_modifier = { 
+										who = root
+										modifier = opinion_tr_est_aesthetics_2_31
+									}
+								}
+							}
+						}
+					}
+				}
+				set_country_flag = flag_est_aesthetics_2_option_31
+			}
+		}
+		
+		switch = {
+			trigger = has_country_flag 
+				
+			est_aesthetics_guild_of_artists_1_options = {
+				remove_country_flag = est_aesthetics_guild_of_artists_1_options
+				set_country_flag = est_aesthetics_guild_of_artists_0_options
+			}
+			est_aesthetics_guild_of_artists_2_options = {
+				remove_country_flag = est_aesthetics_guild_of_artists_2_options
+				set_country_flag = est_aesthetics_guild_of_artists_1_options
+			}
+			est_aesthetics_guild_of_artists_3_options = {
+				remove_country_flag = est_aesthetics_guild_of_artists_3_options
+				set_country_flag = est_aesthetics_guild_of_artists_2_options
+			}
+			est_aesthetics_guild_of_artists_4_options = {
+				remove_country_flag = est_aesthetics_guild_of_artists_4_options
+				set_country_flag = est_aesthetics_guild_of_artists_3_options
+			}	
+			est_aesthetics_guild_of_artists_5_options = {
+				remove_country_flag = est_aesthetics_guild_of_artists_5_options
+				set_country_flag = est_aesthetics_guild_of_artists_4_options
+			}					
+		}
+	}
+}
+
+#Aesthetics 2, gives selection of benefits.
+country_event = {
+	id = est_aesthetics.5
+	is_triggered_only = yes
+	title = "est_aesthetics_2.name"
+	desc = "est_aesthetics_2.desc"
+	picture = GFX_evt_alien_propaganda
+	
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_1
+		}
+		name = "est_aesthetics_5_option_1"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_1"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_2
+		}
+		name = "est_aesthetics_5_option_2"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_2"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_3
+		}
+		name = "est_aesthetics_5_option_3"
+		custom_tooltip = "est_aesthetics_5_option_3_tooltip"
+		set_timed_country_flag = {
+			flag = flag_est_aesthetics_5_3
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_4
+		}
+		name = "est_aesthetics_5_option_4"
+		random_neighbor_country = {
+			limit = {
+				Not = {
+					has_opinion_modifier = { 
+						who = root
+						modifier = opinion_tr_est_aesthetics_2_4
+					}
+					is_country_type = fallen_empire
+					has_civic = civic_inwards_perfection
+					has_civic = civic_fanatic_purifiers
+					has_civic = civic_hive_devouring_swarm
+					has_civic = civic_machine_terminator
+				}
+			}
+			add_opinion_modifier = {
+				modifier = opinion_est_aesthetics_2_4
+				who = root
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_5
+		}
+		name = "est_aesthetics_5_option_5"
+		random_owned_planet = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_modifier = mod_est_aesthetics_2_5
+					}
+					remove_modifier = mod_est_aesthetics_2_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_aesthetics_2_5"
+				years = 10
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_6
+		}
+		name = "est_aesthetics_5_option_6"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_6"
+			years = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_7
+		}
+		name = "est_aesthetics_5_option_7"
+		capital_scope = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_modifier = mod_est_aesthetics_2_7
+					}
+					remove_modifier = mod_est_aesthetics_2_7
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_aesthetics_2_7"
+				years = 10
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_8
+		}
+		name = "est_aesthetics_5_option_8"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_8"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_9
+		}
+		name = "est_aesthetics_5_option_9"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_9"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_10
+		}
+		name = "est_aesthetics_5_option_10"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_10"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}	
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_11
+		}
+		name = "est_aesthetics_5_option_11"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_11"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_12
+		}
+		name = "est_aesthetics_5_option_12"
+		add_influence = 100
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_13
+		}
+		name = "est_aesthetics_5_option_13"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_13"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_14
+		}
+		name = "est_aesthetics_5_option_14"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_14"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_15
+		}
+		name = "est_aesthetics_5_option_15"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_15"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_16
+		}
+		name = "est_aesthetics_5_option_16"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_16"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_17
+		}
+		name = "est_aesthetics_5_option_17"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_17"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_18
+		}
+		name = "est_aesthetics_5_option_18"
+		random_pop_faction = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_modifier = mod_est_aesthetics_2_18
+					}
+					remove_modifier = mod_est_aesthetics_2_18
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_aesthetics_2_18"
+				years = 10
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_19
+		}
+		name = "est_aesthetics_5_option_19"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_19"
+			years = 5
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_20
+		}
+		name = "est_aesthetics_5_option_20"
+		set_timed_country_flag = {	
+			flag = flag_est_aesthetics_5_20_been_used
+			years = 50
+		}
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_20"
+			years = 20
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_21
+		}
+		name = "est_aesthetics_5_option_21"
+		add_influence = 60
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_22
+		}
+		name = "est_aesthetics_5_option_22"
+		add_monthly_resource_mult = {
+			resource = unity
+			value = 4
+			min = 4
+			max = 5000
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_23
+		}
+		name = "est_aesthetics_5_option_23"
+		random_owned_planet = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_modifier = mod_est_aesthetics_2_23
+					}
+					remove_modifier = mod_est_aesthetics_2_23
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_aesthetics_2_23"
+				years = 10
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_24
+		}
+		name = "est_aesthetics_5_option_24"
+		add_monthly_resource_mult = {
+			resource = unity
+			value = 6
+			min = 4
+			max = 5000
+		}
+		add_monthly_resource_mult = {
+			resource = energy
+			value = -1.5
+			min = -4
+			max = -20000
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_25
+		}
+		name = "est_aesthetics_5_option_25"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_25"
+			years = 20
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_26
+		}
+		name = "est_aesthetics_5_option_26"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_26"
+			years = 5
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_27
+		}
+		name = "est_aesthetics_5_option_27"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_27"
+			years = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_28
+		}
+		name = "est_aesthetics_5_option_28"
+		add_modifier = {
+			modifier = "mod_est_aesthetics_2_28"
+			years = 40
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_29
+		}
+		name = "est_aesthetics_5_option_29"
+		random_owned_planet = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_modifier = mod_est_aesthetics_2_29
+					}
+					remove_modifier = mod_est_aesthetics_2_29
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_aesthetics_2_29"
+				years = 10
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_30
+		}
+		name = "est_aesthetics_5_option_30"
+		add_modifier = {
+			modifier = mod_est_aesthetics_2_30
+			years = 5
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}	
+	option = {
+		trigger = {
+			has_country_flag = flag_est_aesthetics_2_option_31
+		}
+		name = "est_aesthetics_5_option_31"
+		random_neighbor_country = {
+			limit = {
+				Not = {
+					has_opinion_modifier = { 
+						who = root
+						modifier = opinion_tr_est_aesthetics_2_31
+					}
+					has_civic = civic_inwards_perfection
+					has_civic = civic_fanatic_purifiers
+					has_civic = civic_hive_devouring_swarm
+					has_civic = civic_machine_terminator
+					is_country_type = fallen_empire
+				}
+			}
+			add_opinion_modifier = {
+				modifier = opinion_est_aesthetics_2_31
+				who = root
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = est_aesthetics.6
+			}
+		}
+	}
+}
+
+#Aesthetics 2, an options have been chosen, resets flags.
+country_event = {
+	id = est_aesthetics.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	
+	immediate = {
+		remove_country_flag = flag_est_aesthetics_2_event_active
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_1 }
+			remove_country_flag = flag_est_aesthetics_2_option_1
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_2 }
+			remove_country_flag = flag_est_aesthetics_2_option_2
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_3 }
+			remove_country_flag = flag_est_aesthetics_2_option_3
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_4 }
+			remove_country_flag = flag_est_aesthetics_2_option_4
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_5 }
+			remove_country_flag = flag_est_aesthetics_2_option_5
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_6 }
+			remove_country_flag = flag_est_aesthetics_2_option_6
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_7 }
+			remove_country_flag = flag_est_aesthetics_2_option_7
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_8 }
+			remove_country_flag = flag_est_aesthetics_2_option_8
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_9 }
+			remove_country_flag = flag_est_aesthetics_2_option_9
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_10 }
+			remove_country_flag = flag_est_aesthetics_2_option_10
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_11 }
+			remove_country_flag = flag_est_aesthetics_2_option_11
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_12 }
+			remove_country_flag = flag_est_aesthetics_2_option_12
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_13 }
+			remove_country_flag = flag_est_aesthetics_2_option_13
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_14 }
+			remove_country_flag = flag_est_aesthetics_2_option_14
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_15 }
+			remove_country_flag = flag_est_aesthetics_2_option_15
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_16 }
+			remove_country_flag = flag_est_aesthetics_2_option_16
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_17 }
+			remove_country_flag = flag_est_aesthetics_2_option_17
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_18 }
+			remove_country_flag = flag_est_aesthetics_2_option_18
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_19 }
+			remove_country_flag = flag_est_aesthetics_2_option_19
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_20 }
+			remove_country_flag = flag_est_aesthetics_2_option_20
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_21 }
+			remove_country_flag = flag_est_aesthetics_2_option_21
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_22 }
+			remove_country_flag = flag_est_aesthetics_2_option_22
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_23 }
+			remove_country_flag = flag_est_aesthetics_2_option_23
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_24 }
+			remove_country_flag = flag_est_aesthetics_2_option_24
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_25 }
+			remove_country_flag = flag_est_aesthetics_2_option_25
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_26 }
+			remove_country_flag = flag_est_aesthetics_2_option_26
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_27 }
+			remove_country_flag = flag_est_aesthetics_2_option_27
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_28 }
+			remove_country_flag = flag_est_aesthetics_2_option_28
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_29 }
+			remove_country_flag = flag_est_aesthetics_2_option_29
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_30 }
+			remove_country_flag = flag_est_aesthetics_2_option_30
+		}
+		if = {
+			limit = { has_country_flag = flag_est_aesthetics_2_option_31 }
+			remove_country_flag = flag_est_aesthetics_2_option_31
+		}
+	}
+}
+
+#Aesthetics 3 xenophobe, more unity while at war.
+country_event = {
+	id = est_aesthetics.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_aesthetics_3_xenophobe
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_at_war = yes
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_aesthetics_3_xenophobe
+					}
+				}
+				add_modifier = {
+					modifier = mod_est_aesthetics_3_xenophobe
+					days = -1
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_modifier = mod_est_aesthetics_3_xenophobe
+				}
+				remove_modifier = mod_est_aesthetics_3_xenophobe
+			}					
+		}
+	}
+}
+
+#Aesthetics 4, gives bonus when building built.
+planet_event = {
+	id = est_aesthetics.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_non_swapped_tradition = tr_est_aesthetics_4
+			has_policy_flag = est_aesthetics_architecture_1
+		}
+	}
+	
+	immediate = {
+		random_owned_pop = {
+			limit = {
+				Not = {
+					has_modifier = mod_est_aesthetics_4
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_aesthetics_4"
+				years = 10
+			}
+			planet = {
+				set_timed_planet_flag = {
+					flag = est_aesthetics_4_found_pop
+				}
+			}
+		}
+		if = {
+			limit = {
+				Not = {
+					has_planet_flag = est_aesthetics_4_found_pop
+				}
+			}
+			random_owned_pop = {
+				remove_modifier = "mod_est_aesthetics_4"
+				add_modifier = {
+					modifier = "mod_est_aesthetics_4"
+					years = 10
+				}
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					has_policy_flag = est_aesthetics_architecture_2
+				}
+			}
+			random_list = {
+				2 = {
+					random_tile = {
+						limit = {
+							has_deposit = no
+						}
+						add_deposit = "d_est_aesthetics_3_deposit_1"
+					}
+				}
+				8 = {}
+			}
+		}				
+	}
+}
+
+### VENERABILITY ###
+
+#Venerability 2 (devouring swarm), purging pops yields society.
+planet_event = {
+	id = est_aesthetics.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		From = {
+			has_swapped_tradition = tr_est_age_2_devouring_swarm
+		}
+		FromFrom = {
+			is_robot_pop = no
+			NOT = {
+				is_same_species = owner_species
+			}
+		}
+		is_controlled_by = From
+	}
+	
+	immediate = {
+		From = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = 0.5
+				min = 1
+				max = 50
+			}
+		}
+	}
+}
+
+#Venerability 2 (exterminators), purging pops yields unity.
+planet_event = {
+	id = est_aesthetics.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		From = {
+			has_swapped_tradition = tr_est_age_2_terminator
+		}
+		FromFrom = {
+			NOR = {
+				has_trait = trait_mechanical
+				has_trait = trait_machine_unit
+			}
+		}
+		is_controlled_by = From
+	}
+	
+	immediate = {
+		From = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = 1
+				min = 5
+				max = 50
+			}
+		}
+	}
+}

@@ -1,0 +1,73 @@
+#Piracy Adopt
+est_wg_plunder = {
+	casus_belli = est_cb_despoliation
+	
+	hide_if_no_cb = no
+	total_war = no
+	
+	surrender_acceptance = -50
+
+	potential = {
+		has_total_war_cb = no
+		has_non_swapped_tradition = tr_est_piracy_adopt
+	}
+	possible = {
+		always = yes
+	}
+	on_accept = {
+		custom_tooltip = wg_plunder_accept_them			
+		if = {
+			limit = { 
+				from = {
+					num_owned_planets < 5
+				}
+			}		
+			custom_tooltip = wg_plunder_accept_us_1
+			hidden_effect = { add_energy = 500 add_minerals = 500 } 
+		}
+		if = {
+			limit = {
+				from = { 
+					num_owned_planets > 4
+					num_owned_planets < 10
+				}
+			}
+			custom_tooltip = wg_plunder_accept_us_2
+			hidden_effect = { add_energy = 1000 add_minerals = 1000 } 
+		}
+		if = {
+			limit = {
+				from = { 
+					num_owned_planets > 9
+					num_owned_planets < 15
+				}
+			}
+			custom_tooltip = wg_plunder_accept_us_3
+			hidden_effect = { add_energy = 1500 add_minerals = 1500 } 
+		}	
+		if = {
+			limit = {
+				from = { 
+					num_owned_planets > 14
+					num_owned_planets < 20
+				}
+			}
+			custom_tooltip = wg_plunder_accept_us_4
+			hidden_effect = { add_energy = 2000 add_minerals = 2000 } 
+		}			
+		if = {
+			limit = {
+				from = { 
+					num_owned_planets > 19
+				}
+			}
+			custom_tooltip = wg_plunder_accept_us_5
+			hidden_effect = { add_energy = 2500 add_minerals = 2500 } 
+		}			
+		hidden_effect = { from = { add_modifier = { modifier = raided days = 3600 } } }
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}

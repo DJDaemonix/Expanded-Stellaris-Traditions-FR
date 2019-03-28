@@ -1,0 +1,524 @@
+tr_est_faith_adopt = {
+	modifier = {
+		pop_government_ethic_attraction = 0.20
+	}
+
+	tradition_swap = {
+		name = tr_est_faith_adopt_not_spiritualist
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {			
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_spiritualist
+			}
+		}	
+		modifier = {	
+			pop_government_ethic_attraction = 0.20
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+			Nor = {
+				has_civic = civic_hive_devouring_swarm
+				has_civic = civic_machine_terminator
+				has_civic = civic_machine_assimilator	
+			}
+		}
+		modifier = {
+			rivalry_influence_gain = 0.25
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_adopt_no_rivals
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+			Or = {
+				has_civic = civic_hive_devouring_swarm
+				has_civic = civic_machine_terminator
+				has_civic = civic_machine_assimilator	
+			}
+		}
+		modifier = {
+			ship_weapon_damage = 0.05
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_spiritualist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_spiritualist
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = evangelising_zealots
+		}
+		modifier = {
+			factor = 2
+			has_ai_personality = spiritual_seekers
+		}
+		modifier = {
+			factor = 0
+			est_no_fed_federation_builders = yes			
+		}
+	}
+}
+
+tr_est_faith_finish = {
+	modifier = {	
+		pop_happiness = 0.05
+		pop_ethic_spiritualist_attraction_mult = 0.10
+		ascension_perks_add = 1
+	}
+
+	tradition_swap = {
+		name = tr_est_faith_finish_not_spiritualist
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {			
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_spiritualist
+			}
+		}	
+		modifier = {	
+			pop_happiness = 0.05
+			pop_government_ethic_attraction = 0.05
+			ascension_perks_add = 1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_finish
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {	
+			country_resource_influence_add = 1
+			ascension_perks_add = 1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tr_est_faith_1 = {
+	modifier = {
+		country_resource_unity_mult = 0.10
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_1
+		inherit_effects = yes
+		inherit_icon = no
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_est_faith_2 = {
+	possible = {
+		has_tradition = tr_est_faith_1
+	}
+	
+	modifier = {
+		planet_unrest_add = -15
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_2
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+			Not = {
+				has_authority = auth_machine_intelligence
+			}
+		}	
+		on_enabled = {	
+			every_owned_planet = {
+				every_tile = {
+					limit = {
+						Or = {
+							has_building = building_autochthon_monument
+							has_building = building_heritage_site
+							has_building = building_hypercomms_forum
+							has_building = building_autocurating_vault
+							has_building = building_temple
+							has_building = building_holotemple
+							has_building = building_citadel_of_faith
+						}
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_hypercomms_forum
+								has_building = building_autocurating_vault
+								has_building = building_citadel_of_faith
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+						add_deposit = d_est_faith_3_deposit_3
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_holotemple
+								has_building = building_heritage_site
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_autochthon_monument
+								has_building = building_temple
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+					}
+				}
+			}		
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_2_machines
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {	
+			has_ethic = ethic_gestalt_consciousness
+			has_authority = auth_machine_intelligence
+		}
+		on_enabled = {	
+			every_owned_planet = {
+				every_tile = {
+					limit = {
+						Or = {
+							has_building = building_uplink_node 
+							has_building = building_network_junction
+							has_building = building_system_conflux
+							has_building = building_alpha_hub
+						}
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_alpha_hub
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+						add_deposit = d_est_faith_3_deposit_3
+						add_deposit = d_est_faith_3_deposit_4
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_system_conflux
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+						add_deposit = d_est_faith_3_deposit_3
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_network_junction
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_uplink_node 
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+					}
+				}
+			}		
+		}
+
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_est_faith_3 = {
+	possible = {
+		has_tradition = tr_est_faith_2
+	}
+	
+	on_enabled = {	
+		every_owned_planet = {
+			every_tile = {
+				limit = {
+					Or = {
+						has_building = building_autochthon_monument
+						has_building = building_heritage_site
+						has_building = building_hypercomms_forum
+						has_building = building_autocurating_vault
+						has_building = building_temple
+						has_building = building_holotemple
+						has_building = building_citadel_of_faith
+					}
+				}
+				if = {
+					limit = {
+						Or = {
+							has_building = building_hypercomms_forum
+							has_building = building_autocurating_vault
+							has_building = building_citadel_of_faith
+						}
+					}
+					add_deposit = d_est_faith_3_deposit_1
+					add_deposit = d_est_faith_3_deposit_2
+					add_deposit = d_est_faith_3_deposit_3
+				}
+				if = {
+					limit = {
+						Or = {
+							has_building = building_holotemple
+							has_building = building_heritage_site
+						}
+					}
+					add_deposit = d_est_faith_3_deposit_1
+					add_deposit = d_est_faith_3_deposit_2
+				}
+				if = {
+					limit = {
+						Or = {
+							has_building = building_autochthon_monument
+							has_building = building_temple
+						}
+					}
+					add_deposit = d_est_faith_3_deposit_1
+				}
+			}
+		}		
+	}
+
+	tradition_swap = {
+		name = tr_est_faith_3_spiritualist
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			Or = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+	
+		on_enabled = {	
+			every_owned_planet = {
+				every_tile = {
+					limit = {
+						Or = {
+							has_building = building_autochthon_monument
+							has_building = building_heritage_site
+							has_building = building_hypercomms_forum
+							has_building = building_autocurating_vault
+							has_building = building_temple
+							has_building = building_holotemple
+							has_building = building_sacred_nexus
+							has_building = building_citadel_of_faith
+						}
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_autocurating_vault
+								has_building = building_citadel_of_faith
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+						add_deposit = d_est_faith_3_deposit_3
+						add_deposit = d_est_faith_3_deposit_4
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_hypercomms_forum
+								has_building = building_sacred_nexus
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+						add_deposit = d_est_faith_3_deposit_3
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_holotemple
+								has_building = building_heritage_site
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+						add_deposit = d_est_faith_3_deposit_2
+					}
+					if = {
+						limit = {
+							Or = {
+								has_building = building_autochthon_monument
+								has_building = building_temple
+							}
+						}
+						add_deposit = d_est_faith_3_deposit_1
+					}
+				}
+			}		
+		}
+
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_3
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+		}
+		modifier = {
+			army_damage_mult = 0.20
+			ship_weapon_damage = 0.05
+		}
+		weight = {
+			factor = 0.4
+		}
+	}
+	
+	#Effect in temple and monument buildings.
+		
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_est_faith_4 = {
+	possible = {
+		has_tradition = tr_est_faith_1
+	}
+	
+	modifier = {
+		edict_length_mult = 0.25
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_4
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+		}
+		modifier = {
+			ship_speed_mult = 0.10
+			pop_growth_speed = 0.15
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	ai_weight = {
+		factor = 2000
+	}
+}
+
+tr_est_faith_5 = {
+	possible = {
+		has_tradition = tr_est_faith_4
+	}
+	
+	modifier = {
+		army_morale = 0.25
+		ship_weapon_damage = 0.05
+	}
+
+	tradition_swap = {
+		name = tr_est_purposefullness_5
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {			
+			has_ethic = ethic_gestalt_consciousness
+		}		
+		modifier = {
+			edict_length_mult = 0.25
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 2000
+	}
+}

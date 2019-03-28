@@ -1,0 +1,184 @@
+tr_est_industry_adopt = {
+	
+	modifier = {
+		mining_network_build_cost_mult = -0.25
+	}
+	
+	tradition_swap = {
+		name = tr_est_industry_adopt_robots
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			est_uses_robots = yes
+			has_technology = tech_robomodding
+		}
+		modifier = {
+			mining_network_build_cost_mult = -0.20
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_industry_adopt_machines
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			est_is_machine_empire = yes
+		}
+		modifier = {
+			mining_network_build_cost_mult = -0.20
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_materialist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_materialist
+		}	
+		modifier = {
+			factor = 0.01
+			has_civic = civic_agrarian_idyll
+		}	
+		modifier = {
+			factor = 0.01
+			has_civic = civic_environmentalist
+		}	
+		modifier = {
+			factor = 2
+			has_civic = civic_mining_guilds
+		}
+		modifier = {
+			factor = 2
+			has_civic = civic_machine_rockbreakers
+		}
+		modifier = {
+			factor = 0
+			est_no_fed_federation_builders = yes			
+		}
+	}
+}
+
+tr_est_industry_finish = {
+	on_enabled = {
+		give_technology = {
+			tech = tech_est_industry_finish
+			message = no
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_est_industry_finish_AI
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			is_ai = yes
+		}
+		modifier = {
+			max_minerals = 10000
+			country_resource_minerals_mult = 0.05
+		}
+		weight = {factor =  1}
+	}
+	
+	modifier = {
+		ascension_perks_add = 1
+	}
+}
+
+tr_est_industry_1 = {
+	on_enabled = {
+		every_mining_station = {	
+			orbit = {
+				planet = {
+					planet_event = {
+						id = est_industry.3
+					}
+				}
+			}		
+		}
+	}
+	
+	ai_weight = {
+		factor = 2000
+	}
+}
+
+tr_est_industry_2 = {
+	possible = {
+		has_tradition = tr_est_industry_1
+	}
+	
+	modifier = {
+		category_industry_research_speed_mult = 0.15
+	}
+	
+	ai_weight = {
+		factor = 3000
+	}
+}
+
+tr_est_industry_3 = {
+	possible = {
+		has_tradition = tr_est_industry_2
+	}	
+	
+	ai_weight = {
+		factor = 4000
+	}
+}
+
+tr_est_industry_4 = {
+	modifier = {
+		starbase_shipyard_build_speed_mult = 0.25
+	}
+
+	tradition_swap = {
+		name = tr_est_industry_4_robots
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			est_uses_robots = yes
+		}
+
+		modifier = {
+			pop_robot_build_speed_mult = 0.20
+		}
+
+		weight = {
+			factor = 1
+		}
+	}
+
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_est_industry_5 = {
+	possible = {
+		has_tradition = tr_est_industry_3
+		has_tradition = tr_est_industry_4
+	}
+	
+	on_enabled = {
+		every_owned_planet = {
+			planet_event = {
+				id = est_industry.4
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}

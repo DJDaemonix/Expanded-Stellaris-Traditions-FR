@@ -1,0 +1,773 @@
+tr_est_militarism_adopt = {
+	on_enabled = {
+		if = {
+			limit = {
+				Not = {
+					used_naval_capacity_percent < 1.0
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_militarism_adopt"
+			}
+		}
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_militarism_adopt_picked_flag
+				}
+			}
+			set_global_flag = est_militarism_adopt_picked_flag
+		}	
+	}	
+
+	tradition_swap = {
+		name = tr_est_might_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		on_enabled = {
+			if = {
+				limit = {
+					Not = {
+						used_naval_capacity_percent < 1.0
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_might_adopt"
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_might_adopt_picked_flag
+					}
+				}
+				set_global_flag = est_might_adopt_picked_flag
+			}	
+		}	
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_militarist
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = democratic_crusaders
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = honorbound_warriors
+		}		
+		modifier = {
+			factor = 2
+			has_civic = civic_hive_devouring_swarm
+		}		
+		modifier = {
+			factor = 2
+			has_civic = civic_hive_strength_of_legions
+		}	
+		modifier = {
+			factor = 2
+			has_civic = civic_machine_warbots
+		}
+		modifier = {
+			factor = 0
+			est_no_fed_federation_builders = yes			
+		}
+	}
+}
+
+tr_est_militarism_finish = {
+	modifier = {	
+		ship_weapon_range_mult = 0.25
+		ascension_perks_add = 1
+	}
+
+	tradition_swap = {
+		name = tr_est_might_finish
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}		
+		modifier = {	
+			ship_weapon_range_mult = 0.15
+			ship_weapon_damage = 0.05
+			ascension_perks_add = 1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tr_est_militarism_1 = {
+	on_enabled = {
+		every_owned_planet = {
+			every_owned_pop = {
+				limit = {
+					Not = {
+						pop_has_trait = trait_robotic_1
+						pop_has_trait = trait_robotic_2
+					}
+				}
+				if = {
+					limit = {
+						is_enslaved = no
+					}
+					planet = {
+						create_army = {
+							name = "A Militia Army"
+							species = prev
+							owner = owner
+							type = est_militarism_1_militia_army
+						}
+					}
+				}
+				else = {
+					planet = {
+						create_army = {
+							name = "A Drafted Slave Army"
+							species = prev
+							owner = owner
+							type = est_militarism_1_slave_militia_army
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_militarism_1_picked_flag
+				}
+			}
+			set_global_flag = est_militarism_1_picked_flag
+		}	
+	}	
+	
+	modifier = {
+		planet_army_build_cost_mult = -0.33
+		starbase_shipyard_build_cost_mult = -0.05
+	}
+
+	tradition_swap = {
+		name = tr_est_militarism_1_robots
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			est_uses_robots = yes
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}	
+		on_enabled = {
+			every_owned_planet = {
+				every_owned_pop = {
+					limit = {
+						Not = {
+							pop_has_trait = trait_robotic_1
+							pop_has_trait = trait_robotic_2
+						}
+					}
+					if = {
+						limit = {
+							is_enslaved = no
+						}
+						planet = {
+							create_army = {
+								name = "A Militia Army"
+								species = prev
+								owner = owner
+								type = est_militarism_1_militia_army
+							}
+						}
+					}
+					else = {
+						planet = {
+							create_army = {
+								name = "A Drafted Slave Army"
+								species = prev
+								owner = owner
+								type = est_militarism_1_slave_militia_army
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_militarism_1_picked_flag
+					}
+				}
+				set_global_flag = est_militarism_1_picked_flag
+			}	
+		}	
+		modifier = {
+			planet_army_build_cost_mult = -0.40
+			starbase_shipyard_build_cost_mult = -0.05
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_might_1
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_is_hive_mind = yes
+		}	
+		on_enabled = {
+			every_owned_planet = {
+				every_owned_pop = {
+					planet = {
+						create_army = {
+							name = "An Emergency Army"
+							species = prev
+							owner = owner
+							type = est_militarism_1_drone_emergency_army
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_might_1_picked_flag
+					}
+				}
+				set_global_flag = est_might_1_picked_flag
+			}	
+		}
+		modifier = {
+			planet_army_build_cost_mult = -0.33
+			army_experience_gain_mult = 0.25
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	tradition_swap = {
+		name = tr_est_might_1_machines
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_is_machine_empire = yes
+		}	
+		on_enabled = {
+			every_owned_planet = {
+				every_owned_pop = {
+					limit = {
+						is_robot_pop = yes
+					}
+					planet = {
+						create_army = {
+							name = "An Emergency Army"
+							species = prev
+							owner = owner
+							type = est_militarism_1_machine_emergency_army
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_might_1_machines_picked_flag
+					}
+				}
+				set_global_flag = est_might_1_machines_picked_flag
+			}	
+		}
+		modifier = {
+			planet_army_build_cost_mult = -0.33
+			army_experience_gain_mult = 0.25
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_est_militarism_2 = {
+	possible = {
+		has_tradition = tr_est_militarism_1
+	}
+	
+	modifier = {
+		general_skill_levels = 2
+		leader_general_cost = -0.50
+		army_experience_gain_mult = 0.25
+	}
+	
+	tradition_swap = {
+		name = tr_est_might_2
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			general_skill_levels = 2
+			leader_general_cost = -0.50
+			army_morale_damage_mult = 0.20
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_est_militarism_3 = {
+	
+	modifier = {
+		country_naval_cap_mult = 0.10
+		country_command_limit_mult = 0.20
+	}
+	
+	ai_weight = {
+		factor = 3000
+	}
+}
+
+tr_est_militarism_4 = {
+	possible = {
+		has_tradition = tr_est_militarism_2
+		has_tradition = tr_est_militarism_3
+	}
+	
+	on_enabled = {
+		every_country = {
+			limit = {
+				is_at_war_with = root
+				Not = {
+					has_country_flag = flag_est_militarism_4_opponent
+				}
+			}
+		}
+		every_owned_planet = {
+			if = {
+				limit = {
+					has_building = building_fortress
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_4_2"
+					days = -1
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_building = building_stronghold
+					}
+					add_modifier = {
+						modifier = "mod_est_militarism_4_1"
+						days = -1
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_militarism_4_picked_flag
+				}
+			}
+			set_global_flag = est_militarism_4_picked_flag
+		}	
+	}	
+	
+	modifier = {
+		army_defense_damage_mult = 0.20
+		army_defense_health_mult = 0.20
+	}
+
+	tradition_swap = {
+		name = tr_est_militarism_4_AI
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			is_ai = yes
+		}		
+		modifier = {
+			army_defense_damage_mult = 0.40
+			army_defense_health_mult = 0.40
+		}
+		weight = { factor = 1 }
+	}
+
+	tradition_swap = {
+		name = tr_est_might_4
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			is_ai = no
+		}		
+		on_enabled = {
+			every_country = {
+				limit = {
+					is_at_war_with = root
+					Not = {
+						has_country_flag = flag_est_militarism_4_opponent
+					}
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_militarism_4_picked_flag
+					}
+				}
+				set_global_flag = est_militarism_4_picked_flag
+			}	
+		}
+		modifier = {
+			army_defense_damage_mult = 0.33
+			army_defense_health_mult = 0.33
+		}
+		weight = { factor = 1 }
+	}
+
+	ai_weight = {
+		factor = 3000
+	}
+}
+
+tr_est_militarism_5 = {
+	on_enabled = {
+		every_owned_leader = {
+			limit = {
+				Not = {
+					has_trait = leader_trait_admiral_est_militarism_5
+				}
+				leader_class = admiral
+			}
+			add_trait = leader_trait_admiral_est_militarism_5
+		}
+		every_pool_leader = {
+			limit = {
+				Not = {
+					has_trait = leader_trait_admiral_est_militarism_5
+				}
+				leader_class = admiral
+			}
+			add_trait = leader_trait_admiral_est_militarism_5
+		}	
+		every_owned_leader = {
+			limit = {
+				leader_class = admiral
+			}
+			owner ={
+				if = {
+					limit = {
+						has_country_flag = est_militarism_5_4
+					}	
+					set_timed_country_flag = {
+						flag = est_militarism_5_5
+						days = 2
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = est_militarism_5_3
+					}	
+					set_timed_country_flag = {
+						flag = est_militarism_5_4
+						days = 2
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = est_militarism_5_2
+					}	
+					set_timed_country_flag = {
+						flag = est_militarism_5_3
+						days = 2
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = est_militarism_5_1
+					}	
+					set_timed_country_flag = {
+						flag = est_militarism_5_2
+						days = 2
+					}
+				}
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = est_militarism_5_1
+						}
+					}	
+					set_timed_country_flag = {
+						flag = est_militarism_5_1
+						days = 2
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = est_militarism_5_5				
+			}
+			add_modifier = {
+				modifier = "mod_est_militarism_5_5"
+				days = -1
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = est_militarism_5_4		
+				Not = {
+					has_country_flag = est_militarism_5_5		
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_militarism_5_4"
+				days = -1
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = est_militarism_5_3			
+				Not = {
+					has_country_flag = est_militarism_5_4		
+				}			
+			}
+			add_modifier = {
+				modifier = "mod_est_militarism_5_3"
+				days = -1
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = est_militarism_5_2			
+				Not = {
+					has_country_flag = est_militarism_5_3		
+				}			
+			}
+			add_modifier = {
+				modifier = "mod_est_militarism_5_2"
+				days = -1
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = est_militarism_5_1			
+				Not = {
+					has_country_flag = est_militarism_5_2		
+				}			
+			}
+			add_modifier = {
+				modifier = "mod_est_militarism_5_1"
+				days = -1
+			}
+		}
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_militarism_5_picked_flag
+				}
+			}
+			set_global_flag = est_militarism_5_picked_flag
+		}	
+	}	
+
+	modifier = {
+		ship_experience_gain_mult = 0.25
+	}
+	
+	tradition_swap = {
+		name = tr_est_might_5
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			ship_experience_gain_mult = 0.25
+		}		
+		on_enabled = {
+			every_owned_leader = {
+				limit = {
+					Not = {
+						has_trait = leader_trait_admiral_est_might_5
+					}
+					leader_class = admiral 
+				}
+				add_trait = leader_trait_admiral_est_might_5	
+			}
+			every_pool_leader = {
+				limit = {
+					Not = {
+						has_trait = leader_trait_admiral_est_might_5
+					}
+					leader_class = admiral 
+				}
+				add_trait = leader_trait_admiral_est_might_5
+			}	
+			set_timed_country_flag = {
+				flag = est_might_5_0
+				days = 1
+			}
+			every_owned_leader = {
+				limit = {
+					leader_class = admiral
+				}
+				owner ={
+					if = {
+						limit = {
+							has_country_flag = est_might_5_4
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_5
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_3
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_4
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_2
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_3
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_1
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_2
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_0
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_1
+							days = 2
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_5				
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_5"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_4		
+					Not = {
+						has_country_flag = est_might_5_5		
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_4"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_3			
+					Not = {
+						has_country_flag = est_might_5_4		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_3"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_2			
+					Not = {
+						has_country_flag = est_might_5_3		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_2"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_1			
+					Not = {
+						has_country_flag = est_might_5_2		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_1"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_might_5_picked_flag
+					}
+				}
+				set_global_flag = est_might_5_picked_flag
+			}	
+		}	
+		weight = {
+			factor = 4
+		}
+	}
+		
+	ai_weight = {
+		factor = 4000
+	}
+}

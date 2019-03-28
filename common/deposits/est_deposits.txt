@@ -1,0 +1,250 @@
+# Possible Deposit Variables
+# modifier - weight, will replace the weight value
+# modifier - factor, will multiply the weight value
+# resources, resource and amount
+# station = station class in orbit to gather
+# if you mix resources that are not supposed to be collected by an orbital station remember to put is_orbital_slot = no
+
+#Academy 4: Bonus Science from Sciene Labs
+d_est_academy_3_society_deposit_1 = {
+	is_orbital_slot = no
+	resources = { society_research = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_academy_3_society_deposit_2 = {
+	is_orbital_slot = no
+	resources = { society_research = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_academy_3_physics_deposit_1 = {
+	is_orbital_slot = no
+	resources = { physics_research = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_academy_3_physics_deposit_2 = {
+	is_orbital_slot = no
+	resources = { physics_research = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_academy_3_engineering_deposit_1 = {
+	is_orbital_slot = no
+	resources = { engineering_research = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_academy_3_engineering_deposit_2 = {
+	is_orbital_slot = no
+	resources = { engineering_research = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+#Aesthetics 3: Bonus unity from building buildings.
+d_est_aesthetics_3_deposit_1 = {
+	is_orbital_slot = no
+	resources = { unity = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+#Archivist 1: Bonus Society Research from Alien Pets.
+d_est_archivist_1_alien_pet_deposit_1 = {
+	is_orbital_slot = no
+	resources = { society_research = 5 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_archivist_1_alien_pet_deposit_2 = {
+	is_orbital_slot = no
+	resources = { society_research = 5 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_archivist_1_alien_pet_deposit_3 = {
+	is_orbital_slot = no
+	resources = { society_research = 5 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+#Faith 3: Bonus Unity from Unity Producing Buildings.
+d_est_faith_3_deposit_1 = {
+	is_orbital_slot = no
+	resources = { unity = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_faith_3_deposit_2 = {
+	is_orbital_slot = no
+	resources = { unity = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_faith_3_deposit_3 = {
+	is_orbital_slot = no
+	resources = { unity = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_faith_3_deposit_4 = {
+	is_orbital_slot = no
+	resources = { unity = 1 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_desires_4_deposit = {
+	is_orbital_slot = no
+	resources = { energy = 5 }
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+#Industry 1: Bonus Minerals from Mining Stations.
+d_est_industry_1_deposit = {
+	resources = { minerals = 1 }
+	station = shipclass_mining_station
+	
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}
+d_est_industry_finish_rare_minerals = {
+	resources = {
+		minerals = 1
+		sr_est_rare_minerals = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+		modifier = {
+			weight = 3
+			planet = {
+				AND = {
+					OR = {
+						is_planet_class = pc_continental
+						is_planet_class = pc_ringworld_habitable
+						is_planet_class = pc_machine
+						is_planet_class = pc_tropical
+						is_planet_class = pc_ocean
+						is_planet_class = pc_arid
+						is_planet_class = pc_desert
+						is_planet_class = pc_tundra
+						is_planet_class = pc_arctic
+						is_planet_class = pc_alpine
+						is_planet_class = pc_savannah
+					}
+					has_owner = no
+				}
+			}
+		}
+		modifier = {
+			weight = 7.5
+			planet = {
+				is_planet_class = pc_gaia
+			}
+		}		
+		modifier = {
+			factor = 5
+			planet = {
+				OR = {
+					has_planet_modifier = "pm_lush"
+					has_planet_modifier = "pm_dangerous_wildlife"
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			planet = {
+				solar_system = {
+					OR = {
+						has_star_flag = empire_home_system
+						has_star_flag = sol_system
+						has_star_flag = deneb_system
+					}
+				}
+			}
+		}			
+	}
+}
+
+#Spaceborn 4: Bonus Energy from Suns.
+d_est_spaceborn_4_sun_deposit = {
+	resources = { energy = 5 }
+	station = shipclass_mining_station
+	
+	orbital_weight = {
+		weight = 0
+	}	
+	drop_weight = {
+		weight = 0	
+	}
+}

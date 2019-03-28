@@ -1,0 +1,1251 @@
+##########################################################################
+# Empire Policies
+#
+# #####
+#
+# AI:
+# Base AI-weight is 100, if unchanged
+# AI will grab whatever policy-option has the highest weight
+#
+# #####
+#
+##########################################################################
+
+#Aesthics 2, Guild of Artists.
+est_aesthetics_guild_of_artists = {
+
+	potential = {
+		has_non_swapped_tradition = tr_est_aesthetics_2
+	}
+	
+	option = {
+		name = "est_aesthetics_guild_of_artists_0"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_0
+		}	
+		valid = {
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_1"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_1
+		}	
+		modifier = {
+			country_leader_cap = -1
+		}
+		valid = {
+			hidden_trigger = {
+				Not = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_2"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_2
+		}	
+		modifier = {
+			country_leader_cap = -2
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_3"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_3
+		}	
+		modifier = {
+			country_leader_cap = -3
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_4"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_4
+		}	
+		modifier = {
+			country_leader_cap = -4
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_3
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 4
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_5"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_5
+		}	
+		modifier = {
+			country_leader_cap = -5
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_4
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_3
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 4
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 5
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_6"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_6
+		}	
+		modifier = {
+			country_leader_cap = -6
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_5
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_4
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_3
+					}
+					And = {
+						free_leader_slots < 4
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 5
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 6
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1'
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_7"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_7
+		}	
+		modifier = {
+			country_leader_cap = -7
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_6
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_5
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_4
+					}
+					And = {
+						free_leader_slots < 4
+						has_policy_flag = est_aesthetics_guild_of_artists_3
+					}
+					And = {
+						free_leader_slots < 5
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 6
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 7
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_8"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_8
+		}	
+		modifier = {
+			country_leader_cap = -8
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_7
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_6
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_5
+					}
+					And = {
+						free_leader_slots < 4
+						has_policy_flag = est_aesthetics_guild_of_artists_4
+					}
+					And = {
+						free_leader_slots < 5
+						has_policy_flag = est_aesthetics_guild_of_artists_3
+					}
+					And = {
+						free_leader_slots < 6
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 7
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 8
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_9"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_9
+		}	
+		modifier = {
+			country_leader_cap = -9
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_8
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_7
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_6
+					}
+					And = {
+						free_leader_slots < 4
+						has_policy_flag = est_aesthetics_guild_of_artists_5
+					}
+					And = {
+						free_leader_slots < 5
+						has_policy_flag = est_aesthetics_guild_of_artists_4
+					}
+					And = {
+						free_leader_slots < 6
+						has_policy_flag = est_aesthetics_guild_of_artists_3
+					}
+					And = {
+						free_leader_slots < 7
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 8
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 9
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_aesthetics_guild_of_artists_10"			
+		policy_flags = {
+			est_aesthetics_guild_of_artists_10
+		}	
+		modifier = {
+			country_leader_cap = -10
+		}
+		valid = {
+			hidden_trigger = {
+				Nor = {
+					And = {
+						free_leader_slots < 1
+						has_policy_flag = est_aesthetics_guild_of_artists_9
+					}
+					And = {
+						free_leader_slots < 2
+						has_policy_flag = est_aesthetics_guild_of_artists_8
+					}
+					And = {
+						free_leader_slots < 3
+						has_policy_flag = est_aesthetics_guild_of_artists_7
+					}
+					And = {
+						free_leader_slots < 4
+						has_policy_flag = est_aesthetics_guild_of_artists_6
+					}
+					And = {
+						free_leader_slots < 5
+						has_policy_flag = est_aesthetics_guild_of_artists_5
+					}
+					And = {
+						free_leader_slots < 6
+						has_policy_flag = est_aesthetics_guild_of_artists_4
+					}
+					And = {
+						free_leader_slots < 7
+						has_policy_flag = est_aesthetics_guild_of_artists_3
+					}
+					And = {
+						free_leader_slots < 8
+						has_policy_flag = est_aesthetics_guild_of_artists_2
+					}
+					And = {
+						free_leader_slots < 9
+						has_policy_flag = est_aesthetics_guild_of_artists_1
+					}
+					And = {
+						free_leader_slots < 10
+						has_policy_flag = est_aesthetics_guild_of_artists_0
+					}
+				}
+				free_leader_slots > -1
+			}
+		}
+		AI_weight = {
+		}
+	}
+}
+#Probability Tables
+#nr Events: Number of Artists
+#  : 1  2  3  4  5  6  7  8  9  10
+# 0: 80 65 55 45 35 30 25 20 15 10
+# 1: 20 35 35 40 40 35 30 25 20 15
+# 2:  0  0 10 15 15 20 20 20 20 20
+# 3:  0  0  0  0 10 15 15 20 20 25
+# 4:  0  0  0  0  0  0 10 15 20 20
+# 5:  0  0  0  0  0  0  0  0  5 10
+#Aesthics 4, Grand Architecture.
+est_aesthetics_architecture = {
+
+	potential = {
+		has_non_swapped_tradition = tr_est_aesthetics_4
+	}
+	
+	option = {
+		name = "est_aesthetics_architecture_0"			
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_aesthetics_architecture_1"			
+		policy_flags = {
+			est_aesthetics_architecture_1
+		}	
+		modifier = {
+			planet_building_cost_mult = 0.20
+			planet_building_build_speed_mult = -0.25
+		}		
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_aesthetics_architecture_2"			
+		policy_flags = {
+			est_aesthetics_architecture_1
+			est_aesthetics_architecture_2
+		}	
+		modifier = {
+			planet_building_cost_mult = 0.40
+			planet_building_build_speed_mult = -0.50
+		}	
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_aesthetics_architecture_3"			
+		policy_flags = {
+			est_aesthetics_architecture_1
+			est_aesthetics_architecture_2
+			est_aesthetics_architecture_3
+		}	
+		modifier = {
+			planet_building_cost_mult = 0.60
+			planet_building_build_speed_mult = -0.75
+			tile_resource_unity_mult = 0.15
+		}	
+		AI_weight = {
+		}
+	}
+}
+
+#Biogenesis Finish, Food to Mineral Conversion.
+est_biogenesis_finish_food_to_minerals = {
+
+	potential = {
+		has_swapped_tradition = tr_est_biogenesis_finish
+	}
+	
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_0"			
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_0
+		}	
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_1"	
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_1
+		}		
+		modifier = {
+			country_resource_food_add = -10
+			country_resource_minerals_add = 10
+		}		
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 10 
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_1
+				}
+			}
+			food > 0
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_2"		
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_2
+		}	
+		modifier = {
+			country_resource_food_add = -25
+			country_resource_minerals_add = 25
+		}		
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 25
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_2
+				}
+			}
+			food > 0
+		}	
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_3"		
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_3
+		}	
+		modifier = {
+			country_resource_food_add = -50
+			country_resource_minerals_add = 50
+		}			
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 50 
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_3
+				}
+			}
+			food > 0
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_4"		
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_4
+		}	
+		modifier = {
+			country_resource_food_add = -100
+			country_resource_minerals_add = 100
+		}			
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 100
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_4
+				}
+			}
+			food > 0
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_5"		
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_5
+		}	
+		modifier = {
+			country_resource_food_add = -200
+			country_resource_minerals_add = 200
+		}			
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 200 
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_5
+				}
+			}
+			food > 0
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_6"		
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_6
+		}	
+		modifier = {
+			country_resource_food_add = -500
+			country_resource_minerals_add = 500
+		}			
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 500
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_6
+				}
+			}
+			food > 0
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_7"	
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_7
+		}		
+		modifier = {
+			country_resource_food_add = -1000
+			country_resource_minerals_add = 1000
+		}			
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 1000
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_7
+				}
+			}
+			food > 0
+		}
+		AI_weight = {
+		}
+	}
+	option = {
+		name = "est_biogenesis_finish_food_to_minerals_8"	
+		policy_flags = {
+			est_biogenesis_finish_food_to_minerals_8
+		}		
+		modifier = {
+			country_resource_food_add = -2000
+			country_resource_minerals_add = 2000
+		}			
+		valid = {
+			Or = {
+				has_monthly_income = { 
+					resource = food
+					value > 2000
+				}
+				hidden_trigger = {
+					has_policy_flag = est_biogenesis_finish_food_to_minerals_8
+				}
+			}
+			food > 0
+		}
+		AI_weight = {
+		}
+	}
+}
+
+#Subminds 3, control sector parameters.
+est_subminds_3 = {
+
+	potential = {
+		Or = {
+			has_swapped_tradition = tr_est_subminds_3
+			has_swapped_tradition = tr_est_subminds_3_machines
+		}
+	}
+	
+	option = {
+		name = "est_subminds_3_energy"	
+		policy_flags = {
+			policy_flag_est_subminds_3_energy
+		}		
+		potential = {
+			Or = {
+				has_swapped_tradition = tr_est_subminds_3
+				has_swapped_tradition = tr_est_subminds_3_machines
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						sector_controlled = yes 						
+					}
+					add_modifier = {
+						modifier = "mod_est_subminds_3_energy"
+						days = -1
+					}
+				}
+			}
+		}	
+		on_disabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						has_modifier = mod_est_subminds_3_energy					
+					}
+					remove_modifier = "mod_est_subminds_3_energy"
+				}
+			}
+		}	
+		AI_weight = { }		
+	}
+	
+	option = {
+		name = "est_subminds_3_food"	
+		policy_flags = {
+			policy_flag_est_subminds_3_food
+		}			
+		potential = {
+			has_swapped_tradition = tr_est_subminds_3
+		}	
+		valid = {
+			has_swapped_tradition = tr_est_subminds_3
+		}
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						sector_controlled = yes 						
+					}
+					add_modifier = {
+						modifier = "mod_est_subminds_3_food"
+						days = -1
+					}
+				}
+			}
+		}	
+		on_disabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						has_modifier = mod_est_subminds_3_food				
+					}
+					remove_modifier = "mod_est_subminds_3_food"
+				}
+			}
+		}	
+		AI_weight = { }		
+	}
+	
+	option = {
+		name = "est_subminds_3_minerals"	
+		policy_flags = {
+			policy_flag_est_subminds_3_minerals
+		}			
+		potential = {
+			Or = {
+				has_swapped_tradition = tr_est_subminds_3
+				has_swapped_tradition = tr_est_subminds_3_machines
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						sector_controlled = yes 						
+					}
+					add_modifier = {
+						modifier = "mod_est_subminds_3_minerals"
+						days = -1
+					}
+				}
+			}
+		}	
+		on_disabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						has_modifier = mod_est_subminds_3_minerals					
+					}
+					remove_modifier = "mod_est_subminds_3_minerals"
+				}
+			}
+		}	
+		AI_weight = { }		
+	}
+	
+	option = {
+		name = "est_subminds_3_research"	
+		policy_flags = {
+			policy_flag_est_subminds_3_research
+		}			
+		potential = {
+			Or = {
+				has_swapped_tradition = tr_est_subminds_3
+				has_swapped_tradition = tr_est_subminds_3_machines
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						sector_controlled = yes 						
+					}
+					add_modifier = {
+						modifier = "mod_est_subminds_3_research"
+						days = -1
+					}
+				}
+			}
+		}	
+		on_disabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						has_modifier = mod_est_subminds_3_research					
+					}
+					remove_modifier = "mod_est_subminds_3_research"
+				}
+			}
+		}	
+		AI_weight = { }		
+	}
+	
+	option = {
+		name = "est_subminds_3_unity"	
+		policy_flags = {
+			policy_flag_est_subminds_3_unity
+		}		
+		potential = {
+			Or = {
+				has_swapped_tradition = tr_est_subminds_3
+				has_swapped_tradition = tr_est_subminds_3_machines
+			}
+		}	
+		on_enabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						sector_controlled = yes 						
+					}
+					add_modifier = {
+						modifier = "mod_est_subminds_3_unity"
+						days = -1
+					}
+				}
+			}
+		}	
+		on_disabled = {
+			hidden_effect = {
+				every_owned_planet = {
+					limit = {
+						has_modifier = mod_est_subminds_3_unity					
+					}
+					remove_modifier = "mod_est_subminds_3_unity"
+				}
+			}
+		}	
+		AI_weight = { }		
+	}
+}
+
+#Greed 2, Ruthless Negotiators.
+est_greed_2_negotiations = {
+
+	potential = {
+		has_non_swapped_tradition = tr_est_greed_2
+	}
+	
+	option = {
+		name = "est_greed_2_negotiations_0"	
+		AI_weight = {
+		}		
+		policy_flags = {
+			est_greed_2_negotiations_0
+		}			
+	}
+	
+	option = {
+		name = "est_greed_2_negotiations_1"		
+		policy_flags = {
+			est_greed_2_negotiations_1
+		}		
+		modifier = {
+			country_trade_attractiveness = 0.05
+		}		
+		AI_weight = { }			
+	}
+	
+	option = {
+		name = "est_greed_2_negotiations_2"		
+		policy_flags = {
+			est_greed_2_negotiations_2
+		}		
+		modifier = {
+			country_trade_attractiveness = 0.10
+		}		
+		AI_weight = { }	
+	}
+	
+	option = {
+		name = "est_greed_2_negotiations_3"	
+		policy_flags = {
+			est_greed_2_negotiations_3
+		}		
+		modifier = {
+			country_trade_attractiveness = 0.15
+		}			
+		AI_weight = { }	
+	}
+}
+
+#Fury Traditions, Fury Level.
+est_fury = {
+
+	potential = {
+		has_swapped_tradition = tr_est_fury_adopt
+	}
+	
+	option = {
+		name = "est_fury_0"	
+		policy_flags = {
+			est_fury_0
+		}		
+		valid = {
+			custom_tooltip = "est_fury_policy_tooltip_0"
+			hidden_trigger = {
+				Not = {
+					has_policy_flag = est_fury_2
+					has_policy_flag = est_fury_3
+					has_policy_flag = est_fury_4
+					has_policy_flag = est_fury_5
+				}
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				country_event = {
+					id = est_liberty.6
+					days = 1
+				}
+			}
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "est_fury_1"	
+		policy_flags = {
+			est_fury_1
+		}		
+		valid = {
+			custom_tooltip = "est_fury_policy_tooltip_1"
+			hidden_trigger = {
+				Or = {
+					has_policy_flag = est_fury_0
+					has_policy_flag = est_fury_1
+					has_policy_flag = est_fury_2	
+				}
+				has_country_flag = 	flag_est_fury_max_level_1	
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				country_event = {
+					id = est_liberty.6
+					days = 1
+				}
+			}
+		}
+		AI_weight = {
+			factor = 5
+			modifier = {
+				factor = 0
+				num_owned_planets < 5
+			}
+		}
+	}
+	
+	option = {
+		name = "est_fury_2"	
+		policy_flags = {
+			est_fury_2
+		}		
+		valid = {
+			custom_tooltip = "est_fury_policy_tooltip_2"
+			hidden_trigger = {
+				Or = {
+					has_policy_flag = est_fury_1
+					has_policy_flag = est_fury_2
+					has_policy_flag = est_fury_3		
+				}
+				has_country_flag = 	flag_est_fury_max_level_2	
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				country_event = {
+					id = est_liberty.6
+					days = 1
+				}
+			}
+		}
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 0
+				num_owned_planets < 15
+			}
+		}
+	}
+	
+	option = {
+		name = "est_fury_3"	
+		policy_flags = {
+			est_fury_3
+		}		
+		valid = {
+			custom_tooltip = "est_fury_policy_tooltip_3"
+			hidden_trigger = {
+				Or = {
+					has_policy_flag = est_fury_2
+					has_policy_flag = est_fury_3
+					has_policy_flag = est_fury_4		
+				}
+				has_country_flag = 	flag_est_fury_max_level_3		
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				country_event = {
+					id = est_liberty.6
+					days = 1
+				}
+			}
+		}
+		AI_weight = {
+			factor = 15
+			modifier = {
+				factor = 0
+				num_owned_planets < 25
+			}
+		}
+	}
+	
+	option = {
+		name = "est_fury_4"	
+		policy_flags = {
+			est_fury_4
+		}		
+		valid = {
+			custom_tooltip = "est_fury_policy_tooltip_4"
+			hidden_trigger = {
+				Or = {
+					has_policy_flag = est_fury_3
+					has_policy_flag = est_fury_4	
+				}
+				has_country_flag = 	flag_est_fury_max_level_4			
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				country_event = {
+					id = est_liberty.6
+					days = 1
+				}
+			}
+		}
+		AI_weight = {
+			factor = 20
+			modifier = {
+				factor = 0
+				num_owned_planets < 40
+			}
+		}
+	}
+	
+	option = {
+		name = "est_fury_5"	
+		policy_flags = {
+			est_fury_5
+		}		
+		valid = {
+			custom_tooltip = "est_fury_policy_tooltip_5"
+			hidden_trigger = {
+				Or = {
+					has_policy_flag = est_fury_4
+					has_policy_flag = est_fury_5	
+				}
+				has_country_flag = 	flag_est_fury_max_level_5		
+			}
+		}
+		on_enabled = {
+			hidden_effect = {
+				country_event = {
+					id = est_liberty.6
+					days = 1
+				}
+			}
+		}
+		AI_weight = {
+			factor = 25
+			modifier = {
+				factor = 0
+				num_owned_planets < 100
+			}
+		}	
+	}
+}
+
+#Fury Traditions, Fury Level.
+est_fury_5_ravage = {
+
+	potential = {
+		has_swapped_tradition = tr_est_fury_5
+	}
+	
+	option = {
+		name = "est_fury_5_ravage_on"	
+		policy_flags = {
+			est_fury_5_ravage_on
+		}		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "est_fury_5_ravage_off"	
+		policy_flags = {
+			est_fury_5_ravage_off
+		}	
+		AI_weight = {
+			factor = 0
+		}
+	}
+}
+
+#Piracy 2, Raiding Targets.
+est_piracy_raiding = {
+
+	potential = {
+		has_tradition = tr_est_piracy_2
+	}
+	
+	option = {
+		name = "est_piracy_raiding_none"			
+		policy_flags = {
+			est_piracy_raiding_none
+		}	
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_piracy_raiding_weaker"			
+		policy_flags = {
+			est_piracy_raiding_weaker
+		}	
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_piracy_raiding_disliked"			
+		policy_flags = {
+			est_piracy_raiding_disliked
+		}	
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_piracy_raiding_weaker_n_disliked"			
+		policy_flags = {
+			est_piracy_raiding_weaker_n_disliked
+		}	
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_piracy_raiding_rivals"			
+		policy_flags = {
+			est_piracy_raiding_rivals
+		}	
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_piracy_raiding_insulted"			
+		policy_flags = {
+			est_piracy_raiding_insulted
+		}	
+		AI_weight = {
+		}
+	}
+	
+	option = {
+		name = "est_piracy_raiding_full"			
+		policy_flags = {
+			est_piracy_raiding_full
+		}	
+		AI_weight = {
+		}
+	}
+}

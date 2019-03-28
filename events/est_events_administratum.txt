@@ -1,0 +1,265 @@
+namespace = est_administratum
+
+#Administratum 2, bonus trait to governors.
+country_event = {
+	id = est_administratum.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_non_swapped_tradition = tr_est_administratum_2
+		from = {
+			leader_class = governor
+		}
+	}
+	
+	immediate = {
+		from = {
+			random_list = {
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_iron_fist
+							owner = { allows_slavery = no }
+						}
+					}
+					add_trait = leader_trait_iron_fist
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_army_veteran
+							has_trait = leader_trait_retired_fleet_officer
+							owner = {
+								Not = {
+									has_technology = tech_centralized_command
+								}
+							}
+						}
+					}
+					add_trait = leader_trait_army_veteran
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_army_veteran
+							has_trait = leader_trait_retired_fleet_officer
+							owner = {
+								Not = {
+									has_technology = tech_centralized_command
+								}
+							}
+						}
+					}
+					add_trait = leader_trait_retired_fleet_officer
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_architectural_interest
+						}
+					}
+					add_trait = leader_trait_architectural_interest
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_agrarian_upbringing
+						}
+					}
+					add_trait = leader_trait_agrarian_upbringing
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_intellectual
+						}
+					}
+					add_trait = leader_trait_intellectual
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_environmental_engineer
+						}
+					}
+					add_trait = leader_trait_environmental_engineer
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_adaptable
+							has_trait = leader_trait_stubborn
+							has_trait = leader_trait_arrested_development
+							
+						}
+					}
+					add_trait = leader_trait_adaptable
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						Or = {
+							has_trait = leader_trait_resilient
+							has_trait = leader_trait_substance_abuser
+						}
+					}
+					add_trait = leader_trait_resilient
+				}
+			}
+		}				
+	}
+}
+
+#Administratum 4, bonus unity on planet with governor.
+event = {
+	id = est_administratum.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_administratum_4_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_tradition = tr_est_administratum_4
+			}
+			every_owned_planet = {
+				if = {
+					limit = {
+						sector = {
+							exists = leader
+						}
+						Or = {
+							has_building = "building_capital_1"
+							has_building = "building_capital_2"
+							has_building = "building_capital_3"
+							has_building = "building_machine_capital_1"
+							has_building = "building_machine_capital_2"
+							has_building = "building_machine_capital_3"
+						}
+					}
+					if = {
+						limit = {
+							sector = {
+								is_core_sector = yes
+							}							
+						}
+						if = {
+							limit = {
+								has_modifier = mod_est_administratum_4_sector						
+							}
+							remove_modifier = "mod_est_administratum_4_sector"
+						}	
+						if = {
+							limit = {
+								has_modifier = mod_est_omnipresence_4_sector						
+							}
+							remove_modifier = "mod_est_omnipresence_4_sector"
+						}	
+						if = {
+							limit = {
+								Nor = {
+									has_modifier = mod_est_administratum_4_core
+									has_modifier = mod_est_omnipresence_4_core
+								}
+							}
+							if = {
+								limit = {
+									owner = {
+										has_ethic = ethic_gestalt_consciousness
+									}
+								}
+								add_modifier = {
+									modifier = "mod_est_omnipresence_4_core"
+									days = -1
+								}	
+							}		
+							else = {
+								add_modifier = {
+									modifier = "mod_est_administratum_4_core"
+									days = -1
+								}								
+							}							
+						}
+					}
+					else = {
+						if = {
+							limit = {
+								has_modifier = mod_est_administratum_4_core						
+							}
+							remove_modifier = "mod_est_administratum_4_core"
+						}	
+						if = {
+							limit = {
+								has_modifier = mod_est_administratum_4_core						
+							}
+							remove_modifier = "mod_est_omnipresence_4_core"
+						}	
+						if = {
+							limit = {
+								Nor = {
+									has_modifier = mod_est_administratum_4_sector
+									has_modifier = mod_est_omnipresence_4_sector
+								}
+							}
+							if = {
+								limit = {
+									owner = {
+										has_ethic = ethic_gestalt_consciousness
+									}
+								}
+								add_modifier = {
+									modifier = "mod_est_omnipresence_4_sector"
+									days = -1
+								}	
+							}			
+							else = {
+								add_modifier = {
+									modifier = "mod_est_administratum_4_sector"
+									days = -1
+								}								
+							}					
+						}						
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_modifier = mod_est_administratum_4_core						
+						}
+						remove_modifier = "mod_est_administratum_4_core"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_administratum_4_sector						
+						}
+						remove_modifier = "mod_est_administratum_4_sector"
+					}		
+					if = {
+						limit = {
+							has_modifier = mod_est_omnipresence_4_core						
+						}
+						remove_modifier = "mod_est_omnipresence_4_core"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_omnipresence_4_sector						
+						}
+						remove_modifier = "mod_est_omnipresence_4_sector"
+					}					
+				}
+			}
+		}
+	}	
+}

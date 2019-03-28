@@ -1,0 +1,1459 @@
+namespace = est_greed
+
+#Greed 1, bonus to country with lots of stored energy.
+event = {
+	id = est_greed.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_greed_1_picked_flag
+	}
+	
+	immediate = {		
+		every_country = {
+			limit = {
+				has_non_swapped_tradition = tr_est_greed_1
+			}
+			switch = {
+				trigger = has_modifier
+				
+				mod_est_greed_1_1 = { remove_modifier = "mod_est_greed_1_1" }
+				mod_est_greed_1_2 = { remove_modifier = "mod_est_greed_1_2" }
+				mod_est_greed_1_3 = { remove_modifier = "mod_est_greed_1_3" }
+				mod_est_greed_1_4 = { remove_modifier = "mod_est_greed_1_4" }
+			}
+			if = {
+				limit = {
+					energy < 300
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						energy < 4000
+					}
+					add_modifier = {
+						modifier = mod_est_greed_1_1
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							energy < 15000
+						}
+						add_modifier = {
+							modifier = mod_est_greed_1_2
+							days = -1
+						}
+					}	
+					else = {
+						if = {
+							limit = {
+								energy < 40000
+							}
+							add_modifier = {
+								modifier = mod_est_greed_1_3
+								days = -1
+							}
+						}
+						else = {
+							add_modifier = {
+								modifier = mod_est_greed_1_4
+								days = -1
+							}
+						}
+					}				
+				}
+			}
+		}
+	}
+}
+
+#Greed 4,triggers for countries with tradition and check planets.
+event = {
+	id = est_greed.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_greed_4_picked_flag
+	}
+	
+	immediate = {		
+		every_country = {
+			limit = {
+				has_tradition = tr_est_greed_4
+			}
+			every_owned_planet = {
+				limit = {
+					has_planet_flag = flag_est_est_greed_4_active_planet_edict
+				}	
+				planet_event = {
+					id = est_greed.3
+				}
+				if = {
+					limit = {
+						Or = {
+							has_edict = est_greed_4_1
+							has_edict = est_greed_4_2
+							has_edict = est_greed_4_3
+						}
+					}
+					if = {
+						limit = {
+							has_edict = est_greed_4_1
+						}
+						planet_event = {
+							id = est_greed.4
+						}
+					}
+					if = {
+						limit = {
+							has_edict = est_greed_4_2
+						}
+						planet_event = {
+							id = est_greed.5
+						}
+					}
+					if = {
+						limit = {
+							has_edict = est_greed_4_3
+						}
+						planet_event = {
+							id = est_greed.6
+						}
+					}
+				} 
+				else = {
+					remove_planet_flag = flag_est_est_greed_4_active_planet_edict
+				}
+			}
+		}
+	}
+}
+
+#Greed 4, removes previous modifiers.
+planet_event = {
+	id = est_greed.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		switch = {
+			trigger = has_modifier
+			
+			mod_est_greed_4_1 = { remove_modifier = "mod_est_greed_4_1" break = yes} 
+			mod_est_greed_4_2 = { remove_modifier = "mod_est_greed_4_2" break = yes }
+			mod_est_greed_4_3 = { remove_modifier = "mod_est_greed_4_3" break = yes }
+			mod_est_greed_4_4 = { remove_modifier = "mod_est_greed_4_4" break = yes }
+			mod_est_greed_4_5 = { remove_modifier = "mod_est_greed_4_5" break = yes }
+			mod_est_greed_4_6 = { remove_modifier = "mod_est_greed_4_6" break = yes }
+			mod_est_greed_4_7 = { remove_modifier = "mod_est_greed_4_7" break = yes }
+			mod_est_greed_4_8 = { remove_modifier = "mod_est_greed_4_8" break = yes }
+			mod_est_greed_4_9 = { remove_modifier = "mod_est_greed_4_9" break = yes }
+			mod_est_greed_4_10 = { remove_modifier = "mod_est_greed_4_10" break = yes }
+			mod_est_greed_4_11 = { remove_modifier = "mod_est_greed_4_11" break = yes }
+			mod_est_greed_4_12 = { remove_modifier = "mod_est_greed_4_12" break = yes }
+			mod_est_greed_4_13 = { remove_modifier = "mod_est_greed_4_13" break = yes }
+			mod_est_greed_4_14 = { remove_modifier = "mod_est_greed_4_14" break = yes }
+			mod_est_greed_4_15 = { remove_modifier = "mod_est_greed_4_15" break = yes }
+			mod_est_greed_4_16 = { remove_modifier = "mod_est_greed_4_16" break = yes }
+			mod_est_greed_4_17 = { remove_modifier = "mod_est_greed_4_17" break = yes }
+			mod_est_greed_4_18 = { remove_modifier = "mod_est_greed_4_18" break = yes }
+		}
+	}
+}	
+	
+#Greed 4, updates planet energy bonus for the first edict.
+planet_event = {
+	id = est_greed.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {	
+		if = {
+			limit = {
+				num_pops < 12
+			}
+			if = {
+				limit = {
+					num_pops < 4
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						num_pops < 8
+					}
+					add_modifier = {
+						modifier = mod_est_greed_4_1
+						days = -1
+					}
+				}
+				else = {
+					add_modifier = {
+						modifier = mod_est_greed_4_2
+						days = -1
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					num_pops < 20
+				}
+				if = {
+					limit = {
+						num_pops < 16
+					}
+					add_modifier = {
+						modifier = mod_est_greed_4_3
+						days = -1
+					}
+				}
+				else = {
+					add_modifier = {
+						modifier = mod_est_greed_4_4
+						days = -1
+					}
+				}
+			}	
+			else = {
+				if = {
+					limit = {
+						num_pops < 14
+					}
+					add_modifier = {
+						modifier = mod_est_greed_4_5
+						days = -1
+					}
+				}
+				else = {
+					add_modifier = {
+						modifier = mod_est_greed_4_6
+						days = -1
+					}
+				}
+			}		
+		}
+	}
+}
+
+#Greed 4, updates planet energy bonus for the second edict.
+planet_event = {
+	id = est_greed.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {	
+		if = {
+			limit = {
+				num_pops < 14
+			}
+			if = {
+				limit = {
+					num_pops < 8
+				}
+				if = {
+					limit = {
+						num_pops < 4
+					}
+					if = {
+						limit = {
+							num_pops < 2
+						}
+					}
+					else = {
+						add_modifier = {
+							modifier = mod_est_greed_4_1
+							days = -1
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							num_pops < 6
+						}
+						add_modifier = {
+							modifier = mod_est_greed_4_2
+							days = -1
+						}
+					}
+					else = {
+						add_modifier = {
+							modifier = mod_est_greed_4_3
+							days = -1
+						}
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						num_pops < 10
+					}
+					add_modifier = {
+						modifier = mod_est_greed_4_4
+						days = -1
+					}
+				}	
+				else = {
+					if = {
+						limit = {
+							num_pops < 12
+						}
+						add_modifier = {
+							modifier = mod_est_greed_4_5
+							days = -1
+						}
+					}
+					else = {
+						add_modifier = {
+							modifier = mod_est_greed_4_6
+							days = -1
+						}
+					}
+				}				
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					num_pops < 20
+				}
+				if = {
+					limit = {
+						num_pops < 16
+					}
+					add_modifier = {
+						modifier = mod_est_greed_4_7
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							num_pops < 18
+						}
+						add_modifier = {
+							modifier = mod_est_greed_4_8
+							days = -1
+						}
+					}
+					else = {
+						add_modifier = {
+							modifier = mod_est_greed_4_9
+							days = -1
+						}
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						num_pops < 22
+					}
+					add_modifier = {
+						modifier = mod_est_greed_4_10
+						days = -1
+					}
+				}	
+				else = {
+					if = {
+						limit = {
+							num_pops < 24
+						}
+						add_modifier = {
+							modifier = mod_est_greed_4_11
+							days = -1
+						}
+					}
+					else = {
+						add_modifier = {
+							modifier = mod_est_greed_4_12
+							days = -1
+						}
+					}
+				}
+			}	
+		}
+	}
+}
+
+#Greed 4, updates planet energy bonus for the third edict.
+planet_event = {
+	id = est_greed.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {			
+		if = {
+			limit = {
+				num_pops < 14
+			}
+			if = {
+				limit = {
+					num_pops < 7				
+				}	
+				if = {
+					limit = {
+						num_pops < 4				
+					}		
+					if = {
+						limit = {
+							num_pops < 2				
+						}				
+						#Do nothing
+					}	
+					else = {
+						if = {
+							limit = {
+								num_pops < 3				
+							}				
+							add_modifier = {
+								modifier = mod_est_greed_4_1
+								days = -1
+							}
+						}
+						else = {
+							add_modifier = {
+								modifier = mod_est_greed_4_2
+								days = -1
+							}
+						}
+					}
+				}				
+				else = {		
+					if = {
+						limit = {
+							num_pops < 6				
+						}							
+						add_modifier = {
+							modifier = mod_est_greed_4_3
+							days = -1
+						}
+					}
+					else = {						
+						add_modifier = {
+							modifier = mod_est_greed_4_4
+							days = -1
+						}
+					}
+				}
+			}		
+			else = {
+				if = {
+					limit = {
+						num_pops < 11				
+					}		
+					if = {
+						limit = {
+							num_pops < 8				
+						}						
+						add_modifier = {
+							modifier = mod_est_greed_4_5
+							days = -1
+						}	
+					}	
+					else = {	
+						if = {
+							limit = {
+								num_pops < 10				
+							}							
+							add_modifier = {
+								modifier = mod_est_greed_4_6
+								days = -1
+							}
+						}
+						else = {						
+							add_modifier = {
+								modifier = mod_est_greed_4_7
+								days = -1
+							}
+						}
+					}
+				}				
+				else = {		
+					if = {
+						limit = {
+							num_pops < 12				
+						}							
+						add_modifier = {
+							modifier = mod_est_greed_4_8
+							days = -1
+						}
+					}
+					else = {						
+						add_modifier = {
+							modifier = mod_est_greed_4_9
+							days = -1
+						}
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					num_pops < 20				
+				}	
+				if = {
+					limit = {
+						num_pops < 18				
+					}		
+					if = {
+						limit = {
+							num_pops < 15				
+						}				
+						add_modifier = {
+							modifier = mod_est_greed_4_10
+							days = -1
+						}
+					}	
+					else = {
+						if = {
+							limit = {
+								num_pops < 16				
+							}				
+							add_modifier = {
+								modifier = mod_est_greed_4_11
+								days = -1
+							}
+						}
+						else = {
+							add_modifier = {
+								modifier = mod_est_greed_4_12
+								days = -1
+							}
+						}
+					}
+				}				
+				else = {		
+					if = {
+						limit = {
+							num_pops < 19				
+						}							
+						add_modifier = {
+							modifier = mod_est_greed_4_13
+							days = -1
+						}
+					}
+					else = {						
+						add_modifier = {
+							modifier = mod_est_greed_4_14
+							days = -1
+						}
+					}
+				}
+			}		
+			else = {
+				if = {
+					limit = {
+						num_pops < 23			
+					}		
+					if = {
+						limit = {
+							num_pops < 22				
+						}						
+						add_modifier = {
+							modifier = mod_est_greed_4_15
+							days = -1
+						}	
+					}
+					else = {							
+						add_modifier = {
+							modifier = mod_est_greed_4_16
+							days = -1
+						}
+					}	
+				}				
+				else = {		
+					if = {
+						limit = {
+							num_pops < 24				
+						}							
+						add_modifier = {
+							modifier = mod_est_greed_4_17
+							days = -1
+						}
+					}
+					else = {						
+						add_modifier = {
+							modifier = mod_est_greed_4_18
+							days = -1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#Greed 4, checks whenever planet have edict but knot bonus.
+event = {
+	id = est_greed.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_greed_4_picked_flag
+	}
+	
+	immediate = {		
+		every_country = {
+			limit = {
+				has_tradition = tr_est_greed_4
+			}
+			every_owned_planet = {
+				limit = {
+					has_planet_flag = flag_est_est_greed_4_active_planet_edict
+					Not = {
+						has_edict = est_greed_4_1
+						has_edict = est_greed_4_2
+						has_edict = est_greed_4_3
+					}
+				}	
+				planet_event = {
+					id = est_greed.3
+				}
+			}
+		}
+	}
+}
+
+#Desires 4, adds bonus energy and modifier to conquered/colonized planet with Betharian.
+planet_event = {
+	id = est_greed.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_swapped_tradition = tr_est_desires_4		
+		}
+		any_tile = {
+			has_deposit = d_betharian_deposit
+		}	
+		num_pops > 0
+	}
+	
+	immediate = {
+		every_tile = {
+			limit = {
+				has_deposit = d_betharian_deposit
+			}
+			if = {
+				limit = {
+					Not = {
+						has_deposit = d_est_desires_4_deposit
+					}
+				}
+				add_deposit = d_est_desires_4_deposit
+			}								
+			planet = {
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_desires_4
+						}
+					}
+					add_modifier = {
+						modifier = mod_est_desires_4
+						days = -1
+					}
+				}
+			}
+		}
+	}
+}
+
+#Greed 5, prepares factions to be bribed.
+country_event = {
+	id = est_greed.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {	
+		from = {
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_1
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_1
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_1
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_2
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_2
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_2
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_3
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_3
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_3
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_4
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_4
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_4
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_5
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_5
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_5
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_6
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_6
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_6
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_7
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_7
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_7
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_8
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_8
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_8
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_9
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_9
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_9
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_10
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_10
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_10
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_11
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_11
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_11
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_12
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_12
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_12
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_13
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_13
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_13
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_14
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_14
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_14
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_15
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_15
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_15
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_16
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_16
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_16
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_17
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_17
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_17
+						days = 1
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						Not = {
+							has_country_flag = flag_est_greed_5_count_factions_18
+						}
+					}
+				}
+				set_pop_faction_flag = flag_est_greed_5_factions_18
+				root = {
+					set_timed_country_flag = {
+						flag = flag_est_greed_5_count_factions_18
+						days = 1
+					}
+				}
+				break = yes
+			}
+		}
+	}
+}
+
+#Greed 5, menu for bribing factions.
+country_event = {
+	id = est_greed.10
+	hide_window = no
+	is_triggered_only = yes
+	title = "est_event_greed_5.name"
+	desc = "est_event_greed_5.desc"
+	picture = GFX_evt_smugglers_in_bar
+	
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_1
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_1
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_2
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_2
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_3
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_3
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_4
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_4
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_5
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_5
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_6
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_6
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_7
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_7
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_8
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_8
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_9
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_9
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_10
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_10
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_11
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_11
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_12
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_12
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_13
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_13
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_14
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_14
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_15
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_15
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_16
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_16
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_17
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_17
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.bribe"
+		trigger = {
+			has_country_flag = flag_est_greed_5_count_factions_18
+		}
+		random_pop_faction = {
+			limit = {
+				has_pop_faction_flag = flag_est_greed_5_factions_18
+				Not = {
+					has_modifier = mod_est_greed_5
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_greed_5"
+				years = 10
+			}
+			root = {
+				add_monthly_resource_mult = { 
+					resource = energy 
+					value = -3			
+				}
+			}
+		}
+	}
+	option = {
+		name = "est_event_greed_5.option.none"
+	}
+}
+
+#Desires 5, unity when gaining a planet.
+planet_event = {
+	id = est_greed.11
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_desires_5
+		}
+		num_pops > 0
+	}
+	
+	immediate = {	
+		owner = {
+			add_monthly_resource_mult = { 
+				resource = unity
+				value = 12		
+			}
+		}
+	}
+}

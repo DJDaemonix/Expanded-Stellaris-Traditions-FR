@@ -1,0 +1,621 @@
+namespace = est_piracy
+
+#Piracy adopt, gives bonus when war declared, removes it on peace.
+country_event = {
+	id = est_piracy.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_piracy_adopt_AI
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_at_war = yes
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_piracy_adopt_special
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_piracy_adopt_special"
+					days = -1
+				}	
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_modifier = mod_est_piracy_adopt_special
+				}
+				remove_modifier = "mod_est_piracy_adopt_special"
+			}
+		}
+	}
+}
+
+#Raider adopt, gives bonus when war declared, removes it on peace.
+country_event = {
+	id = est_piracy.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_piracy_adopt_AI
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_at_war = yes
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_piracy_adopt_special_GC
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_piracy_adopt_special_GC"
+					days = -1
+				}	
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_modifier = mod_est_piracy_adopt_special_GC
+				}
+				remove_modifier = "mod_est_piracy_adopt_special_GC"
+			}
+		}
+	}
+}
+
+#Piracy 1, gives minerals when destroying ships (more from stations).
+country_event = {
+	id = est_piracy.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_non_swapped_tradition = tr_est_piracy_1
+	}
+	
+	immediate = {
+		FromFromFrom = {
+			switch = {
+				trigger = is_ship_size
+				
+				corvette = { root = {add_minerals = 5} break = yes}
+				destroyer = { root = {add_minerals = 20} break = yes}
+				cruiser = { root = {add_minerals = 80} break = yes}
+				battleship = { root = {add_minerals = 160} break = yes}
+				titan = { root = {add_minerals = 600} break = yes}
+				
+				transport = { root = {add_minerals = 5} break = yes}
+				constructor = { root = {add_minerals = 10} break = yes}
+				colonizer = { root = {add_minerals = 30} break = yes}
+				science = { root = {add_minerals = 20} break = yes}
+				
+				military_station_small = { root = {add_minerals = 40} break = yes}
+				military_station_medium = { root = {add_minerals = 120} break = yes}
+				military_station_large = { root = {add_minerals = 360} break = yes}
+				
+				mining_station = { root = {add_minerals = 50} break = yes}
+				research_station = { root = {add_minerals = 50} break = yes}				
+				observation_station = { root = {add_minerals = 50} break = yes}
+				
+				starbase_outpost = { root = {add_minerals = 40} break = yes}
+				starbase_starport = { root = {add_minerals = 120} break = yes}
+				starbase_starhold = { root = {add_minerals = 240} break = yes}
+				starbase_starfortress = { root = {add_minerals = 480} break = yes}
+				starbase_citadel = { root = {add_minerals = 960} break = yes}
+
+				starbase_swarm = { root = {add_minerals = 480} break = yes}
+				starbase_ai = { root = {add_minerals = 480} break = yes}
+				starbase_exd = { root = {add_minerals = 480} break = yes}
+				starbase_marauder = { root = {add_minerals = 480} break = yes}
+				ion_cannon = { root = {add_minerals = 240} break = yes}
+
+				colossus  = { root = {add_minerals = 2500} break = yes}
+
+				small_ship_swarm = { root = {add_minerals = 5} break = yes}
+				large_ship_swarm = { root = {add_minerals = 20} break = yes}
+				large_ship_carrier_swarm = { root = {add_minerals = 80} break = yes}
+				queen_swarm = { root = {add_minerals = 160} break = yes}
+				construction_ship_swarm = { root = {add_minerals = 10} break = yes}
+				colony_ship_swarm = { root = {add_minerals = 30} break = yes}
+				transport_ship_swarm = { root = {add_minerals = 5} break = yes}
+				 
+				small_ship_fallen_empire = { root = {add_minerals = 30} break = yes}
+				large_ship_fallen_empire = { root = {add_minerals = 160} break = yes}
+				massive_ship_fallen_empire = { root = {add_minerals = 600} break = yes}
+				military_station_large_fallen_empire = { root = {add_minerals = 500} break = yes}
+				military_station_small_fallen_empire = { root = {add_minerals = 100} break = yes}
+				 
+				small_ship_ed = { root = {add_minerals = 20} break = yes}
+				medium_ship_ed = { root = {add_minerals = 80} break = yes}
+				large_ship_ed = { root = {add_minerals = 160} break = yes}
+				construction_ship_ed = { root = {add_minerals = 10} break = yes}
+				dimensional_portal_ed = { root = {add_minerals = 1200} break = yes}
+
+				psionic_avatar = { root = {add_minerals = 600} break = yes}
+				corrupted_avatar = { root = {add_minerals = 600} break = yes}
+				shroud_manifestation = { root = {add_minerals = 600} break = yes}
+				warped_consciousness = { root = {add_minerals = 600} break = yes}
+				
+				enclave_station = { root = {add_minerals = 5000} break = yes}
+				space_dragon_red = { root = {add_minerals = 5000} break = yes}
+				stellarite = { root = {add_minerals = 5000} break = yes}
+				sphere = { root = {add_minerals = 5000} break = yes}
+				galleon = { root = {add_minerals = 2500} break = yes}
+				station_xl = { root = {add_minerals = 2500} break = yes}
+				station_l = { root = {add_minerals = 3000} break = yes}
+				station_m = { root = {add_minerals = 3000} break = yes}
+				station_s = { root = {add_minerals = 5000} break = yes}
+				station_xs = { root = {add_minerals = 2000} break = yes}
+				dimensional_horror = { root = {add_minerals = 5000} break = yes}
+				npc_warship_01 = { root = {add_minerals = 1200} break = yes}
+				homebase = { root = {add_minerals = 1200} break = yes}
+				hive_asteroid = { root = {add_minerals = 600} break = yes}
+				wraith_01_blue = { root = {add_minerals = 5000} break = yes}
+				wraith_01_red = { root = {add_minerals = 5000} break = yes}
+				wraith_01_yellow = { root = {add_minerals = 5000} break = yes}
+				space_dragon_baby = { root = {add_minerals = 600} break = yes}
+				 				 
+				pirate_corvette = { root = {add_minerals = 5} break = yes}
+				pirate_destroyer = { root = {add_minerals = 20} break = yes}
+				pirate_cruiser = { root = {add_minerals = 80} break = yes}
+				pirate_station = { root = {add_minerals = 40} break = yes}	
+				 
+				marauder_corvette = { root = {add_minerals = 5} break = yes}
+				marauder_destroyer = { root = {add_minerals = 20} break = yes}
+				marauder_cruiser = { root = {add_minerals = 80} break = yes}
+				marauder_galleon = { root = {add_minerals = 160} break = yes}
+				marauder_station = { root = {add_minerals = 80} break = yes}
+				marauder_void_dwelling = { root = {add_minerals = 160} break = yes}				
+				
+				space_cloud = { root = {add_minerals = 80} break = yes}
+				space_amoeba = { root = {add_minerals = 20} break = yes}
+				space_amoeba_mother = { root = {add_minerals = 80} break = yes}
+				ancient_mining_drone = { root = {add_minerals = 5} break = yes}
+				ancient_corvette = { root = {add_minerals = 5} break = yes}
+				ancient_destroyer = { root = {add_minerals = 20} break = yes}				
+				
+				small_ship_ai = { root = {add_minerals = 80} break = yes}
+				large_ship_ai = { root = {add_minerals = 10} break = yes}
+				military_station_large_ai = { root = {add_minerals = 300} break = yes}
+				military_station_small_ai = { root = {add_minerals = 120} break = yes}
+				core_ai = { root = {add_minerals = 5000} break = yes}
+				final_core_ai = { root = {add_minerals = 10000} break = yes}
+				construction_ship_ai = { root = {add_minerals = 10} break = yes}
+				colony_ship_ai = { root = {add_minerals = 30} break = yes}
+				transport_ship_ai = { root = {add_minerals = 5} break = yes}
+			}
+			root = {
+				add_minerals = 5
+			} 
+		}		
+	}
+}
+
+#Piracy 2, main event, finds those that have the tradition and fires other events.
+event = {
+	id = est_piracy.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_piracy_2_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_piracy_2
+			}	
+			set_variable = { 
+				which = var_est_piracy_2_nbr_resource_adds
+				value = 0
+			}
+			set_variable = { 
+				which = var_est_piracy_2_max_planets_raided
+				value = 0
+			}
+			every_owned_planet = {
+				prev = {
+					change_variable = { 
+						which = var_est_piracy_2_max_planets_raided
+						value = 1
+					}
+				}
+			}
+			divide_variable = { 
+				which = var_est_piracy_2_max_planets_raided
+				value = 4
+			}
+			multiply_variable = { 
+				which = var_est_piracy_2_max_planets_raided
+				value = 3
+			}
+			save_global_event_target_as = est_piracy_2_raiding_nation	
+			every_neighbor_country = {
+				limit = {
+					Or = {
+						And = {
+							prev = {
+								has_policy_flag = est_piracy_raiding_weaker
+							}
+							Or = {
+								relative_power = { 
+									who = prev
+									category = all
+									value = pathetic
+								}
+								relative_power = { 
+									who = prev
+									category = all
+									value = inferior
+								}
+							}
+						}
+						And = {
+							prev = {
+								has_policy_flag = est_piracy_raiding_disliked
+							}
+							Not = {
+								their_opinion = {
+									who = prev
+									value > 0
+								}
+							}
+						}
+						And = {
+							prev = {
+								has_policy_flag = est_piracy_raiding_weaker_n_disliked
+							}
+							Or = {
+								relative_power = { 
+									who = prev
+									category = all
+									value = pathetic
+								}
+								relative_power = { 
+									who = prev
+									category = all
+									value = inferior
+								}
+							}
+							Not = {
+								their_opinion = {
+									who = prev
+									value > 0
+								}
+							}
+						}
+						And = {
+							prev = {
+								has_policy_flag = est_piracy_raiding_rivals
+							}
+							event_target:est_piracy_2_raiding_nation = {
+								is_rival = prev
+							}
+						}
+						And = {
+							prev = {
+								has_policy_flag = est_piracy_raiding_insulted
+							}
+							has_opinion_modifier = { 
+								who = prev
+								modifier = opinion_insult
+								is_reverse = no 
+							}						
+						}
+						prev = {
+							has_policy_flag = est_piracy_raiding_full
+						
+						}
+					}
+				}
+				prev = {
+					set_variable = { 
+						which = var_est_piracy_2_planets_raided_tmp
+						value = var_est_piracy_2_max_planets_raided
+					}
+				}
+				country_event = {
+					id = est_piracy.5
+				}
+				if = {
+					limit = {
+						has_opinion_modifier = { 
+							who = prev
+							modifier = opinion_est_piracy_2
+							is_reverse = no 
+						}
+					}
+					remove_opinion_modifier = { 
+						modifier = opinion_est_piracy_2
+						who = prev
+					}
+				}	
+				add_opinion_modifier = {
+					modifier = opinion_est_piracy_2
+					who = prev
+				}	
+			}
+			if = {
+				limit = {
+					has_swapped_tradition = tr_est_piracy_5_hive
+				}
+				set_variable = { 
+					which = var_est_piracy_2_nbr_resource_adds_2
+					value = var_est_piracy_2_nbr_resource_adds
+				}
+				while = {
+					limit = {
+						check_variable = {
+							which = var_est_piracy_2_nbr_resource_adds_2
+							value > 0
+						}
+					}
+					subtract_variable = { 
+						which = var_est_piracy_2_nbr_resource_adds_2
+						value = 1
+					}
+					add_food = 20
+				}
+			}
+			while = {
+				limit = {
+					check_variable = {
+						which = var_est_piracy_2_nbr_resource_adds
+						value > 0
+					}
+				}
+				subtract_variable = { 
+					which = var_est_piracy_2_nbr_resource_adds
+					value = 1
+				}
+				add_minerals = 30
+				add_energy = 15
+			}
+		}		
+		every_country = {		
+			limit = {
+				has_modifier = mod_est_piracy_2
+				Not = {
+					has_country_flag = flag_est_piracy_2_is_raided
+				}
+			}
+			remove_modifier = "mod_est_piracy_2"
+		}
+	}
+}
+
+#Piracy 2, a country is raided.
+country_event = {
+	id = est_piracy.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_timed_country_flag = {
+			flag = flag_est_piracy_2_is_raided
+			days = 1
+		}
+		if = {	
+			limit = {	
+				Not = {	
+					has_modifier = mod_est_piracy_2
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_piracy_2"
+				days = -1
+			}
+		}
+		every_owned_planet = {	
+			if = {
+				limit = {
+					Not = {
+						event_target:est_piracy_2_raiding_nation = {
+							check_variable = { 
+								which = var_est_piracy_2_planets_raided_tmp
+								value > 0
+							}
+						}
+					}
+				}
+				break = yes
+			}
+			event_target:est_piracy_2_raiding_nation = {
+				subtract_variable = { 
+					which = var_est_piracy_2_planets_raided_tmp
+					value = 1
+				}	
+				change_variable = { 
+					which = var_est_piracy_2_nbr_resource_adds
+					value = 1
+				}
+			}
+		}
+	}
+}
+
+#Piracy 3, penalty to rivals
+event = {
+	id = est_piracy.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_piracy_3_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			if = {
+				limit = {	
+					any_country = {
+						Or = {
+							has_non_swapped_tradition = tr_est_piracy_3
+							has_swapped_tradition = tr_est_piracy_3_no_rivals
+						}
+						is_rival = prev
+					}				
+				}
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_piracy_3
+						}
+					}
+					add_modifier = {
+						modifier = "mod_est_piracy_3"
+						days = -1
+					}					
+				}
+			}		
+			else = {
+				if = {
+					limit = {
+						has_modifier = mod_est_piracy_3
+					}
+					remove_modifier = "mod_est_piracy_3"		
+				}				
+			}	
+		}
+	}
+}
+
+#Piracy 5 Hive, triggers when planet successfully invaded. Gain food.
+country_event = {
+	id = est_piracy.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_piracy_5_hive
+	}
+	
+	immediate = {
+		fromfrom = {
+			if = {
+				limit = {
+					has_modifier = mod_est_piracy_finish
+				}
+				remove_modifier = "mod_est_piracy_finish"
+			}
+			else = {
+				every_owned_pop = {
+					root = {
+						add_food = 10
+					}
+				}				
+			}
+		}
+	}	
+}
+
+#Piracy 5 machines, new pops on conquest.
+planet_event = {
+	id = est_piracy.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_piracy_5_machines
+		}
+		num_pops > 0
+	}
+
+	immediate = {
+		while = { 
+			count = 3
+			random_tile = {
+				limit = {
+					has_blocker = no
+					has_pop = no
+				}
+				create_pop = {
+					species = owner
+				}
+			}
+		}
+	}
+}
+
+#Piracy finish, triggers when planet successfully invaded.
+country_event = {
+	id = est_piracy.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_tradition = tr_est_piracy_finish
+	}
+	
+	immediate = {
+		fromfrom = {
+			if = {
+				limit = {
+					has_modifier = mod_est_piracy_finish
+				}
+				remove_modifier = "mod_est_piracy_finish"
+			}
+			else = {
+				every_tile = {
+					root = {
+						add_monthly_resource_mult = { 
+							resource = minerals
+							value = 0.20
+							max = 100 
+							min = 2 
+						}
+					}
+				}				
+			}
+			if = {
+				limit = {
+					root = {
+						has_non_swapped_tradition = tr_est_piracy_finish
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_piracy_finish"
+					years = 10
+				}
+			}
+		}
+	}	
+}
+
+#Piracy finish, removes modifier on conquered planet.
+planet_event = {
+	id = est_piracy.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		from = {
+			has_non_swapped_tradition = tr_est_piracy_finish
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_modifier = mod_est_piracy_finish
+			}
+			remove_modifier = "mod_est_piracy_finish"
+		}
+	}
+}
+

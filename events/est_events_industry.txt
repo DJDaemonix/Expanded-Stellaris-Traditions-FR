@@ -1,0 +1,160 @@
+namespace = est_industry
+
+#Industry 1, fires when mining station built.
+ship_event = {
+	id = est_industry.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		from = {
+			if = {
+				limit = {
+					Nor = {
+						has_planet_flag = flag_est_industry_1_bonus
+						has_planet_flag = flag_est_industry_1_no_bonus	
+					}
+				}
+				random_list = {
+					2 = {
+						set_planet_flag = flag_est_industry_1_no_bonus
+					}
+					1 = {
+						set_planet_flag = flag_est_industry_1_bonus
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					has_tradition = tr_est_industry_1		
+				}
+			}
+			from = {
+				planet_event = {
+					id = est_industry.3
+				}
+			}
+				
+		}
+	}	
+}
+
+#Industry 1, fires when station transfered owner.
+ship_event = {
+	id = est_industry.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				from = {
+					has_tradition = tr_est_industry_1		
+				}
+			}
+			orbit = {
+				planet = {
+					planet_event = {
+						id = est_industry.3
+					}
+				}
+			}
+		}
+		else = {
+			orbit = {
+				planet = {
+					if = {
+						limit = {
+							has_deposit = d_est_industry_1_deposit
+						}
+						planet_event = {
+							id = est_general.6
+							scopes = { 
+								from = orbital_deposit_tile
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+
+#Industry 1, adds minerals to a planet.
+planet_event = {
+	id = est_industry.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		Not = {
+			has_deposit = d_est_industry_1_deposit
+		}
+		has_planet_flag = flag_est_industry_1_bonus
+	}
+	
+	immediate = {
+		orbital_deposit_tile = {
+			if = {
+				limit = {					
+					Or = {
+						has_deposit = d_mineral_deposit
+						has_deposit = d_rich_mineral_deposit
+						has_deposit = d_vast_mineral_deposit
+						has_deposit = d_immense_mineral_deposit
+						has_deposit = d_enormous1_mineral_deposit
+						has_deposit = d_enormous2_mineral_deposit
+						has_deposit = d_enormous3_mineral_deposit
+						has_deposit = d_garanthium_deposit
+						has_deposit = d_rich_food_mineral_deposit
+						has_deposit = d_mineral_food_deposit
+						has_deposit = d_mineral_energy_deposit
+						has_deposit = d_guardian_dragon_hoard
+						has_deposit = d_guardian_hiver_asteroid_1
+						has_deposit = d_guardian_hiver_asteroid_2
+					}
+				}
+				add_deposit = d_est_industry_1_deposit
+			}
+		}
+	}
+}
+
+#Industry 5, gives planet mineral deposits.
+planet_event = {
+	id = est_industry.4
+	hide_window = yes
+	is_triggered_only = yes
+		
+	trigger = {
+		owner = {
+			has_tradition = tr_est_industry_5
+		}
+		num_pops > 0
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				Not = {
+					has_planet_flag = industry_5_flag
+					is_planet_class = pc_habitat 
+					has_modifier = mod_esap_ecumenopolis
+				}
+			}
+			set_planet_flag = industry_5_flag
+			every_tile = {
+				random_list = {
+					4 = { }
+					1 = {
+						add_deposit = d_rich_mineral_deposit
+					}
+				}
+			}
+		}
+	}
+}
+
+

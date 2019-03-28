@@ -1,0 +1,434 @@
+##########################################################################
+# Planet edicts
+##########################################################################
+
+# Variables:
+#  name, the name of the edict, also serves as localisation key.
+#  influence_cost, the base influence cost of activating the edict.
+#  potential, planet or country trigger to decide whether the edict should be shown.
+#  allow, planet or country trigger to decide if whether this edict can be activated.
+#  effect, an effect that is executed when this trigger activates.
+#  prerequisites, tech requirements for this trigger.
+#  ai_will_do, determines AI scoring for edict
+#  modifier, a list of modifiers
+#  length, number of days the trigger is active.
+
+# Sets the edict-cost for all edicts with this variable
+@standardEdictCost = 150
+
+#Commerce 2: Food Specialization
+planet_edict = {
+	name = "est_commerce_2_food"
+
+	cost = { influence = 50 }
+	
+	modifier = {
+		tile_resource_food_mult = 0.25
+		tile_resource_energy_mult = -0.10
+		tile_resource_minerals_mult = -0.10
+	}
+	
+	potential = {	
+		owner = {
+			has_tradition = tr_est_commerce_2
+		}
+	}
+	
+	length = 3600
+	
+	allow = {
+		Not = {
+			has_edict = est_commerce_2_energy
+			has_edict = est_commerce_2_minerals
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+#Commerce 2: Energy Specialization
+planet_edict = {
+	name = "est_commerce_2_energy"
+
+	cost = { influence = 50 }
+	
+	modifier = {
+		tile_resource_energy_mult = 0.25
+		tile_resource_minerals_mult = -0.10
+		tile_resource_food_mult = -0.10
+	}
+	
+	potential = {	
+		owner = {
+			has_tradition = tr_est_commerce_2
+		}
+	}
+	
+	length = 3600
+	
+	allow = {
+		Not = {
+			has_edict = est_commerce_2_food
+			has_edict = est_commerce_2_minerals
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+#Commerce 2: Minerals Specialization
+planet_edict = {
+	name = "est_commerce_2_minerals"
+
+	cost = { influence = 50 }
+	
+	modifier = {
+		tile_resource_minerals_mult = 0.25
+		tile_resource_energy_mult = -0.10
+		tile_resource_food_mult = -0.10
+	}
+	
+	potential = {	
+		owner = {
+			has_tradition = tr_est_commerce_2
+		}
+	}
+	
+	length = 3600
+	
+	allow = {
+		Not = {
+			has_edict = est_commerce_2_energy
+			has_edict = est_commerce_2_food
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+#Greed 4, Light Extortion
+planet_edict = {
+	name = "est_greed_4_1"
+
+	cost = { influence = 30 }
+	
+	length = 1800
+	
+	effect = {
+		custom_tooltip = "est_greed_4_1_tooltip"
+		hidden_effect = {
+			if = {
+				limit = {
+					Not = {	
+						has_planet_flag = flag_est_est_greed_4_active_planet_edict
+					}
+				}
+				set_planet_flag = flag_est_est_greed_4_active_planet_edict
+			}
+			planet_event = {
+				id = est_greed.3
+			}
+			planet_event = {
+				id = est_greed.4
+			}
+		}
+	}
+	
+	modifier = {
+		pop_happiness = -0.10
+	}
+	
+	potential = {
+		owner = {
+			has_non_swapped_tradition = tr_est_greed_4
+		}
+		planet = {
+			Not = {
+				has_edict = est_greed_4_2
+				has_edict = est_greed_4_3
+			}
+		}
+	}
+	
+	allow = {
+		#planet = {
+		#	Not = {
+		#		has_planet_flag = flag_est_greed_4_cancel
+		#	}
+		#}
+	}
+	
+	ai_weight = {
+		#weight = 1
+	}
+}
+#Greed 4, Moderate Extortion
+planet_edict = {
+	name = "est_greed_4_2"
+
+	cost = { influence = 30 }
+	
+	length = 1800
+	
+	effect = {
+		custom_tooltip = "est_greed_4_2_tooltip"
+		hidden_effect = {
+			if = {
+				limit = {
+					Not = {	
+						has_planet_flag = flag_est_est_greed_4_active_planet_edict
+					}
+				}
+				set_planet_flag = flag_est_est_greed_4_active_planet_edict
+			}
+			planet_event = {
+				id = est_greed.3
+			}
+			planet_event = {
+				id = est_greed.5
+			}
+		}
+	}
+	
+	modifier = {
+		pop_happiness = -0.20
+	}
+	
+	potential = {
+		owner = {
+			has_non_swapped_tradition = tr_est_greed_4
+		}
+		planet = {
+			Not = {
+				has_edict = est_greed_4_1
+				has_edict = est_greed_4_3
+			}
+		}
+	}
+	
+	allow = {
+		#planet = {
+		#	Not = {
+		#		has_planet_flag = flag_est_greed_4_cancel
+		#	}
+		#}
+	}
+	
+	ai_weight = {
+		#weight = 1
+	}
+}
+#Greed 4, Heavy Extortion
+planet_edict = {
+	name = "est_greed_4_3"
+
+	cost = { influence = 30 }
+	
+	length = 1800
+	
+	effect = {
+		custom_tooltip = "est_greed_4_3_tooltip"
+		hidden_effect = {
+			if = {
+				limit = {
+					Not = {	
+						has_planet_flag = flag_est_est_greed_4_active_planet_edict
+					}
+				}
+				set_planet_flag = flag_est_est_greed_4_active_planet_edict
+			}
+			planet_event = {
+				id = est_greed.3
+			}
+			planet_event = {
+				id = est_greed.6
+			}
+		}
+	}
+	
+	modifier = {
+		pop_happiness = -0.30
+	}
+	
+	potential = {
+		owner = {
+			has_non_swapped_tradition = tr_est_greed_4
+		}
+		planet = {
+			Not = {
+				has_edict = est_greed_4_1
+				has_edict = est_greed_4_2
+				#has_planet_flag = flag_est_greed_4_cancel
+			}
+		}
+	}
+	
+	allow = {
+		#planet = {
+		#	Not = {
+		#		has_planet_flag = flag_est_greed_4_cancel
+		#	}
+		#}
+	}
+	
+	ai_weight = {
+		#weight = 1
+	}
+}
+#Greed 4, Cancels Extortion (Not Working)
+planet_edict = {
+	name = "est_greed_4_cancel"
+
+	cost = { influence = 100 }
+	
+	length = 10
+	
+	effect = {
+		custom_tooltip = "est_greed_4_cancel_tooltip"
+		hidden_effect = {
+			planet = {
+				set_timed_planet_flag = {
+					flag = flag_est_greed_4_cancel
+					days = 30
+				}
+			}
+		}
+	}
+	
+	potential = {
+		owner = {
+			has_non_swapped_tradition = tr_est_greed_4
+		}
+		planet = {
+			Or = {
+				has_edict = est_greed_4_1
+				has_edict = est_greed_4_2
+				has_edict = est_greed_4_3
+			}
+			Not = {
+				has_planet_flag = flag_est_greed_4_cancel
+			}
+		}
+		always = no #Not getting this working, don't know why.
+	}
+	
+	allow = {
+	}
+	
+	ai_weight = {
+		#weight = 1
+	}
+}
+
+#Industry Finish: Authorize Hazardous Industries
+planet_edict = {
+	name = "est_industry_finish"
+
+	cost = { influence = 100 }
+	
+	modifier = {
+		tile_resource_minerals_mult = 0.20
+		pop_environment_tolerance = -0.10
+		pop_growth_speed = -0.20
+	}
+	
+	potential = {	
+		owner = {
+			has_non_swapped_tradition = tr_est_industry_finish
+		}
+	}
+	
+	length = 3600
+	
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+#Industry Finish (Machines): Authorize Hazardous Industries
+planet_edict = {
+	name = "est_industry_finish_machines"
+
+	cost = { influence = 100 }
+	
+	modifier = {
+		tile_resource_minerals_mult = 0.20
+		tile_resource_energy_mult = -0.10
+	}
+	
+	potential = {	
+		owner = {
+			has_swapped_tradition = tr_est_industry_finish_machines
+		}
+	}
+	
+	length = 3600
+	
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+#Cooperativity 5: Growth Phase
+planet_edict = {
+	name = "est_cooperativity_5"
+
+	cost = { influence = 50 }
+	
+	modifier = {
+		pop_growth_speed = 0.45
+		pop_resource_output = -0.10
+		pop_food_req_mult = 0.25
+	}
+	
+	potential = {	
+		owner = {
+			has_swapped_tradition = tr_est_cooperativity_5	
+		}
+	}
+	
+	length = 3600
+	
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+#Cooperativity 5 (Machines): Growth Phase
+planet_edict = {
+	name = "est_cooperativity_5_machines"
+
+	cost = { influence = 50 }
+	
+	modifier = {
+		pop_robot_build_speed_mult = 0.45
+		pop_resource_output = -0.10
+		pop_robot_upkeep_mult = 0.25
+	}
+	
+	potential = {	
+		owner = {
+			has_swapped_tradition = tr_est_cooperativity_5_machines	
+		}
+	}
+	
+	length = 3600
+	
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}

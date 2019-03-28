@@ -1,0 +1,692 @@
+﻿l_german:
+
+##########################################
+# Armies (and their techs)
+##########################################
+
+#Mechanicum_ 3: Mechanical Knights
+tech_est_mechanical_knights:0 "Machines of War"
+tech_est_mechanical_knights_desc:0 "Our engineers have developed special battle machines to be fielded on the battlefields. These bipedal robotic walkers can be equipped with larger weapons and heavier armour that our usual troops."
+est_titan_army:0 "Titan"
+est_titan_army_plural:0 "Titans"
+est_titan_army_desc:0 "Titans are massive robotic walkers. With superior firepower and armour these constructs can dominate any battlefield."
+est_mechanical_knights_army:0 "Mechanical Knight"
+est_mechanical_knights_army_plural:0 "Mechanical Knights"
+est_mechanical_knights_army_desc:0 "Every Mechanical Knight is a small and custom made walker manned by a single soldier. Due to their vast number of design were every single knight is unique they have much utility on the battle field!"
+
+#Militarism 1: Conscription
+est_militarism_1_militia_army:0 "Militia Army"
+est_militarism_1_militia_army_plural:0 "Militia Armies"
+est_militarism_1_militia_army_desc:0 "To protect the planet a certain portion of the population have been drafted into militia regiment."
+est_militarism_1_slave_militia_army:0 "Drafted Slaves Army"
+est_militarism_1_slave_militia_army_plural:0 "Drafted Slaves Armies"
+est_militarism_1_slave_militia_army_desc:0 "While normally not used for combat, these slaves have been drafted to protect the planet."
+#Might 1: Natural Warriors
+est_militarism_1_drone_emergency_army:0 "Emergency Army"
+est_militarism_1_drone_emergency_army_plural:0 "Emergency Armies"
+est_militarism_1_drone_emergency_army_desc:0 "Our drones are natural warriors. If there is an emergency every one of them is able to help defend their planet."
+est_militarism_1_machine_emergency_army:0 "Emergency Army"
+est_militarism_1_machine_emergency_army_plural:0 "Emergency Armies"
+est_militarism_1_machine_emergency_army_desc:0 "Our drones are natural warriors. If there is an emergency every one of them is able to help defend their planet."
+
+####################################
+# Buildings
+####################################
+
+#Aesthetics 5: Galactic Wonders.
+building_est_aesthetics_5_wonder_garden:0 "Gardens of Beauty"
+building_est_aesthetics_5_wonder_garden_desc:0 "The fabled gardens of beauty. The gardeners have filled it with plants from all over our empire, composing them to a symphony of vegetation. By most it is considered the single greatest work of art in this galaxy and the pinnacle of beauty."
+building_est_aesthetics_5_wonder_monument:0 "Monument of Memories"
+building_est_aesthetics_5_wonder_monument_desc:0 "The Monument of Memories is one of the largest building in the galaxy, so large is its structure that it can be seen from space. It was built in honour of what has been, but some say that it is named from the fact that after one have seen it, it will never leave ones memories. "
+building_est_aesthetics_5_wonder_stage:0 "Stage of Glory"
+building_est_aesthetics_5_wonder_stage_desc:0 "The most accomplished of performers travels from all over the galaxy to show their skill on the stage of glory. Every evening the performances on this stage becomes the greatest show in this galaxy."
+building_est_aesthetics_5_wonder_halls:0 "Halls of Tranquillity"
+building_est_aesthetics_5_wonder_halls_desc:0 "It is said that one can walk for hours in the halls of tranquillity and never see another souls. Yet these halls are filled with thousands, walking in quite, in search for inspiration, understanding or inner peace. These halls seems endless, the hallways and chambers ends only in darkness, not walls. Neither the ceiling high above can be see, the pillars holding it up seemingly disappearing into the void."
+building_est_aesthetics_5_wonder_museum:0 "The Grand Museum"
+building_est_aesthetics_5_wonder_museum_desc:0 "The Grand Museum contains the greatest collection of artefacts from this galaxy, and possibly even a few from beyond it. The items from this collection ranges from those that have played an important part in recent events, to items from civilizations long since gone. So large are the collection that one could spend an entire solar cycle walking through its galleries and exhibitions and yet not see it all."
+#Aesthetics Finish: Gallery
+building_est_aesthetics_finish_gallery:0 "Gallery"
+building_est_aesthetics_finish_gallery_desc:0 "Our galleries contains various exhibitions, warning from arts natural history, local culture to various archaeological artefacts collected from throughout our empire and galaxy."
+
+#Archivist Finish: Planetary Archive.
+building_est_archivist_finish_archive:0 "Planetary Archive"
+building_est_archivist_finish_archive_desc:0 "The archives spread across our world are used to keep the records of this galaxy. These buildings holds the greatest collection of information across the galaxy."
+
+#Commerce 5: Market Exchange
+building_est_commerce_5_market_exchange:0 "Market Exchange"
+building_est_commerce_5_market_exchange_desc:0 "The Market Exchange facilitate the trade of goods and services. It increases local production of Energy Credits."
+
+#Cybernetics Finisher: Automated Mine/Power Plant/Farm
+building_est_cybernetics_finish_automated_mine:2 "Automated Mine"
+building_est_cybernetics_finish_automated_mine_desc:1 "The Automated Mine is able to produce minerals with minimal supervision."
+building_est_cybernetics_finish_automated_power_plant:2 "Automated Power Plant"
+building_est_cybernetics_finish_automated_power_plant_desc:1 "The Automated Power Plant is able to produce energy with minimal supervision."
+building_est_cybernetics_finish_automated_farm:2 "Automated Farm"
+building_est_cybernetics_finish_automated_farm_desc:1 "The Automated Farm is able to produce food with minimal supervision."
+
+#Industry 3: Blast Furnace
+building_est_industry_3_blast_furnace:0 "Blast Furnace"
+building_est_industry_3_blast_furnace_desc:0 "A Blast Furnace can significantly boost a planets production capacities."
+
+#Industry Finish: Deep Core Excavation
+building_est_industry_finish_deep_core_excavation:0 "Deep Core Excavation"
+building_est_industry_finish_deep_core_excavation_desc:0 "This specialized mining facility is able to dig down into the very core of the planet, extracting the rare minerals found there."
+requires_rare_minerals:0 "§RRequires §Y$sr_est_rare_minerals$§! on tile.§!"
+#Industry Finish: Mineral Silo
+building_industry_finish_mineral_silo_1:1 "Mineral Silo I"
+building_industry_finish_mineral_silo_1_desc:1 "Mineral Silos increase our Empire's maximum Mineral storage capacity."
+building_industry_finish_mineral_silo_2:1 "Mineral Silo II"
+building_industry_finish_mineral_silo_2_desc:0 "$building_mineral_silo_1_desc$"
+building_industry_finish_mineral_silo_3:1 "Mineral Silo III"
+building_industry_finish_mineral_silo_3_desc:0 "$building_mineral_silo_1_desc$"
+ 
+#Militarism 4: Planetary Defense Cannon
+building_est_militarism_4_defence_cannon_1:0 "Planetary Defense Cannon I"
+building_est_militarism_4_defence_cannon_1_desc:0 "These cannons are able to destroy ships which are bombarding the planet."
+building_est_militarism_4_defence_cannon_2:0 "Planetary Defense Cannon II"
+building_est_militarism_4_defence_cannon_2_desc:0 "$building_est_militarism_4_defence_cannon_1_desc$"
+building_est_militarism_4_defence_cannon_3:0 "Planetary Defense Cannon III"
+building_est_militarism_4_defence_cannon_3_desc:0 "$building_est_militarism_4_defence_cannon_1_desc$"
+ 
+#Nature 3 (Hive): Integrated Biome
+building_est_nature_4_hive_automated_energy:0 "Integrated Biome"
+building_est_nature_4_hive_automated_energy_desc:0 "The nature itself have been integrated into the hive. Even the simplest of organisms are driven by the mind, their ordinary behaviour replaced to suit our will."
+building_est_nature_4_hive_automated_food:0 "$building_est_nature_4_hive_automated_energy$"
+building_est_nature_4_hive_automated_food_desc:0 "$building_est_nature_4_hive_automated_energy_desc$"
+building_est_nature_4_hive_automated_minerals:0 "$building_est_nature_4_hive_automated_energy$"
+building_est_nature_4_hive_automated_minerals_desc:0 "$building_est_nature_4_hive_automated_energy_desc$"
+#Nature 5/Finish: Preservation
+building_est_nature_preservation:0 "Preservation"
+building_est_nature_preservation_desc:0 "Every planet have their own natural habitat, unique in the galaxy. We must ensure that at least parts of it is preserved without disruption, to remain as it has before we arrived."
+
+####################################
+# Traits
+####################################
+
+### Leader Traits ###
+
+#Archivist: Librarian
+leader_trait_scientist_est_librarian_astronomy:0 "Librarian: Astronomy"
+leader_trait_scientist_est_librarian_astronomy_desc:0 "This librarian specialize in astronomy. This galaxy is filled with billions of celestial bodies, all which should be recorded into our archives. By accessing these archives this librarian can increase our research effort into physics. "
+leader_trait_scientist_est_librarian_mathematics:0 "Librarian: Mathematics"
+leader_trait_scientist_est_librarian_mathematics_desc:0 "This librarian specialize in mathematics. Throughout the millennia our mathematicians have discovered countless of theorems, and constructed   a vast array of mathematical theories. This librarian knows how to access and search through our archives on mathematical theory, this can help our physicist research."
+leader_trait_scientist_est_librarian_electronics:0 "Librarian: Electronics"
+leader_trait_scientist_est_librarian_electronics_desc:0 "This librarian specialize in electronics. When electricity first was discovered it lead to a revolution of our society. Since then millions of electronical devices have been constructed. The schematics for all of these have been recorded in case it might one day come of use. This librarian can use these databases to help our physics research."
+leader_trait_scientist_est_librarian_software:0 "Librarian: Software"
+leader_trait_scientist_est_librarian_software_desc:0 "This librarian specialize in computer software’s. Since even before computers were first constructed we have made an endless number of programs which they can run. This librarian have specialized in recording and sorting these computer programs into huge databases. Knowledge about these software’s might help our physics research."
+leader_trait_scientist_est_librarian_culture:0 "Librarian: Cultures"
+leader_trait_scientist_est_librarian_culture_desc:0 "This librarian specialize in cultures. Since the dawn of our civilization thousands of cultures have blossomed and died. Even more cultures have existed, and still exists, on other worlds. This librarian knows how to access our vast archives on cultures that have been, and still is. This information might help our research projects in society research. "
+leader_trait_scientist_est_librarian_history:0 "Librarian: History"
+leader_trait_scientist_est_librarian_history_desc:0 "This librarian specialize in history. Every year passed is another year added to the history of our civilization, every events that passes should be added to our historical archives. This librarian’s works with recording these events and putting them into our archives. Their knowledge about our historical archives might help our society research."
+leader_trait_scientist_est_librarian_taxonomy:0 "Librarian: Taxonomy"
+leader_trait_scientist_est_librarian_taxonomy_desc:0 "This librarian specialize in taxonomy. Even before the dawn of our civilization new species evolved and became extinct. They should all me recorded and classified, for every one of them their unique traits be established. This librarian specializes in recording various forms of life, and putting them into the right place in our databases. This librarian’s knowledge about our taxonomical archives might help our society research."
+leader_trait_scientist_est_librarian_communication:0 "Librarian: Communications"
+leader_trait_scientist_est_librarian_communication_desc:0 "This librarian specialize in languages and other forms of communication. Thousands of languages have been spoken in our empires, and many are still spoken. Even throughout the galaxy there exists many forms of communications, many very different from our own. All these should be recorded, their quirks and rules pinned down. This librarian have travelled far recording different forms of communication and might help our society research."
+leader_trait_scientist_est_librarian_war:0 "Librarian: War"
+leader_trait_scientist_est_librarian_war_desc:0 "This librarian specialize in wars. Throughout the ages many wars have been fought. For every one we have recorded every battle in as much details as possible. This librarian specializes in our databases on war, this knowledge might help our society research."
+leader_trait_scientist_est_librarian_chemistry:0 "Librarian: Chemistry"
+leader_trait_scientist_est_librarian_chemistry_desc:0 "This librarian specialize in chemistry. Even before chemistry was a field we have been creating various compounds. Their numbers are now uncountable, and if it were not for our databases on chemical compounds and reactions many would have been lost in time. His librarian are well familiar with our chemical databases and can use this knowledge to help our engineering research. "
+leader_trait_scientist_est_librarian_geology:0 "Librarian: Geology"
+leader_trait_scientist_est_librarian_geology_desc:0 "This librarian specialize in geology. As we reached into the stars the field of geology surged. The galaxy is filled with planets, all with their own distinct minerals, all of which have their own properties. This librarian have travelled far to collect samples for our geological archives. Knowledge about these archives might help our engineering research."
+leader_trait_scientist_est_librarian_architecture:0 "Librarian: Architecture"
+leader_trait_scientist_est_librarian_architecture_desc:0 "This librarian specialize in architecture and construction.  The design for every building that we built must be sent to our archives of architecture. This librarian keep these designs and help construct the systems for easy sorting and access to information. This might aid our research in engineering."
+leader_trait_scientist_est_librarian_mechanics:0 "Librarian: Mechanics"
+leader_trait_scientist_est_librarian_mechanics_desc:0 "This librarian specialize in mechanics. The blueprints for every machine that is devised must be recorded in our archives. This librarian is responsible for sorting the blueprint into the databases for easy access. If possible, units of the machine created is also put into our archives. Knowledge about these machines created might help our engineering research."
+
+#Archivist: Keeper
+leader_trait_scientist_est_keeper_astronomy:0 "Keeper: Astronomy"
+leader_trait_scientist_est_keeper_astronomy_desc:0 "This keeper specialize in astronomy. This galaxy is filled with billions of celestial bodies, all which should be recorded into our archives. By accessing these archives this keeper can increase our research effort into physics. "
+leader_trait_scientist_est_keeper_mathematics:0 "Keeper: Mathematics"
+leader_trait_scientist_est_keeper_mathematics_desc:0 "This keeper specialize in mathematics. Throughout the millennia our mathematicians have discovered countless of theorems, and constructed   a vast array of mathematical theories. This keeper knows how to access and search through our archives on mathematical theory, this can help our physicist research."
+leader_trait_scientist_est_keeper_electronics:0 "Keeper: Electronics"
+leader_trait_scientist_est_keeper_electronics_desc:0 "This keeper specialize in electronics. When electricity first was discovered it lead to a revolution of our society. Since then millions of electronical devices have been constructed. The schematics for all of these have been recorded in case it might one day come of use. This keeper can use these databases to help our physics research."
+leader_trait_scientist_est_keeper_software:0 "Keeper: Software"
+leader_trait_scientist_est_keeper_software_desc:0 "This keeper specialize in computer software’s. Since even before computers were first constructed we have made an endless number of programs which they can run. This keeper have specialized in recording and sorting these computer programs into huge databases. Knowledge about these software’s might help our physics research."
+leader_trait_scientist_est_keeper_culture:0 "Keeper: Cultures"
+leader_trait_scientist_est_keeper_culture_desc:0 "This keeper specialize in cultures. Since the dawn of our civilization thousands of cultures have blossomed and died. Even more cultures have existed, and still exists, on other worlds. This keeper knows how to access our vast archives on cultures that have been, and still is. This information might help our research projects in society research. "
+leader_trait_scientist_est_keeper_history:0 "Keeper: History"
+leader_trait_scientist_est_keeper_history_desc:0 "This keeper specialize in history. Every year passed is another year added to the history of our civilization, every events that passes should be added to our historical archives. This keeper’s works with recording these events and putting them into our archives. Their knowledge about our historical archives might help our society research."
+leader_trait_scientist_est_keeper_taxonomy:0 "Keeper: Taxonomy"
+leader_trait_scientist_est_keeper_taxonomy_desc:0 "This keeper specialize in taxonomy. Even before the dawn of our civilization new species evolved and became extinct. They should all me recorded and classified, for every one of them their unique traits be established. This keeper specializes in recording various forms of life, and putting them into the right place in our databases. This keeper’s knowledge about our taxonomical archives might help our society research."
+leader_trait_scientist_est_keeper_communication:0 "Keeper: Communications"
+leader_trait_scientist_est_keeper_communication_desc:0 "This keeper specialize in languages and other forms of communication. Thousands of languages have been spoken in our empires, and many are still spoken. Even throughout the galaxy there exists many forms of communications, many very different from our own. All these should be recorded, their quirks and rules pinned down. This keeper have travelled far recording different forms of communication and might help our society research."
+leader_trait_scientist_est_keeper_war:0 "Keeper: War"
+leader_trait_scientist_est_keeper_war_desc:0 "This keeper specialize in wars. Throughout the ages many wars have been fought. For every one we have recorded every battle in as much details as possible. This keeper specializes in our databases on war, this knowledge might help our society research."
+leader_trait_scientist_est_keeper_chemistry:0 "Keeper: Chemistry"
+leader_trait_scientist_est_keeper_chemistry_desc:0 "This keeper specialize in chemistry. Even before chemistry was a field we have been creating various compounds. Their numbers are now uncountable, and if it were not for our databases on chemical compounds and reactions many would have been lost in time. His keeper are well familiar with our chemical databases and can use this knowledge to help our engineering research. "
+leader_trait_scientist_est_keeper_geology:0 "Keeper: Geology"
+leader_trait_scientist_est_keeper_geology_desc:0 "This keeper specialize in geology. As we reached into the stars the field of geology surged. The galaxy is filled with planets, all with their own distinct minerals, all of which have their own properties. This keeper have travelled far to collect samples for our geological archives. Knowledge about these archives might help our engineering research."
+leader_trait_scientist_est_keeper_architecture:0 "Keeper: Architecture"
+leader_trait_scientist_est_keeper_architecture_desc:0 "This keeper specialize in architecture and construction.  The design for every building that we built must be sent to our archives of architecture. This keeper keep these designs and help construct the systems for easy sorting and access to information. This might aid our research in engineering."
+leader_trait_scientist_est_keeper_mechanics:0 "Keeper: Mechanics"
+leader_trait_scientist_est_keeper_mechanics_desc:0 "This keeper specialize in mechanics. The blueprints for every machine that is devised must be recorded in our archives. This keeper is responsible for sorting the blueprint into the databases for easy access. If possible, units of the machine created is also put into our archives. Knowledge about these machines created might help our engineering research."
+
+#Chivalry: Chivalrous
+leader_trait_admiral_est_chivalry:0 "Chivalrous"
+leader_trait_admiral_est_chivalry_desc:0 "This leader is respected by their peers for always doing what is right, and never wavering in times of trouble."
+leader_trait_ruler_est_chivalry:0 "$leader_trait_admiral_est_chivalry$"
+leader_trait_ruler_est_chivalry_desc:0 "$leader_trait_admiral_est_chivalry_desc$"
+leader_trait_general_est_chivalry:0 "$leader_trait_admiral_est_chivalry$"
+leader_trait_general_est_chivalry_desc:0 "$leader_trait_admiral_est_chivalry_desc$"
+leader_trait_governor_est_chivalry:0 "$leader_trait_admiral_est_chivalry$"
+leader_trait_governor_est_chivalry_desc:0 "$leader_trait_admiral_est_chivalry_desc$"
+leader_trait_scientist_est_chivalry:0 "$leader_trait_admiral_est_chivalry$"
+leader_trait_scientist_est_chivalry_desc:0 "$leader_trait_admiral_est_chivalry_desc$"
+
+#Chivalry: Hero
+leader_trait_admiral_est_chivalry_hero:0 "Hero"
+leader_trait_admiral_est_chivalry_hero_desc:0 "Due to brave action in battle, this leader is known as a hero in our empire. A living legend they enjoy respet and awe wherever they walk."
+leader_trait_ruler_est_chivalry_hero:0 "$leader_trait_admiral_est_chivalry_hero$"
+leader_trait_ruler_est_chivalry_hero_desc:0 "$leader_trait_admiral_est_chivalry_hero_desc$"
+leader_trait_general_est_chivalry_hero:0 "$leader_trait_admiral_est_chivalry_hero$"
+leader_trait_general_est_chivalry_hero_desc:0 "$leader_trait_admiral_est_chivalry_hero_desc$"
+
+#Militarism: Prestige of the Admiralty
+leader_trait_admiral_est_militarism_5:0 "Prestige of the Admiralty"
+leader_trait_admiral_est_militarism_5_desc:0 "This admiral is one of the most skilled and respected individuals in our society."
+leader_trait_admiral_est_might_5:0 "$tr_est_might_5$"
+leader_trait_admiral_est_might_5_desc:0 "$tr_est_might_5_delayed$"
+
+#Mysticism: Mystic
+leader_trait_admiral_est_mystic:0 "Mystic"
+leader_trait_admiral_est_mystic_desc:0 "This leader is ascribed an array of supernatural powers. Which of them, if any, they actually possess is unknown."
+leader_trait_general_est_mystic:0 "Mystic"
+leader_trait_general_est_mystic_desc:0 "This leader is ascribed an array of supernatural powers. Which of them, if any, they actually possess is unknown."
+leader_trait_governor_est_mystic:0 "Mystic"
+leader_trait_governor_est_mystic_desc:0 "This leader is ascribed an array of supernatural powers. Which of them, if any, they actually possess is unknown."
+leader_trait_scientist_est_mystic:0 "Mystic"
+leader_trait_scientist_est_mystic_desc:0 "This leader is ascribed an array of supernatural powers. Which of them, if any, they actually possess is unknown."
+leader_trait_ruler_est_mystic:0 "Mystic"
+leader_trait_ruler_est_mystic_desc:0 "This leader is ascribed an array of supernatural powers. Which of them, if any, they actually possess is unknown."
+
+#Cooperativity: Cognition Central
+leader_trait_admiral_est_cognition_central:0 "Cognition Central"
+leader_trait_admiral_est_cognition_central_desc:0 "By integrating themselves into the local drone networks this autonomous drone may amplify their capabilities greatly."
+leader_trait_ruler_est_cognition_central:0 "$leader_trait_admiral_est_cognition_central$"
+leader_trait_ruler_est_cognition_central_desc:0 "$leader_trait_admiral_est_cognition_central_desc$"
+leader_trait_general_est_cognition_central:0 "$leader_trait_admiral_est_cognition_central$"
+leader_trait_general_est_cognition_central_desc:0 "$leader_trait_admiral_est_cognition_central_desc$"
+leader_trait_governor_est_cognition_central:0 "$leader_trait_admiral_est_cognition_central$"
+leader_trait_governor_est_cognition_central_desc:0 "$leader_trait_admiral_est_cognition_central_desc$"
+leader_trait_scientist_est_cognition_central:0 "$leader_trait_admiral_est_cognition_central$"
+leader_trait_scientist_est_cognition_central_desc:0 "$leader_trait_admiral_est_cognition_central_desc$"
+
+#Individualism: Inspiration
+leader_trait_ruler_est_individualism_inspiration:0 "Inspiration"
+leader_trait_ruler_est_individualism_inspiration_desc:0 "I see clearly now, both my purpose and my way to fulfil it."
+leader_trait_admiral_est_individualism_inspiration:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_admiral_est_individualism_inspiration_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_biology:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_biology_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_statecraft:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_statecraft_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_industry:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_industry_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_materials:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_materials_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_rocketry:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_rocketry_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_voidcraft:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_voidcraft_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_field_manipulation:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_field_manipulation_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_particles:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_particles_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_computing:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_computing_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_new_worlds:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_new_worlds_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+leader_trait_scientist_est_individualism_inspiration_military_theory:0 "$leader_trait_ruler_est_individualism_inspiration$"
+leader_trait_scientist_est_individualism_inspiration_military_theory_desc:0 "$leader_trait_ruler_est_individualism_inspiration_desc$"
+
+### Species Traits ###
+trait_robot_est_industry_adopt:0 "Mining Bot"
+trait_robot_est_industry_adopt_desc:0 "§LThese machines are built with the purpose of efficient mineral extraction.§!"
+
+####################################
+# Opinion Modifiers
+####################################
+opinion_est_aesthetics_2_3:0 "Galactic Fair"
+opinion_est_aesthetics_2_3_FE:0 "Galactic Fair"
+opinion_est_aesthetics_2_4:0 "Delivered Play to Ambassadors"
+opinion_est_aesthetics_2_31:0 "Friendship Monument"
+opinion_est_aesthetics_3:0 "$tr_est_aesthetics_3$"
+opinion_est_aesthetics_3_FE:0 "$tr_est_aesthetics_3$"
+opinion_est_age_5:0 "$tr_est_age_5$"
+opinion_est_age_5_FE:0 "$tr_est_age_5$"
+
+opinion_est_benevolence_3:0 "$tr_est_benevolence_3$"
+opinion_est_benevolence_3_FE:0 "$tr_est_benevolence_3$"
+
+opinion_est_chivalry_2:0 "$tr_est_chivalry_2$"
+opinion_est_chivalry_2_FE:0 "$tr_est_chivalry_2$"
+opinion_est_chivalry_finish_humility:0 "$mod_est_chivalry_finish_humility$"
+opinion_est_chivalry_finish_humility_FE:0 "$mod_est_chivalry_finish_humility$"
+
+opinion_est_confederacy_4:0 "$tr_est_confederacy_4$"
+
+opinion_est_friendship_1:0 "$tr_est_friendship_1$"
+opinion_est_friendship_1_FE:0 "$tr_est_friendship_1$"
+
+opinion_est_greed_2_negotiations_1:0 "$est_greed_2_negotiations_1$"
+opinion_est_greed_2_negotiations_2:0 "$est_greed_2_negotiations_2$"
+opinion_est_greed_2_negotiations_3:0 "$est_greed_2_negotiations_3$"
+
+opinion_est_fury_1:0 "$est_fury_1_name$"
+opinion_est_fury_2:0 "$est_fury_2_name$"
+opinion_est_fury_3:0 "$est_fury_3_name$"
+opinion_est_fury_4:0 "$est_fury_4_name$"
+opinion_est_fury_5:0 "$est_fury_5_name$"
+
+opinion_est_philosophy_3:0 "$tr_est_philosophy_3$"
+opinion_est_philosophy_3_FE:0 "$tr_est_philosophy_3$"
+
+opinion_est_piracy_2:0 "Target of Raiding"
+
+####################################
+# Edicts 
+####################################
+
+### Empire Edicts ###
+
+#Friendship
+edict_est_friendship_finish_invite_colonists:0 "Invite Foreign Colonists"
+edict_est_friendship_finish_invite_colonists_desc:0 "We have contacts all over the galaxy. It would be possible for us to try and invite citizens from a foreign empire to start one of our new colonists."
+est_friendship_finish_invite_colonists_effect:0 "Gives us a selection of species from which we may gain a colony ship. We can also decline to invite any colonists, not having to pay the energy cost."
+est_friendship_finish_invite_colonists_req_1:0 "$TRIGGER_FAIL$We may only invite colonists once every year."
+est_friendship_finish_invite_colonists_req_2:0 "$TRIGGER_FAIL$No avaiable empire from which we can invite colonists."
+
+#Greed
+edict_est_greed_5_bribery:0 "Bribe Factions"
+edict_est_greed_5_bribery_tooltip:0 "Enables us to pay £energy  §YEnergy Credit§! to our §YPop Factions§! to increase their £happiness  §YHappiness§!."
+
+### Planet Edicts ###
+
+#Commerce
+edict_est_commerce_2_food:0 "Encourage Food Production"
+edict_est_commerce_2_food_desc:0 "$tr_est_commerce_2_delayed$"
+edict_est_commerce_2_energy:0 "Encourage Energy Production"
+edict_est_commerce_2_energy_desc:0 "$tr_est_commerce_2_delayed$"
+edict_est_commerce_2_minerals:0 "Encourage Mineral Production"
+edict_est_commerce_2_minerals_desc:0 "$tr_est_commerce_2_delayed$"
+
+#Confederacy
+edict_est_grant_autonomy:0 "Grant Autonomy"
+edict_est_grant_autonomy_desc:1 "This Edict grants additional autonomy to the local government, pleasing the planetary administration and the inhabitants of the planet."
+
+#Greed
+edict_est_greed_4_1:0 "Light Extortion"
+edict_est_greed_4_1_desc:0 "$tr_est_greed_4_delayed$"
+est_greed_4_1_tooltip:0 "Generates §Y0.25§! £energy  §YEnergy Credit§! for every £pop  §YPop§! on thise planet."
+edict_est_greed_4_2:0 "Moderate Extortion"
+edict_est_greed_4_2_desc:0 "$tr_est_greed_4_delayed$"
+est_greed_4_2_tooltip:0 "Generates §Y0.50§! £energy  §YEnergy Credit§! for every £pop  §YPop§! on thise planet."
+edict_est_greed_4_3:0 "Heavy Extortion"
+edict_est_greed_4_3_desc:0 "$tr_est_greed_4_delayed$"
+est_greed_4_3_tooltip:0 "Generates §Y0.75§! £energy  §YEnergy Credit§! for every £pop  §YPop§! on thise planet."
+edict_est_greed_4_cancel:0 "Stop Extortion"
+edict_est_greed_4_cancel_desc:0 "There is a limit how much money we can extort from the population before the situation on the planet becomes nmanageable. We must stop draining this planet of cash, at least for now."
+est_greed_4_cancel_tooltip:0 "Cancels any extortion edict currently in effect on this planet."
+
+#Industry
+edict_est_industry_finish:0 "Authorize Hazardous Industries"
+edict_est_industry_finish_desc:0 "It will be possible for us to further increase the industrial output of this planet. It will have a negative impact on the population, but it might be worth it anyway."
+edict_est_industry_finish_machines:0 "$edict_est_industry_finish$"
+edict_est_industry_finish_machines_desc:0 "It will be possible for us to further increase the industrial output of this planet. It will have a negative impact on the planets energy producing capabilities, but it might be worth it anyway."
+
+#Cooperativity
+edict_est_cooperativity_5:0 "Growth Phase"
+edict_est_cooperativity_5_desc:0 "$tr_est_cooperativity_5_delayed$"
+edict_est_cooperativity_5_machines:0 "Growth Phase"
+edict_est_cooperativity_5_machines_desc:0 "$tr_est_cooperativity_5_delayed$"
+
+####################################
+# Policies
+####################################
+
+#Aesthics 2, Guild of Artists.
+policy_est_aesthetics_guild_of_artists:0 "$tr_est_aesthetics_2$"
+policy_est_aesthetics_guild_of_artists_desc:0 "£tr_est_aesthetics_2_delayed$"
+est_aesthetics_guild_of_artists_0:0 "Recruit No Artist"
+est_aesthetics_guild_of_artists_0_name:0 "$est_aesthetics_guild_of_artists_0$"
+est_aesthetics_guild_of_artists_0_desc:0 "We will receive no positive effect from our artists."
+est_aesthetics_guild_of_artists_1:0 "Recruit One Artist"
+est_aesthetics_guild_of_artists_1_name:0 "$est_aesthetics_guild_of_artists_1$"
+est_aesthetics_guild_of_artists_1_desc:0 "Every year we have a §Y20%§! chance to receive  a range of benefits to choose from. We will have a §Y20%§! chance to have §Y1§! option."
+est_aesthetics_guild_of_artists_2:0 "Recruit Two Artists"
+est_aesthetics_guild_of_artists_2_name:0 "$est_aesthetics_guild_of_artists_2$"
+est_aesthetics_guild_of_artists_2_desc:0 "Every year we have a §Y35%§! chance to receive  a range of benefits to choose from. We will have a §Y35%§! chance to have §Y1§! option."
+est_aesthetics_guild_of_artists_3:0 "Recruit Three Artists"
+est_aesthetics_guild_of_artists_3_name:0 "$est_aesthetics_guild_of_artists_3$"
+est_aesthetics_guild_of_artists_3_desc:0 "Every year we have a §Y45%§! chance to receive  a range of benefits to choose from. We will have a §Y35%§! chance to have §Y1§! option and a §Y10%§! chance to have §Y2§! options."
+est_aesthetics_guild_of_artists_4:0 "Recruit Four Artists"
+est_aesthetics_guild_of_artists_4_name:0 "$est_aesthetics_guild_of_artists_4$"
+est_aesthetics_guild_of_artists_4_desc:0 "Every year we have a §Y55%§! chance to receive  a range of benefits to choose from. We will have a §Y40%§! chance to have §Y1§! option and a §Y15%§! chance to have §Y2§! options."
+est_aesthetics_guild_of_artists_5:0 "Recruit Five Artists"
+est_aesthetics_guild_of_artists_5_name:0 "$est_aesthetics_guild_of_artists_5$"
+est_aesthetics_guild_of_artists_5_desc:0 "Every year we have a §Y65%§! chance to receive  a range of benefits to choose from. We will have a §Y40%§! chance to have §Y1§! option, a §Y15%§! chance to have §Y2§! options and a §Y10%§! chance to have §Y3§! options."
+est_aesthetics_guild_of_artists_6:0 "Recruit Six Artists"
+est_aesthetics_guild_of_artists_6_name:0 "$est_aesthetics_guild_of_artists_6$"
+est_aesthetics_guild_of_artists_6_desc:0 "Every year we have a §Y70%§! chance to receive  a range of benefits to choose from. We will have a §Y35%§! chance to have §Y1§! option, a §Y20%§! chance to have §Y2§! options and a §Y15%§! chance to have §Y3§! options."
+est_aesthetics_guild_of_artists_7:0 "Recruit Seven Artists"
+est_aesthetics_guild_of_artists_7_name:0 "$est_aesthetics_guild_of_artists_7$"
+est_aesthetics_guild_of_artists_7_desc:0 "Every year we have a §Y75%§! chance to receive  a range of benefits to choose from. We will have a §Y30%§! chance to have §Y1§! option, a §Y20%§! chance to have §Y2§! options, a §Y15%§! chance to have §Y3§! option and a §Y10%§! chance to have §Y4§! options."
+est_aesthetics_guild_of_artists_8:0 "Recruit Eight Artists"
+est_aesthetics_guild_of_artists_8_name:0 "$est_aesthetics_guild_of_artists_8$"
+est_aesthetics_guild_of_artists_8_desc:0 "Every year we have a §Y80%§! chance to receive  a range of benefits to choose from. We will have a §Y25%§! chance to have §Y1§! option, a §Y20%§! chance to have §Y2§! options, a §Y20%§! chance to have §Y3§! option and a §Y15%§! chance to have §Y4§! options."
+est_aesthetics_guild_of_artists_9:0 "Recruit Nine Artists"
+est_aesthetics_guild_of_artists_9_name:0 "$est_aesthetics_guild_of_artists_9$"
+est_aesthetics_guild_of_artists_9_desc:0 "Every year we have a §Y85%§! chance to receive  a range of benefits to choose from. We will have a §Y20%§! chance to have §Y1§! option, a §Y20%§! chance to have §Y2§! options, a §Y20%§! chance to have §Y3§! option, a §Y20%§! chance to have §Y4§! option and a §Y5%§! chance to have §Y5§! options."
+est_aesthetics_guild_of_artists_10:0 "Recruit Ten Artists"
+est_aesthetics_guild_of_artists_10_name:0 "$est_aesthetics_guild_of_artists_10$"
+est_aesthetics_guild_of_artists_10_desc:0 "Every year we have a §Y90%§! chance to receive  a range of benefits to choose from. We will have a §Y15%§! chance to have §Y1§! option, a §Y20%§! chance to have §Y2§! options, a §Y25%§! chance to have §Y3§! option, a §Y20%§! chance to have §Y4§! option and a §Y10%§! chance to have §Y5§! options."
+
+#Aesthics 4, Grand Architecture.
+policy_est_aesthetics_architecture:0 "$tr_est_aesthetics_4$"
+policy_est_aesthetics_architecture_desc:0 "£tr_est_aesthetics_4_delayed$"
+est_aesthetics_architecture_0:0 "No special Effort"
+est_aesthetics_architecture_0_name:0 "$est_aesthetics_architecture_0$"
+est_aesthetics_architecture_0_desc:0 "No effect."
+est_aesthetics_architecture_1:0 "Beautiful Architecture"
+est_aesthetics_architecture_1_name:0 "$est_aesthetics_architecture_1$"
+est_aesthetics_architecture_1_desc:0 "Whenever we build or upgrade a building, a random £pop  §YPop§! on the planet receives §G+15%§! §YResource Output§! for §Y10§! years."
+est_aesthetics_architecture_2:0 "Brilliant Architecture"
+est_aesthetics_architecture_2_name:0 "$est_aesthetics_architecture_2$"
+est_aesthetics_architecture_2_desc:0 "In addition to the previous effect, whenever we build or upgrade a building, the is a §G20%§! chance that a random tile without any deposits will receive a deposit of §Y1§! £unity  §YUnity§!."
+est_aesthetics_architecture_3:0 "Magnificent Architecture"
+est_aesthetics_architecture_3_name:0 "$est_aesthetics_architecture_3$"
+est_aesthetics_architecture_3_desc:0 "Previous effects are also received."
+
+#Biogenesis Finish, Food to Mineral Conversion.
+policy_est_biogenesis_finish_food_to_minerals:0 "Food Conversion"
+policy_est_biogenesis_finish_food_to_minerals_desc:0 "We can use organic matter, rather than minerals, as a construction material to grow new things. To what extent do we want to divert resources, that otherwise could be used as food, into construction projects."
+est_biogenesis_finish_food_to_minerals_0:0 "None"
+est_biogenesis_finish_food_to_minerals_0_name:0 "No Conversion"
+est_biogenesis_finish_food_to_minerals_0_desc:0 "All organic matter should be used to grow drones, nothing else.\n\n§ENo effect§!"
+est_biogenesis_finish_food_to_minerals_1:0 "Minimal Food Conversion"
+est_biogenesis_finish_food_to_minerals_1_name:0 "Minimal Conversion"
+est_biogenesis_finish_food_to_minerals_1_desc:0 "We should try to use all organic matter for the growing of new drones, some might be used for construction but it is not desired."
+est_biogenesis_finish_food_to_minerals_2:0 "Limited Food Conversion"
+est_biogenesis_finish_food_to_minerals_2_name:0 "Limited Conversion"
+est_biogenesis_finish_food_to_minerals_2_desc:0 "While organic matter should primarily be used to grow new drones, we can allow a limited amount to go to construction projects."
+est_biogenesis_finish_food_to_minerals_3:0 "Some Food Conversion"
+est_biogenesis_finish_food_to_minerals_3_name:0 "Some Conversion"
+est_biogenesis_finish_food_to_minerals_3_desc:0 "Organic matter have some important uses in construction and we will use some of it for that purpose."
+est_biogenesis_finish_food_to_minerals_4:0 "Moderate Food Conversion"
+est_biogenesis_finish_food_to_minerals_4_name:0 "Moderate Conversion"
+est_biogenesis_finish_food_to_minerals_4_desc:0 "The building of our empire and the growing of drones are both important, we will try to find a middle ground."
+est_biogenesis_finish_food_to_minerals_5:0 "Large Food Conversion"
+est_biogenesis_finish_food_to_minerals_5_name:0 "Large Conversion"
+est_biogenesis_finish_food_to_minerals_5_desc:0 "We have got the drones that we need, let’s primarily focus on new construction projects."
+est_biogenesis_finish_food_to_minerals_6:0 "Extensive Food Conversion"
+est_biogenesis_finish_food_to_minerals_6_name:0 "Extensive Conversion"
+est_biogenesis_finish_food_to_minerals_6_desc:0 "Unavoidably some organic matter will have to be used to sustain our drones, but what else will be used for construction, if a few starve that is a sacrifice we will have to make."
+est_biogenesis_finish_food_to_minerals_7:0 "Immense Food Conversion"
+est_biogenesis_finish_food_to_minerals_7_name:0 "Immense Conversion"
+est_biogenesis_finish_food_to_minerals_7_desc:0 "The life of a drone is fickle, while the things that we build will stand for many cycles. Let us focus all resources to build an empire that will last."
+est_biogenesis_finish_food_to_minerals_8:0 "Unrestricted Food Conversion"
+est_biogenesis_finish_food_to_minerals_8_name:0 "Unrestricted Conversion"
+est_biogenesis_finish_food_to_minerals_8_desc:0 "Let us, without restriction, use all food available to grow no structures and ships for our civilization."
+country_resource_food_add:0 "Monthly Food"
+
+#Subminds 3, Control Submind Parameters
+policy_est_subminds_3:0 "$tr_est_subminds_3$"
+policy_est_subminds_3_desc:0 "$tr_est_subminds_3_delayed$"
+est_subminds_3_energy:0 "Energy Focus"
+est_subminds_3_energy_name:0 "$est_subminds_3_energy$"
+policy_flag_est_subminds_3_energy_name:0 "$est_subminds_3_energy$"
+est_subminds_3_energy_desc:0 "£energy  §YEnergy§! output is increased by §G+15%§! on all sector planets."
+est_subminds_3_food:0 "Food Focus"
+est_subminds_3_food_name:0 "$est_subminds_3_food$"
+policy_flag_est_subminds_3_food_name:0 "$est_subminds_3_food$"
+est_subminds_3_food_desc:0 "£food  §YFood§! output is increased by §G+20%§! on all sector planets."
+est_subminds_3_minerals:0 "Mineral Focus"
+est_subminds_3_minerals_name:0 "$est_subminds_3_minerals$"
+policy_flag_est_subminds_3_minerals_name:0 "$est_subminds_3_minerals$"
+est_subminds_3_minerals_desc:0 "£minerals  §YMineral§! output is increased by §G+15%§! on all sector planets."
+est_subminds_3_research:0 "Research Focus"
+est_subminds_3_research_name:0 "$est_subminds_3_research$"
+policy_flag_est_subminds_3_research_name:0 "$est_subminds_3_research$"
+est_subminds_3_research_desc:0 "£engineering  §YEngineering§!, £physics  §YPhysics§! and £society  §YSociety§!  output is increased by §G+10%§! on all sector planets."
+est_subminds_3_unity:0 "Unity Focus"
+est_subminds_3_unity_name:0 "$est_subminds_3_unity$"
+policy_flag_est_subminds_3_unity_name:0 "$est_subminds_3_unity$"
+est_subminds_3_unity_desc:0 "£unity  §YUnity§! output is increased by §G+20%§! on all sector planets."
+
+#Greed 2, Ruthless Negotiators.
+policy_est_greed_2_negotiations:0 "Negotiation Strategy"
+policy_est_greed_2_negotiations_desc:0 "$tr_est_greed_2_delayed$"
+est_greed_2_negotiations_0:0 "Normal Negotiations"
+est_greed_2_negotiations_0_name:0 "$est_greed_2_negotiations_0$"
+est_greed_2_negotiations_0_desc:0 "No effect."
+est_greed_2_negotiations_1:0 "Uncaring Negotiators"
+est_greed_2_negotiations_1_name:0 "$est_greed_2_negotiations_1$"
+est_greed_2_negotiations_1_desc:0 "Foreign Empire £opinion  §YOpinion§! is reduced by §R-15§!."
+est_greed_2_negotiations_2:0 "Harsh Negotiators"
+est_greed_2_negotiations_2_name:0 "$est_greed_2_negotiations_2$"
+est_greed_2_negotiations_2_desc:0 "Foreign Empire £opinion  §YOpinion§! is reduced by §R-30§!."
+est_greed_2_negotiations_3:0 "Ruthless Negotiators"
+est_greed_2_negotiations_3_name:0 "$est_greed_2_negotiations_3$"
+est_greed_2_negotiations_3_desc:0 "Foreign Empire £opinion  §YOpinion§! is reduced by §R-45§!."
+
+#Fury Traditions, Fury Level.
+policy_est_fury:0 "$tradition_est_fury$"
+policy_est_fury_desc:0 "$tradition_est_fury_desc$"
+est_fury_0:0 "The Calm Before the Storm"
+est_fury_0_name:0 "$est_fury_0$"
+est_fury_0_desc:0 "An ember has been born within our mind. For now it remains weak."
+est_fury_policy_tooltip_0:0 "Can only be switched to from the $est_fury_1_name$ policy."
+est_fury_1:0 "Rising Frenzy"
+est_fury_1_name:0 "$est_fury_1$"
+est_fury_1_desc:0 "We can feel it now, the flame. It drives us to destroy, to kill."
+est_fury_policy_tooltip_1:0 "Foreign Empire £opinion  §YOpinion§! is decreased by §R-10§!.\n\nCan only be switched to from the $est_fury_0_name$ and $est_fury_2_name$ policies. Must have unlocked at least §Y1§! §YFury§! tradition."
+est_fury_2:0 "Unconditional Hatred"
+est_fury_2_name:0 "$est_fury_2$"
+est_fury_2_desc:0 "The only way to quench the flame within our self is to destroy whatever we encounter. That way we can relieve the pain, if only temporarily."
+est_fury_policy_tooltip_2:0 "Foreign Empire £opinion  §YOpinion§! is decreased by §R-25§!.\n\nCan only be switched to from the $est_fury_1_name$ and $est_fury_3_name$ policies. Must have unlocked at least §Y2§! §YFury§! tradition."
+est_fury_3:0 "Utter Fury"
+est_fury_3_name:0 "$est_fury_3$"
+est_fury_3_desc:0 "We start to lose control of our mind, the flame takes over more and more, driving us to violence."
+est_fury_policy_tooltip_3:0 "Foreign Empire £opinion  §YOpinion§! is decreased by §R-45§!.\n\nCan only be switched to from the $est_fury_2_name$ and $est_fury_4_name$ policies. Must have unlocked at least §Y3§! §YFury§! tradition."
+est_fury_4:0 "Relentless Rage"
+est_fury_4_name:0 "$est_fury_4$"
+est_fury_4_desc:0 "What was a flame is now an inferno, not matter how much we destroy and kill we cannot prevent the pain."
+est_fury_policy_tooltip_4:0 "Foreign Empire £opinion  §YOpinion§! is decreased by §R-70§!.\n\nCan only be switched to from the $est_fury_3_name$ policy. Must have unlocked at least §Y4§! §YFury§! tradition."
+est_fury_5:0 "Wrath of Eternity"
+est_fury_5_name:0 "$est_fury_5$"
+est_fury_5_desc:0 "The only way to relieve our self is to let go. Let the flame consume our mind. That way we can finally rest."
+est_fury_policy_tooltip_5:0 "Foreign Empire £opinion  §YOpinion§! is decreased by §R-100§!.\n\nCan only be switched to from the $est_fury_4_name$ policy. Must have unlocked at least §Y5§! §YFury§! tradition.\nOnce this policy have been adopted, it can never be switched off."
+
+#Fury 5, Ravage.
+policy_est_fury_5_ravage:0 "Ravage"
+policy_est_fury_5_ravage_desc:0 "$tr_est_fury_5_delayed$"
+est_fury_5_ravage_on:0 "Ravaging"
+est_fury_5_ravage_on_name:0 "$est_fury_5_ravage_on$"
+est_fury_5_ravage_on_desc:0 "When we can't take out our fury on the living souls of our enemies we can only express it by destroying what others have built."
+est_fury_5_ravage_off:0 "No Ravaging"
+est_fury_5_ravage_off_name:0 "$est_fury_5_ravage_off$"
+est_fury_5_ravage_off_desc:0 "While it is hard we might be able to restrain our self from causing to much damage to the planets we invade."
+
+#Piracy 2, Raiding Targets.
+policy_est_piracy_raiding:0 "Raiding Targets"
+policy_est_piracy_raiding_desc:0 "Our neighbours control resources that we could use for ourselves. We can organize raids into their territory, but this will anger the target. We much carefully choose which neighbour we raid and which we do not."
+est_piracy_raiding_none:0 "No Raiding"
+est_piracy_raiding_none_name:0 "No Raiding"
+est_piracy_raiding_none_desc:0 "We will not raid any neighbour."
+est_piracy_raiding_weaker:0 "Weaker Neighbours"
+est_piracy_raiding_weaker_name:0 "Raid Weaker Neighbours"
+est_piracy_raiding_weaker_desc:0 "We will raid only those neighbours who are weaker than us."
+est_piracy_raiding_disliked:0 "Disliked Neighbours"
+est_piracy_raiding_disliked_name:0 "Raid Disliked Neighbours"
+est_piracy_raiding_disliked_desc:0 "We will raid only those neighbours who we have a negative opinion of."
+est_piracy_raiding_weaker_n_disliked:0 "Weaker, Disliked Neighbours"
+est_piracy_raiding_weaker_n_disliked_name:0 "Raid Weaker, Disliked Neighbours"
+est_piracy_raiding_weaker_n_disliked_desc:0 "We will raid only those neighbours who we have a negative opinion of and which are weaker than us."
+est_piracy_raiding_insulted:0 "Insulted Neighbours"
+est_piracy_raiding_insulted_name:0 "Raid Insulted Neighbours"
+est_piracy_raiding_insulted_desc:0 "We will raid only those neighbours which we have recently insulted."
+est_piracy_raiding_rivals:0 "Rival Neighbours"
+est_piracy_raiding_rivals_name:0 "Raid Rival Neighbours"
+est_piracy_raiding_rivals_desc:0 "We will raid only those neighbours who are our rivals."
+est_piracy_raiding_full:0 "All Neighbours"
+est_piracy_raiding_full_name:0 "Raid All Neighbours"
+est_piracy_raiding_full_desc:0 "We will raid all our neighbours."
+
+####################################
+# Events
+####################################
+
+#Aesthetics 2: Guild of Artists.
+est_aesthetics_2.name:0 "The Guild of Artists"
+est_aesthetics_2.desc:0 "Our artists have had successful year and their minds are full of inspiration. In what way should we utilize their skill?"
+est_aesthetics_5_option_1:0 "Commission Heroic Poems"
+est_aesthetics_5_option_2:0 "Publish Imperial Epos"
+est_aesthetics_5_option_3:0 "Organize Galactic Fair"
+est_aesthetics_5_option_3_tooltip:0 "Foreign Empire £opinion  §YOpinion§! is increased by §G+20§! for §Y10§! years."
+est_aesthetics_5_option_4:0 "Deliver Play to Ambassadors"
+est_aesthetics_5_option_5:0 "Organize Festivals on Planet"
+est_aesthetics_5_option_6:0 "Declare a Year of Celebration"
+est_aesthetics_5_option_7:0 "Deliver a Grand Performance"
+est_aesthetics_5_option_8:0 "Compose an Imperial Symphony"
+est_aesthetics_5_option_9:0 "Publish Poetry Collection"
+est_aesthetics_5_option_10:0 "Commission a Contemporary Play"
+est_aesthetics_5_option_11:0 "Write War Ballads"
+est_aesthetics_5_option_12:0 "Commission Palatial Decoration"
+est_aesthetics_5_option_13:0 "Organize Galactic Tour"
+est_aesthetics_5_option_14:0 "Release Collection of Fictions"
+est_aesthetics_5_option_15:0 "Commission Contemporary Painting"
+est_aesthetics_5_option_16:0 "Commission Paintings of Historical Scenes"
+est_aesthetics_5_option_17:0 "Design Public Sculptures"
+est_aesthetics_5_option_18:0 "Design New Public Building"
+est_aesthetics_5_option_19:0 "Produce New Visual Entertainment"
+est_aesthetics_5_option_20:0 "Announce a Cultural Revolution"
+est_aesthetics_5_option_21:0 "Draw Illustration Collection"
+est_aesthetics_5_option_22:0 "Decorate the Imperial Park"
+est_aesthetics_5_option_23:0 "Organize Performance on Planet"
+est_aesthetics_5_option_24:0 "Organize a Grand Tour"
+est_aesthetics_5_option_25:0 "Write an Imperial Anthem"
+est_aesthetics_5_option_26:0 "Write a Historical Epos"
+est_aesthetics_5_option_27:0 "Take on New Apprentices"
+est_aesthetics_5_option_28:0 "Design Military Uniforms"
+est_aesthetics_5_option_29:0 "Design Interactive Entertainment Complex"
+est_aesthetics_5_option_30:0 "Write Contemporary Novels"
+est_aesthetics_5_option_31:0 "Commission Friendship Monument"
+
+#Archivist Adopt: Select Specialization.
+est_archivist_adopt.name:0 "Select Research Area Specialization"
+est_archivist_adopt.desc:0 "What research area should we specialize in?"
+est_archivist_adopt.option.particles:0 "Particles"
+est_archivist_adopt.option.computing:0 "Computing"
+est_archivist_adopt.option.field_manipulation:0 "Field Manipulation"
+est_archivist_adopt.option.voidcraft:0 "Voidcraft"
+est_archivist_adopt.option.biology:0 "Biology"
+est_archivist_adopt.option.statecraft:0 "Statecraft"
+est_archivist_adopt.option.new_worlds:0 "New Worlds"
+est_archivist_adopt.option.military_theory:0 "Military Theory"
+est_archivist_adopt.option.materials:0 "Materials"
+est_archivist_adopt.option.industry:0 "Industry"
+est_archivist_adopt.option.rocketry:0 "Rocketry"
+ 
+#Chivalry Finish: Select Ruler Virtue.
+est_chivalry_finish.name:0 "A Rulers Virtue"
+est_chivalry_finish.desc:0 "Our empire have a new ruler. As is customary the new ruler must select a virtue to be emphasised during their rule."
+est_chivalty_finish.option.courage:0 "The Virtue of Courage"
+est_chivalty_finish.option.charity:0 "The Virtue of Charity"
+est_chivalty_finish.option.humility:0 "The Virtue of Humility"
+est_chivalty_finish_humility_tooltip:0 "Foreign Empire £opinion  §YOpinion§! is increased by §G+20§!."
+est_chivalty_finish.option.duty:0 "The Virtue of Duty"
+est_chivalty_finish.option.kindness:0 "The Virtue of Kindness"
+est_chivalty_finish.option.patience:0 "The Virtue of Patience"
+est_chivalty_finish.option.moderation:0 "The Virtue of Moderation"
+est_chivalty_finish.option.diligence:0 "The Virtue of Diligence"
+
+#Friendship Finish: Invites foregin colonisers.
+est_friendship.5.name:0 "Invite Foreign Colonists"
+est_friendship.5.desc:0 "We have many contacts abroad. We could use these to invite citizens from other empires populate our new colonies."
+est_friendship.5.option.invite.1:0 "Invite [event_target_est_friendship_finish_1.GetSpeciesName] Colonists"
+est_friendship.5.option.invite.1.tooltip:0 "We gain a §YColony Ship§! of the [event_target_est_friendship_finish_1.GetSpeciesName]"
+est_friendship.5.option.invite.2:0 "Invite [event_target_est_friendship_finish_2.GetSpeciesName] Colonists"
+est_friendship.5.option.invite.2.tooltip:0 "We gain a §YColony Ship§! of the [event_target_est_friendship_finish_2.GetSpeciesName]"
+est_friendship.5.option.invite.3:0 "Invite [event_target_est_friendship_finish_3.GetSpeciesName] Colonists"
+est_friendship.5.option.invite.3.tooltip:0 "We gain a §YColony Ship§! of the [event_target_est_friendship_finish_3.GetSpeciesName]"
+est_friendship.5.option.decline:0 "Decline Foreign Colonists"
+est_friendship.5.option.decline.tooltip:0 "Nothing Happens"
+
+#Greed 5: Select Faction to Bribe.
+est_event_greed_5.name:0 "Bribe Factions"
+est_event_greed_5.desc:0 "The leadership of the various factions in our empire are greedy and susceptible to bribes. Rather than adapting our policies to the demands of a factions members we should send a \"gift\" to the powerful individuals of the faction."
+est_event_greed_5.option.bribe:0 "Bribe Faction"
+est_event_greed_5.option.none:0 "Refrain from Bribing a Faction"
+
+#Collectivism/Individualism Adopt: Select Tradition Path.
+est_coll_indv.adopt.name:0 "What Path Should We Walk?"
+est_coll_indv.adopt.desc:0 "We must make a choice. Should we promote the skill and talents of the individual, or the greater whole that they can create together?"
+est_coll_indv.adopt.collectivism:0 "$tr_est_collectivism_adopt$"
+est_coll_indv.adopt.individualism:0 "$tr_est_individualism_adopt$"
+
+####################################
+# Resources
+####################################
+sr_est_rare_minerals:0 "Rare Minerals"
+sr_est_rare_minerals_desc:0 "Certain rare minerals can be found far beneath the surface of many planets. Unattainable for most these precious metals have a wide range of uses."’
+
+####################################
+# Observation Missions
+####################################
+
+#Archivist 1: Document Civilization
+mission_est_archivist_1_document_civilization_1:0 "Document Civilization"
+mission_est_archivist_1_document_civilization_1_desc:0 "$tr_est_archivist_1_delayed$"
+mission_est_archivist_1_document_civilization_2:0 "$mission_est_archivist_1_document_civilization_1$"
+mission_est_archivist_1_document_civilization_2_desc:0 "$mission_est_archivist_1_document_civilization_1_desc$"
+mission_est_archivist_1_document_civilization_3:0 "$mission_est_archivist_1_document_civilization_1$"
+mission_est_archivist_1_document_civilization_3_desc:0 "$mission_est_archivist_1_document_civilization_1_desc$"
+
+####################################
+# Technologies
+####################################
+#Industry 5
+tech_est_industry_2_1:0 "Geo Scanners"
+tech_est_industry_2_1_desc:0 "Specialized scanner allow us to better localise mineral deposits underground."
+tech_est_industry_2_2:0 "Standardized Production Lines"
+tech_est_industry_2_2_desc:0 "By standardizing the production lines across our empire we can greatly simplify they production process. This makes it a lot easier to optimize our production processes."
+tech_est_industry_2_3:0 "Improved Mining Station"
+tech_est_industry_2_3_desc:0 "Since we built our first orbital mining stations they have not developed much. Advancements in orbital mining allows use to improve on the old design, creating much more efficient stations that can be constructed at a much lower cost."
+tech_est_industry_2_4:0 "Eternal Fires"
+tech_est_industry_2_4_desc:0 "Ever since their construction our blast furnaces have contained a never dying inferno. The heat contained there within will never die."
+tech_est_industry_2_4_effect_title:0 "£building §Y$building_est_industry_3_blast_furnace$§! produces §G+2§! £minerals  §YMinerals§!."
+tech_est_industry_2_4_effect_desc:0 ""
+tech_est_industry_2_5:0 "Precious Metals"
+tech_est_industry_2_5_desc:0 "While having no practical function, certain precious metals are still highly desired for their beauty."
+tech_est_industry_2_5_effect_title:0 "£building §Y$building_est_industry_finish_deep_core_excavation$§! produces an additonal §G1§! £unity  §YUnity§!."
+tech_est_industry_2_5_effect_desc:0 ""
+#Industry Finisher
+tech_est_industry_finish:0 "Rare Mineral Excvation"
+tech_est_industry_finish_desc:0 "To find the most precious minerals we will have to dig far beneth the planet surface. New excavation techniques allow us to dig the mines deep enough, as well to localise the minerals once deep enough."
+
+####################################
+# Casus Bellis
+####################################
+casus_belli_est_cb_despoliation:0 "$casus_belli_cb_despoliation$"
+
+####################################
+# Wargoals
+####################################
+war_goal_est_wg_plunder:0 "$war_goal_wg_plunder$"
+war_goal_est_wg_plunder_desc:0 "$war_goal_wg_plunder_desc$"
+wg_plunder_accept_them:0 "$wg_plunder_accept_them$"
+wg_plunder_accept_us_1:0 "$wg_plunder_accept_us_1$"
+wg_plunder_accept_us_2:0 "$wg_plunder_accept_us_2$"
+wg_plunder_accept_us_3:0 "$wg_plunder_accept_us_3$"
+wg_plunder_accept_us_4:0 "$wg_plunder_accept_us_4$"
+wg_plunder_accept_us_5:0 "$wg_plunder_accept_us_5$"
+
+####################################
+# Missing Game Localisations (Effects/Modifiers/Scopes)
+####################################
+any_war_participant_trigger:0 "Any War Participant"
+effect_every_neighbor_country:0 "Every Neighbour Country"
+effect_every_combatant_fleet:0 "Every Combatant Fleet"
+planet_resource_energy_add:0 "Energy Output"
+tile_building_resource_unity_add:0 "Building Unity Output"
+shipclass_mining_station_build_cost_mult:0 "Mining Station Build Cost"

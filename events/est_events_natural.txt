@@ -1,0 +1,947 @@
+namespace = est_natural
+
+#Nature 2, find new resources on a planet.
+planet_event = {
+	id = est_natural.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_tradition = tr_est_natural_2
+		}
+		num_pops > 0
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				Not = {
+					has_planet_flag = nature_2_flag
+					is_planet_class = pc_habitat 
+					has_modifier = mod_esap_ecumenopolis
+				}
+			}
+			set_planet_flag = nature_2_flag
+			every_tile = {
+				random_list = {
+					2 = { }
+					1 = {
+						random_list = {
+							2 = {add_deposit = d_mineral_deposit }
+							2 = {add_deposit = d_rich_mineral_deposit }
+							1 = {add_deposit = d_mineral_energy_deposit }
+							1 = {add_deposit = d_mineral_food_deposit }
+							1 = {add_deposit = d_rich_food_mineral_deposit }
+							2 = {add_deposit = d_energy_deposit }
+							2 = {add_deposit = d_rich_energy_deposit }
+							2 = {add_deposit = d_farmland_deposit }
+							2 = {add_deposit = d_rich_farmland_deposit }
+							1 = {add_deposit = d_vast_farmland_deposit }
+							2 = {add_deposit = d_society_deposit }
+							2 = {add_deposit = d_rich_society_deposit }
+							2 = {add_deposit = d_physics_deposit }
+							2 = {add_deposit = d_rich_physics_deposit }
+							2 = {add_deposit = d_engineering_deposit }
+							2 = {add_deposit = d_rich_engineering_deposit }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#Nature preservation, updates modifier if planet class is not already preserved (activated, among other things, when a preservation is built).
+planet_event = {
+	id = est_natural.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		from = {
+			has_building = building_est_nature_preservation
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_planet_class = pc_desert
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_desert
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_desert
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_arid
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_arid
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_arid
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes		
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_savannah
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_savannah
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_savannah
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_tropical
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_tropical
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_tropical
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes	
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_continental
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_continental
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_continental
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes	
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_ocean
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_ocean
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_ocean
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_tundra
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_tundra
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_tundra
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_arctic
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_arctic
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_arctic
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_alpine
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_alpine
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_alpine
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_gaia
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							has_country_flag = flag_est_natural_preservation_gaia
+						}
+					}
+					set_country_flag = flag_est_natural_preservation_gaia
+					country_event = {
+						id = est_natural.6
+					}
+				}
+			}
+			break = yes
+		}
+	}
+}
+
+#Nature preservation, checks if a preservation have been removed.
+planet_event = {
+	id = est_natural.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		from = {
+			has_prev_building = building_est_nature_preservation
+			Not = {
+				has_building = building_est_nature_preservation			
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_planet_class = pc_desert
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_desert
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_desert
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_arid
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_arid
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_arid
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_savannah
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_savannah
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_savannah
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_tropical
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_tropical
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_tropical
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_continental
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_continental
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_continental
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_ocean
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_ocean
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_ocean
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_tundra
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_tundra
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_tundra
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_arctic
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_arctic
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_arctic
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_alpine
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_alpine
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_alpine
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_gaia
+			}
+			owner = {
+				if = {
+					limit = {
+						Not = {
+							any_owned_planet = {
+								is_planet_class  = pc_gaia
+								has_building = building_est_nature_preservation
+							}
+						}
+					}
+					remove_country_flag = flag_est_natural_preservation_gaia
+					country_event = {
+						id = est_natural.7
+					}
+				}
+			}
+			break = yes			
+		}
+	}
+}
+
+#Nature preservation, resets modifier when planet is transfered.
+planet_event = {
+	id = est_natural.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		Or = {
+			has_global_flag = est_natural_finish_picked_flag
+			has_global_flag = est_natural_5_GC_picked_flag
+		}	
+		has_building = building_est_nature_preservation
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				owner = {
+					Or = {
+						has_non_swapped_tradition = tr_est_natural_finish
+						has_swapped_tradition = tr_est_natural_5_GC
+					}	
+				}
+			}
+			every_tile = {
+				limit = {
+					has_building = building_est_nature_preservation
+				}
+				root = {
+					planet_event = {
+						id = est_natural.2
+						scopes = { 
+							from = prev
+						}
+					}
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				Or = {
+					has_non_swapped_tradition = tr_est_natural_finish
+					has_swapped_tradition = tr_est_natural_5_GC
+				}				
+				Or = {
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_desert
+						root = {  is_planet_class  = pc_desert }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_arid 
+						root = {  is_planet_class  = pc_arid }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_savannah 
+						root = {  is_planet_class  = pc_savannah }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_tropical 
+						root = {  is_planet_class  = pc_tropical }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_continental 
+						root = {  is_planet_class  = pc_continental }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_ocean 
+						root = {  is_planet_class  = pc_ocean }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_tundra 
+						root = {  is_planet_class  = pc_tundra }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_arctic 
+						root = {  is_planet_class  = pc_arctic }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_alpine 
+						root = {  is_planet_class  = pc_alpine }
+					}
+					And = {
+						has_country_flag = flag_est_natural_preservation_pc_gaia 
+						root = {  is_planet_class  = pc_gaia }
+					}
+				}
+			}
+			}
+	}
+}
+
+#Nature preservation, resets modifier when colony destroyed.
+planet_event = {
+	id = est_natural.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			Or = {
+				has_non_swapped_tradition = tr_est_natural_finish
+				has_swapped_tradition = tr_est_natural_5_GC
+			}
+		}
+		has_building = building_est_nature_preservation
+		
+	}
+	
+	immediate = {
+		every_tile = {
+			limit = {
+				has_building = building_est_nature_preservation
+			}
+			root = {
+				planet_event = {
+					id = est_natural.3
+					scopes = { 
+						from = prev
+					}
+				}
+			}
+		}
+	}
+}
+
+#Nature preservation, updates modifier one step up.
+country_event = {
+	id = est_natural.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_10
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_9
+			}
+			remove_modifier = "mod_est_natural_preserve_9"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_10"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_8
+			}
+			remove_modifier = "mod_est_natural_preserve_8"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_9"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_7
+			}
+			remove_modifier = "mod_est_natural_preserve_7"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_8"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_6
+			}
+			remove_modifier = "mod_est_natural_preserve_6"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_7"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_5
+			}
+			remove_modifier = "mod_est_natural_preserve_5"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_6"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_4
+			}
+			remove_modifier = "mod_est_natural_preserve_4"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_5"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_3
+			}
+			remove_modifier = "mod_est_natural_preserve_3"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_4"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_2
+			}
+			remove_modifier = "mod_est_natural_preserve_2"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_3"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_1
+			}
+			remove_modifier = "mod_est_natural_preserve_1"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_2"
+				days = -1
+			}
+			break = yes
+		}
+		add_modifier = {
+			modifier = "mod_est_natural_preserve_1"
+			days = -1
+		}
+	}
+}
+
+#Nature preservation, updates modifier one step down.
+country_event = {
+	id = est_natural.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_10
+			}
+			remove_modifier = "mod_est_natural_preserve_10"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_9"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_9
+			}
+			remove_modifier = "mod_est_natural_preserve_9"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_8"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_8
+			}
+			remove_modifier = "mod_est_natural_preserve_8"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_7"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_7
+			}
+			remove_modifier = "mod_est_natural_preserve_7"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_6"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_6
+			}
+			remove_modifier = "mod_est_natural_preserve_6"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_5"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_5
+			}
+			remove_modifier = "mod_est_natural_preserve_5"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_4"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_4
+			}
+			remove_modifier = "mod_est_natural_preserve_4"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_3"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_3
+			}
+			remove_modifier = "mod_est_natural_preserve_3"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_2"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_2
+			}
+			remove_modifier = "mod_est_natural_preserve_2"
+			add_modifier = {
+				modifier = "mod_est_natural_preserve_1"
+				days = -1
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_modifier = mod_est_natural_preserve_1
+			}
+			remove_modifier = "mod_est_natural_preserve_1"
+			break = yes
+		}
+	}
+}
+
+#Nature preservation, resets modifier
+country_event = {
+	id = est_natural.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		Not = {
+			has_country_flag = flag_est_natural_preservation_just_reset
+		}
+	}
+	
+	immediate = {
+		set_timed_country_flag = {
+			flag = flag_est_natural_preservation_just_reset
+			days = 1
+		}
+		switch = {
+			trigger = has_modifier
+			
+			mod_est_natural_preserve_1 = { remove_modifier = "mod_est_natural_preserve_1" }
+			mod_est_natural_preserve_2 = { remove_modifier = "mod_est_natural_preserve_2" }
+			mod_est_natural_preserve_3 = { remove_modifier = "mod_est_natural_preserve_3" }
+			mod_est_natural_preserve_4 = { remove_modifier = "mod_est_natural_preserve_4" }
+			mod_est_natural_preserve_5 = { remove_modifier = "mod_est_natural_preserve_5" }
+			mod_est_natural_preserve_6 = { remove_modifier = "mod_est_natural_preserve_6" }
+			mod_est_natural_preserve_7 = { remove_modifier = "mod_est_natural_preserve_7" }
+			mod_est_natural_preserve_8 = { remove_modifier = "mod_est_natural_preserve_8" }
+			mod_est_natural_preserve_9 = { remove_modifier = "mod_est_natural_preserve_9" }
+			mod_est_natural_preserve_10 = { remove_modifier = "mod_est_natural_preserve_10" }
+		}
+		switch = {
+			trigger = has_country_flag
+			
+			flag_est_natural_preservation_pc_desert = { remove_country_flag = "flag_est_natural_preservation_desert" }
+			flag_est_natural_preservation_pc_arid = { remove_country_flag = "flag_est_natural_preservation_arid" }
+			flag_est_natural_preservation_pc_savannah = { remove_country_flag = "flag_est_natural_preservation_savannah" }
+			flag_est_natural_preservation_pc_tropical = { remove_country_flag = "flag_est_natural_preservation_tropical" }
+			flag_est_natural_preservation_pc_continental = { remove_country_flag = "flag_est_natural_preservation_continental" }
+			flag_est_natural_preservation_pc_ocean = { remove_country_flag = "flag_est_natural_preservation_ocean" }
+			flag_est_natural_preservation_pc_tundra = { remove_country_flag = "flag_est_natural_preservation_tundra" }
+			flag_est_natural_preservation_pc_arctic = { remove_country_flag = "flag_est_natural_preservation_arctic" }
+			flag_est_natural_preservation_pc_alpine = { remove_country_flag = "flag_est_natural_preservation_alpine" }
+			flag_est_natural_preservation_pc_gaia = { remove_country_flag = "flag_est_natural_preservation_pc_gaia" }
+		}
+		every_owned_planet = {
+			every_tile = {
+				limit = {
+					has_building = building_est_nature_preservation
+				}
+				prev = {
+					planet_event = {
+						id = est_natural.2
+						scopes = { 
+							from = prev
+						}
+					}
+				}
+			}
+		}			
+	}
+}
+
+#Nature 4 Machines, influence from tile blockers.
+planet_event = {
+	id = est_natural.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_natural_3_machines
+		}
+	}
+	
+	immediate = {
+		every_tile = {
+			limit = {
+				has_blocker = yes
+			}
+			root = {
+				owner = {
+					add_influence = 33
+				}
+			}
+		}
+	}
+}

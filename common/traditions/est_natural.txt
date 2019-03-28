@@ -1,0 +1,325 @@
+tr_est_natural_adopt = {
+	modifier = {
+		country_society_tech_research_speed = 0.10
+		category_biology_research_speed_mult = 0.10
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_adopt_hive
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			Not = {
+				has_authority = auth_machine_intelligence
+			}
+		}	
+		modifier = {	
+			country_resource_food_mult = 0.15
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_adopt_machines
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			has_authority = auth_machine_intelligence
+		}	
+		modifier = {	
+			country_resource_unity_mult = 0.05
+			planet_colony_development_speed_mult = 0.50
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 0.5
+			has_ethic = ethic_materialist
+		}
+		modifier = {
+			factor = 0.3
+			has_ethic = ethic_fanatic_materialist
+		}	
+		modifier = {
+			factor = 2
+			has_civic = civic_environmentalist
+		}			
+		modifier = {
+			factor = 2
+			has_civic = civic_agrarian_idyll
+		}			
+		modifier = {
+			factor = 2
+			has_civic = civic_machine_assimilator
+		}	
+		modifier = {
+			factor = 2
+			has_trait = trait_conservational
+		}	
+		modifier = {
+			factor = 0
+			est_no_fed_federation_builders = yes			
+		}
+	}
+}
+
+tr_est_natural_finish = {	
+	on_enabled = {
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_natural_finish_picked_flag
+				}
+			}
+			set_global_flag = est_natural_finish_picked_flag
+		}
+	}
+
+	modifier = {	
+		ascension_perks_add = 1
+	}
+	
+	tradition_swap = {
+		#Do not unlockd preservation
+		name = tr_est_natural_finish_AI
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+			is_ai = yes
+		}	
+		modifier = {	
+			country_resource_unity_mult = 0.15
+			country_society_tech_research_speed = 0.05
+			ascension_perks_add = 1
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		#Do not unlockd preservation
+		name = tr_est_natural_finish_hive
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			Not = {
+				has_authority = auth_machine_intelligence
+			}
+		}	
+		modifier = {	
+			country_society_tech_research_speed = 0.10
+			category_biology_research_speed_mult = 0.15
+			ascension_perks_add = 1
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		#Do not unlockd preservation
+		name = tr_est_natural_finish_machines
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			has_authority = auth_machine_intelligence
+		}	
+		modifier = {	
+			country_society_tech_research_speed = 0.20
+			ascension_perks_add = 1
+		}
+		weight = {factor =  1}
+	}
+}
+
+tr_est_natural_1 = {
+	modifier = {
+		pop_environment_tolerance = 0.10
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_1_GC
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {	
+			pop_consumer_goods_mult = -0.15
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 2000
+	}
+}
+
+tr_est_natural_2 = {
+	possible = {
+		has_tradition = tr_est_natural_1
+	}
+	
+	on_enabled = {
+		every_owned_planet = {
+			planet_event = {
+				id = est_natural.1
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_est_natural_3 = {
+	possible = {
+		has_tradition = tr_est_natural_1
+		has_tradition = tr_est_natural_4
+	}
+	
+	modifier = {
+		planet_clear_blocker_cost_mult = -0.50
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_3_hive
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			Not = {
+				has_authority = auth_machine_intelligence
+			}
+			is_ai = no
+		}	
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_3_hive_AI
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			Not = {
+				has_authority = auth_machine_intelligence
+			}
+			is_ai = yes
+		}	
+		modifier = {	
+			planet_building_upkeep_mult = -0.10
+			planet_building_build_speed_mult = 0.25
+			ascension_perks_add = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_3_machines
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			has_authority = auth_machine_intelligence
+		}	
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_est_natural_4 = {
+	modifier = {
+		country_resource_food_mult = 0.15
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_4_GC
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			planet_clear_blocker_cost_mult = -0.50
+		}
+		weight = {factor =  1}
+	}
+
+	ai_weight = {
+		factor = 2000
+	}
+}
+
+tr_est_natural_5 = {
+	possible = {
+		has_tradition = tr_est_natural_4
+	}
+	
+	modifier = {
+		pop_consumer_goods_mult = -0.15
+	}
+	
+	tradition_swap = {
+		name = tr_est_natural_5_GC
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			is_ai = no
+		}	
+		on_enabled = {	
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_natural_5_GC_picked_flag
+					}
+				}
+				set_global_flag = est_natural_5_GC_picked_flag
+			}
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		#Do not unlockd preservation
+		name = tr_est_natural_5_GC_AI
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			is_ai = yes
+		}	
+		modifier = {	
+			country_resource_unity_mult = 0.15
+			country_society_tech_research_speed = 0.05
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 3000
+	}
+}

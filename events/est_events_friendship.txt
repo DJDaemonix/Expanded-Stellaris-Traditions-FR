@@ -1,0 +1,808 @@
+namespace = est_friendship
+
+### FRIENDSHIP ###
+
+#Friendship Opener, gives unity and remove penalty for first contact.
+country_event = {
+	id = est_friendship.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		Or = {
+			has_non_swapped_tradition = tr_est_friendship_adopt
+			from = {
+				has_non_swapped_tradition = tr_est_friendship_adopt
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_opinion_modifier = { 
+					who = from
+					modifier = opinion_new_contact
+				}
+			}
+			remove_opinion_modifier = { 
+				who = from
+				modifier = opinion_new_contact
+			}
+		}
+		if = {
+			limit = {
+				has_non_swapped_tradition = tr_est_friendship_adopt
+			}
+			add_monthly_resource_mult = { 
+				resource = unity
+				value = 12
+				max = 1000000
+				min = 4
+			}
+		}
+		from = {
+			if = {
+				limit = {
+					has_opinion_modifier = { 
+						who = root
+						modifier = opinion_new_contact
+					}
+				}
+				remove_opinion_modifier = { 
+					who = root
+					modifier = opinion_new_contact
+				}
+			}
+			if = {
+				limit = {
+					has_non_swapped_tradition = tr_est_friendship_adopt
+				}
+				add_monthly_resource_mult = { 
+					resource = unity
+					value = 12
+					max = 1000000
+					min = 4
+				}
+			}
+		}
+	}
+}
+
+#Friendship 3 militarist, potentially adds bonus when entering war.
+country_event = {
+	id = est_friendship.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_friendship_2_militarist
+		Not = {
+			has_modifier = mod_est_friendship_2_militarist
+		}
+		from = {
+			Or = {
+				And = {
+					any_defender = {
+						is_same_value = root
+					}
+					any_defender = {
+						Not = {
+							is_same_value = root
+						}
+					}
+				}
+				And = {
+					any_attacker = {
+						is_same_value = root
+					}
+					any_attacker = {
+						Not = {
+							is_same_value = root
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		add_modifier = {
+			modifier = "mod_est_friendship_2_militarist"
+			days = -1
+		}		
+	}
+}
+
+#Friendship 3 militarist, potentially removes bonus when war ends.
+country_event = {
+	id = est_friendship.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_friendship_2_militarist
+		has_modifier = mod_est_friendship_2_militarist
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_at_war = no
+			}
+			remove_modifier = "mod_est_friendship_2_militarist"
+			break = yes
+		}
+		if = {
+			limit = {
+				Not = {
+					any_war = {
+						Or = {
+							And = {
+								any_defender = {
+									is_same_value = root
+								}
+								any_defender = {
+									Not = {
+										is_same_value = root
+									}
+								}
+							}
+							And = {
+								any_attacker = {
+									is_same_value = root
+								}
+								any_attacker = {
+									Not = {
+										is_same_value = root
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			remove_modifier = "mod_est_friendship_2_militarist"
+		}
+	}
+}
+
+#Friendship 5, bonus to planets with at least 3 species.
+event = {
+	id = est_friendship.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_friendship_5_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_non_swapped_tradition = tr_est_friendship_5
+			}
+			every_owned_planet = {
+				if = {
+					limit = {
+						num_species > 2
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_friendship_5
+							}
+						}
+						add_modifier = {
+							modifier = "mod_est_friendship_5"
+							days = -1
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_modifier = mod_est_friendship_5					
+						}
+						remove_modifier = "mod_est_friendship_5"
+					}				
+				}
+			}
+		}
+	}
+}
+	
+#Friendship Finisher, allows to recruit colony ship from different species.
+country_event = {
+	id = est_friendship.5
+	hide_window = no
+	is_triggered_only = yes
+	title = "est_friendship.5.name"
+	desc = "est_friendship.5.desc"
+	picture = GFX_evt_ship_in_orbit
+	
+	option = {
+		name = "est_friendship.5.option.invite.1"
+		trigger = {
+			has_country_flag = flag_est_friendship_finish_has_target_1
+		}
+		add_energy = -500
+		custom_tooltip = "est_friendship.5.option.invite.1.tooltip"
+		hidden_effect = {
+			capital_scope = {
+				create_fleet = {
+					effect = {
+						set_owner = root
+						create_ship = {
+							name = random
+							design = random_existing_design
+							random_existing_design = colonizer
+							prefix = yes
+						}
+						set_location = prev
+						random_owned_ship = {
+							change_species = event_target:event_target_est_friendship_finish_1.species
+						}
+					}
+				}
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_1}
+				remove_country_flag = flag_est_friendship_finish_has_target_1
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_2}
+				remove_country_flag = flag_est_friendship_finish_has_target_2
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_3}
+				remove_country_flag = flag_est_friendship_finish_has_target_3
+			}
+		}
+	}
+	option = {
+		name = "est_friendship.5.option.invite.2"
+		trigger = {
+			has_country_flag = flag_est_friendship_finish_has_target_2
+		}
+		add_energy = -500
+		custom_tooltip = "est_friendship.5.option.invite.2.tooltip"
+		hidden_effect = {
+			capital_scope = {
+				create_fleet = {
+					effect = {
+						set_owner = root
+						create_ship = {
+							name = random
+							design = random_existing_design
+							random_existing_design = colonizer
+							prefix = yes
+						}
+						set_location = prev
+						random_owned_ship = {
+							change_species = event_target:event_target_est_friendship_finish_2.species
+						}
+					}
+				}
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_1}
+				remove_country_flag = flag_est_friendship_finish_has_target_1
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_2}
+				remove_country_flag = flag_est_friendship_finish_has_target_2
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_3}
+				remove_country_flag = flag_est_friendship_finish_has_target_3
+			}
+		}
+	}
+	option = {
+		name = "est_friendship.5.option.invite.3"
+		trigger = {
+			has_country_flag = flag_est_friendship_finish_has_target_3
+		}
+		add_energy = -500
+		custom_tooltip = "est_friendship.5.option.invite.3.tooltip"
+		hidden_effect = {
+			capital_scope = {
+				create_fleet = {
+					effect = {
+						set_owner = root
+						create_ship = {
+							name = random
+							design = random_existing_design
+							random_existing_design = colonizer
+							prefix = yes
+						}
+						set_location = prev
+						random_owned_ship = {
+							change_species = event_target:event_target_est_friendship_finish_3.species
+						}
+					}
+				}
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_1}
+				remove_country_flag = flag_est_friendship_finish_has_target_1
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_2}
+				remove_country_flag = flag_est_friendship_finish_has_target_2
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_3}
+				remove_country_flag = flag_est_friendship_finish_has_target_3
+			}
+		}
+	}
+	option = {
+		name = "est_friendship.5.option.decline"
+		custom_tooltip = "est_friendship.5.option.decline.tooltip"
+		hidden_effect = {
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_1}
+				remove_country_flag = flag_est_friendship_finish_has_target_1
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_2}
+				remove_country_flag = flag_est_friendship_finish_has_target_2
+			}
+			if = { 
+				limit = { has_country_flag = flag_est_friendship_finish_has_target_3}
+				remove_country_flag = flag_est_friendship_finish_has_target_3
+			}
+		}
+	}
+}
+
+### MALICE ###
+
+#Malice adopt, gives happiness penalties to those insulted.
+event = {
+	id = est_friendship.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_malice_adopt_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_modifier = mod_est_malice_adopt
+			}
+			remove_modifier = "mod_est_malice_adopt"
+		}
+		every_country = {
+			limit = {
+				has_opinion_modifier = { 
+					modifier = opinion_insult
+				}
+				Not = {
+					has_modifier = mod_est_malice_adopt
+				}
+				any_country = {
+					has_swapped_tradition = tr_est_malice_adopt
+					prev = {
+						has_opinion_modifier = { 
+							who = prev
+							modifier = opinion_insult
+						}
+					
+					}
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_malice_adopt"
+				days = -1
+			}
+		}
+	}
+}
+
+#Malice 1 and 2, modifier to slaves when enslaved.
+pop_event = {
+	id = est_friendship.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_malice_1
+		}
+		Nor = {
+			has_modifier = mod_est_malice_1
+			has_modifier = mod_est_malice_2
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				owner = {
+					has_swapped_tradition = tr_est_malice_2
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_malice_2"
+				days = -1
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = "mod_est_malice_1"
+				days = -1
+			}
+		}
+	}
+}
+
+#Malice 1 and 2, remove modifer on freed.
+pop_event = {
+	id = est_friendship.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		Or = {
+			has_modifier = mod_est_malice_1
+			has_modifier = mod_est_malice_2
+		}	
+	}
+	
+	immediate = {
+		if = {	
+			limit = {
+				has_modifier = mod_est_malice_1
+			}
+			remove_modifier = "mod_est_malice_1"
+		}
+		else = {
+			remove_modifier = "mod_est_malice_2"
+		}
+	}
+}
+
+#Malice 1 and 2, gives modifier to conquered slaves.
+planet_event = {
+	id = est_friendship.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_malice_1
+		}
+	}
+	
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				is_enslaved = yes
+			}
+			pop_event = {
+				id = est_friendship.6
+			}
+		}
+	}
+}
+
+#Malice 1 alt, triggers when planet successfully invaded.
+country_event = {
+	id = est_friendship.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_malice_1_alt
+	}
+	
+	immediate = {
+		fromfrom = {
+			if = {
+				limit = {
+					has_modifier = mod_est_malice_1_alt
+				}
+				remove_modifier = "mod_est_malice_1_alt"
+			}
+			add_modifier = {
+				modifier = "mod_est_malice_1_alt"
+				years = 10
+			}
+		}
+	}	
+}
+
+#Malice 1 alt, removes modifier on conquered planet.
+planet_event = {
+	id = est_friendship.11
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_swapped_tradition = tr_est_malice_1_alt
+		}
+		has_modifier = mod_est_malice_1_alt
+	}
+	
+	immediate = {
+		remove_modifier = "mod_est_malice_1_alt"
+	}
+}
+
+#Malice 2 alt, adds modifier at the beginning of a war
+country_event = {
+	id = est_friendship.12
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_malice_2_alt
+		is_war_leader = yes
+		from = {
+			any_attacker = {
+				is_same_value = root
+			}
+		}
+	}
+	
+	immediate = {
+		from = {
+			every_war_defender = {
+				limit  = {
+					Not = {
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_malice_2_alt
+					}
+					remove_modifier = "mod_est_malice_2_alt"
+				}
+				add_modifier = {
+					modifier = "mod_est_malice_2_alt"
+					years = 10
+				}
+			}
+		}
+	}
+}
+
+#Malice 2 alt, removes modifier if war ends
+country_event = {
+	id = est_friendship.13
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_modifier = mod_est_malice_2_alt
+		is_at_war = no
+	}
+	
+	immediate = {
+		remove_modifier = "mod_est_malice_2_alt"
+	}
+}
+
+#Malice 5, gives unity when destroying ships
+country_event = {
+	id = est_friendship.14
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_malice_5
+	}
+	
+	immediate = {
+		FromFromFrom = {
+			switch = {
+				trigger = is_ship_size
+				
+				corvette = { root = {add_unity = 4} break = yes}
+				destroyer = { root = {add_unity = 16} break = yes}
+				cruiser = { root = {add_unity = 64} break = yes}
+				battleship = { root = {add_unity = 128} break = yes}
+				titan = { root = {add_unity = 512} break = yes}
+				
+				transport = { root = {add_unity = 4} break = yes}
+				constructor = { root = {add_unity = 8} break = yes}
+				colonizer = { root = {add_unity = 24} break = yes}
+				science = { root = {add_unity = 16} break = yes}
+				
+				military_station_small = { root = {add_unity = 16} break = yes}
+				military_station_medium = { root = {add_unity = 64} break = yes}
+				military_station_large = { root = {add_unity = 128} break = yes}
+				
+				mining_station = { root = {add_unity = 16} break = yes}
+				research_station = { root = {add_unity = 16} break = yes}				
+				observation_station = { root = {add_unity = 16} break = yes}
+				
+				starbase_outpost = { root = {add_unity = 16} break = yes}
+				starbase_starport = { root = {add_unity = 64} break = yes}
+				starbase_starhold = { root = {add_unity = 128} break = yes}
+				starbase_starfortress = { root = {add_unity = 256} break = yes}
+				starbase_citadel = { root = {add_unity = 512} break = yes}
+
+				starbase_swarm = { root = {add_unity = 128} break = yes}
+				starbase_ai = { root = {add_unity = 128} break = yes}
+				starbase_exd = { root = {add_unity = 128} break = yes}
+				starbase_marauder = { root = {add_unity = 128} break = yes}
+				ion_cannon = { root = {add_unity = 64} break = yes}
+
+				colossus  = { root = {add_unity = 2048} break = yes}
+				
+				small_ship_swarm = { root = {add_unity = 4} break = yes}
+				large_ship_swarm = { root = {add_unity = 16} break = yes}
+				large_ship_carrier_swarm = { root = {add_unity = 64} break = yes}
+				queen_swarm = { root = {add_unity = 128} break = yes}
+				construction_ship_swarm = { root = {add_unity = 8} break = yes}
+				colony_ship_swarm = { root = {add_unity = 24} break = yes}
+				transport_ship_swarm = { root = {add_unity = 4} break = yes}
+				 
+				small_ship_fallen_empire = { root = {add_unity = 24} break = yes}
+				large_ship_fallen_empire = { root = {add_unity = 128} break = yes}
+				massive_ship_fallen_empire = { root = {add_unity = 512} break = yes}
+				military_station_large_fallen_empire = { root = {add_unity = 192} break = yes}
+				military_station_small_fallen_empire = { root = {add_unity = 24} break = yes}
+				 
+				small_ship_ed = { root = {add_unity = 16} break = yes}
+				medium_ship_ed = { root = {add_unity = 64} break = yes}
+				large_ship_ed = { root = {add_unity = 128} break = yes}
+				construction_ship_ed = { root = {add_unity = 8} break = yes}
+				dimensional_portal_ed = { root = {add_unity = 1024} break = yes}
+	 
+				psionic_avatar = { root = {add_unity = 512} break = yes}
+				corrupted_avatar = { root = {add_unity = 512} break = yes}
+				shroud_manifestation = { root = {add_unity = 512} break = yes}
+				warped_consciousness = { root = {add_unity = 512} break = yes}
+				
+				enclave_station = { root = {add_unity = 1024} break = yes}
+				space_dragon_red = { root = {add_unity = 4096} break = yes}
+				stellarite = { root = {add_unity = 4096} break = yes}
+				sphere = { root = {add_unity = 4096} break = yes}
+				galleon = { root = {add_unity = 2048} break = yes}
+				station_xl = { root = {add_unity = 2048} break = yes}
+				station_l = { root = {add_unity = 1024} break = yes}
+				station_m = { root = {add_unity = 1024} break = yes}
+				station_s = { root = {add_unity = 124} break = yes}
+				station_xs = { root = {add_unity = 48} break = yes}
+				dimensional_horror = { root = {add_unity = 4096} break = yes}
+				npc_warship_01 = { root = {add_unity = 1024} break = yes}
+				homebase = { root = {add_unity = 1024} break = yes}
+				hive_asteroid = { root = {add_unity = 512} break = yes}
+				wraith_01_blue = { root = {add_unity = 4096} break = yes}
+				wraith_01_red = { root = {add_unity = 4096} break = yes}
+				wraith_01_yellow = { root = {add_unity = 4096} break = yes}
+				space_dragon_baby = { root = {add_unity = 512} break = yes}
+				 				 
+				pirate_corvette = { root = {add_unity = 4} break = yes}
+				pirate_destroyer = { root = {add_unity = 16} break = yes}
+				pirate_cruiser = { root = {add_unity = 64} break = yes}
+				pirate_station = { root = {add_unity = 32} break = yes}		 
+				 
+				marauder_corvette = { root = {add_unity = 4} break = yes}
+				marauder_destroyer = { root = {add_unity = 16} break = yes}
+				marauder_cruiser = { root = {add_unity = 64} break = yes}
+				marauder_galleon = { root = {add_unity = 128} break = yes}
+				marauder_station = { root = {add_unity = 32} break = yes}
+				marauder_void_dwelling = { root = {add_unity = 256} break = yes}	 			
+				
+				space_cloud = { root = {add_unity = 64} break = yes}
+				space_amoeba = { root = {add_unity = 16} break = yes}
+				space_amoeba_mother = { root = {add_unity = 64} break = yes}
+				space_whale_1 = { root = {add_unity = 32} break = yes}
+				space_whale_2 = { root = {add_unity = 32} break = yes}
+				space_whale_3 = { root = {add_unity = 16} break = yes}
+				space_whale_4 = { root = {add_unity = 64} break = yes}
+				ancient_mining_drone = { root = {add_unity = 4} break = yes}
+				ancient_corvette = { root = {add_unity = 4} break = yes}
+				ancient_destroyer = { root = {add_unity = 16} break = yes}				
+				
+				small_ship_ai = { root = {add_unity = 64} break = yes}
+				large_ship_ai = { root = {add_unity = 6} break = yes}
+				military_station_large_ai = { root = {add_unity = 96} break = yes}
+				military_station_small_ai = { root = {add_unity = 32} break = yes}
+				core_ai = { root = {add_unity = 4096} break = yes}
+				final_core_ai = { root = {add_unity = 4096} break = yes}
+				construction_ship_ai = { root = {add_unity = 8} break = yes}
+				colony_ship_ai = { root = {add_unity = 24} break = yes}
+				transport_ship_ai = { root = {add_unity = 4} break = yes}
+			}
+			root = {
+				add_unity = 4
+			} 
+		}		
+	}
+}
+
+### Perseverance ###
+
+
+#Perseverance 1, updates on planet gained.
+
+#Perseverance 1, updates when building built.
+planet_event = {
+	id = est_friendship.15
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_perseverance_IP_1
+		}
+		from = {
+			Or = {
+				has_building = building_planetary_shield_generator
+				has_prev_building = building_planetary_shield_generator
+			}
+		}
+	}
+	
+	immediate = {
+		planet_event = {
+			id = est_friendship.16
+		}
+	}
+}
+
+planet_event = {
+	id = est_friendship.16
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_perseverance_IP_1
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_building = building_planetary_shield_generator
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_perseverance_1_IP_shield
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_perseverance_1_IP_shield"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_modifier = mod_est_perseverance_1_IP_no_shield
+				}
+				remove_modifier = "mod_est_perseverance_1_IP_no_shield"
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_perseverance_1_IP_no_shield
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_perseverance_1_IP_no_shield"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_modifier = mod_est_perseverance_1_IP_shield
+				}
+				remove_modifier = "mod_est_perseverance_1_IP_shield"
+			}
+		}
+	}
+}

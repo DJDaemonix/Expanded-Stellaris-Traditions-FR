@@ -1,0 +1,496 @@
+namespace = est_coll_indv
+
+### ADOPTION ###
+
+#Adoption event, lets you choose a tradition.
+country_event = {
+	id = est_coll_indv.1
+	hide_window = no
+	is_triggered_only = yes
+	title = "est_coll_indv.adopt.name"
+	desc = "est_coll_indv.adopt.desc"
+	picture = GFX_galactic_senate
+	
+	option = {
+		name = "est_coll_indv.adopt.collectivism"	
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				has_ethic = ethic_authoritarian
+			}
+			modifier = {
+				factor = 3
+				has_ethic = ethic_fanatic_authoritarian
+			}	
+			modifier = {
+				factor = 2
+				has_ai_personality = harmonious_hierarchy
+			}	
+			modifier = {
+				factor = 2
+				has_civic = civic_citizen_service
+			}	
+			modifier = {
+				factor = 2
+				has_authority = auth_imperial
+			}
+			modifier = {
+				factor = 2
+				has_authority = auth_dictatorial
+			}
+		}
+		hidden_effect = {
+			set_country_flag = est_uses_collectivism_traditions
+		}
+	}
+	option= {
+		name = "est_coll_indv.adopt.individualism"		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				has_ethic = ethic_egalitarian
+			}
+			modifier = {
+				factor = 3
+				has_ethic = ethic_fanatic_egalitarian
+			}
+			modifier = {
+				factor = 2
+				has_ai_personality = ruthless_capitalists
+			}	
+			modifier = {
+				factor = 2
+				has_civic = civic_idealistic_foundation
+			}	
+			modifier = {
+				factor = 2
+				has_authority = auth_oligarchic
+			}
+			modifier = {
+				factor = 2
+				has_authority = auth_democratic
+			}
+		}
+		hidden_effect = {
+			set_country_flag = est_uses_individualism_traditions
+		}
+	}
+}
+
+### COLLECTIVISM ###
+
+event = {
+	id = est_coll_indv.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_collectivism_3_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_collectivism_3
+			}
+			every_owned_planet = {
+				if = {
+					limit = {
+						unrest < 1
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_collectivism_3
+							}
+						}
+						add_modifier = {
+							modifier = "mod_est_collectivism_3"
+							days = -1
+						}	
+					}
+				}		
+				else = {
+					if = {
+						limit = {
+							has_modifier = mod_est_collectivism_3
+						}
+						remove_modifier = "mod_est_collectivism_3"
+					}
+				}			
+			}
+		}
+	}
+}
+
+### INDIVIDUALISM ###
+
+#Individualism adopt, influence on leader level up.
+country_event = {
+	id = est_coll_indv.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_individualism_adopt
+		from = {
+			Or = {
+				has_skill > 2
+				Not = {
+					root = {
+						has_swapped_tradition = tr_est_individualism_finish
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		add_influence = 10
+	}
+}
+
+#Individualism 1, inspiration to a scientist.
+country_event = {
+	id = est_coll_indv.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_individualism_1
+		from = {
+			leader_class = scientist
+			Not = {
+				has_leader_flag = flag_est_individualism_recent_lv_up
+			}
+			Or = {
+				has_skill > 2
+				Not = {
+					root = {
+						has_swapped_tradition = tr_est_individualism_finish
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		from = {
+			set_timed_leader_flag = {
+				flag = flag_est_individualism_recent_lv_up
+				years = 1
+			}
+			random_list = {
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_biology }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_statecraft }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_industry }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_materials }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_rocketry }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_voidcraft }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_field_manipulation }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_particles }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_computing }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_new_worlds }
+				1 = { add_trait = leader_trait_scientist_est_individualism_inspiration_military_theory }
+			}
+		}
+		country_event = { 
+			id = est_coll_indv.7
+			days = 360
+			scopes = {
+				from = from
+			}
+		}
+	}
+}
+
+#Individualism 2, inspiration to a admiral.
+country_event = {
+	id = est_coll_indv.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_individualism_1
+		from = {
+			leader_class = admiral
+			Not = {
+				has_leader_flag = flag_est_individualism_recent_lv_up
+				has_trait = leader_trait_admiral_est_individualism_inspiration
+			}
+			Or = {
+				has_skill > 2
+				Not = {
+					root = {
+						has_swapped_tradition = tr_est_individualism_finish
+					}
+				}
+			}
+		}
+			
+	}
+	
+	immediate = {
+		from = {
+			set_timed_leader_flag = {
+				flag = flag_est_individualism_recent_lv_up
+				years = 1
+			}
+			add_trait = leader_trait_admiral_est_individualism_inspiration
+		}
+		country_event = { 
+			id = est_coll_indv.7
+			days = 360
+			scopes = {
+				from = from
+			}
+		}
+	}
+}
+
+#Individualism 3, inspiration to a ruler.
+country_event = {
+	id = est_coll_indv.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_individualism_3
+		from = {
+			leader_class = ruler
+			Not = {
+				has_leader_flag = flag_est_individualism_recent_lv_up
+				has_ruler_trait = leader_trait_ruler_est_individualism_inspiration
+			}
+			Or = {
+				has_skill > 2
+				Not = {
+					root = {
+						has_swapped_tradition = tr_est_individualism_finish
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		from = {
+			set_timed_leader_flag = {
+				flag = flag_est_individualism_recent_lv_up
+				years = 1
+			}
+			add_ruler_trait = leader_trait_ruler_est_individualism_inspiration
+		}
+		country_event = { 
+			id = est_coll_indv.7 
+			days = 360
+			scopes = {
+				from = from
+			}
+		}
+	}
+}
+
+#Individualism 1,2 and 3, removes inspiration.
+country_event = {
+	id = est_coll_indv.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		from = {
+			switch = {
+				trigger = has_trait
+				
+				leader_trait_admiral_est_individualism_inspiration = { remove_trait = leader_trait_admiral_est_individualism_inspiration break = yes }
+				
+				leader_trait_scientist_est_individualism_inspiration_biology = { remove_trait = leader_trait_scientist_est_individualism_inspiration_biology break = yes }
+				leader_trait_scientist_est_individualism_inspiration_statecraft = { remove_trait = leader_trait_scientist_est_individualism_inspiration_statecraft break = yes }
+				leader_trait_scientist_est_individualism_inspiration_industry = { remove_trait = leader_trait_scientist_est_individualism_inspiration_industry break = yes }
+				leader_trait_scientist_est_individualism_inspiration_materials = { remove_trait = leader_trait_scientist_est_individualism_inspiration_materials break = yes }
+				leader_trait_scientist_est_individualism_inspiration_rocketry = { remove_trait = leader_trait_scientist_est_individualism_inspiration_rocketry break = yes }
+				leader_trait_scientist_est_individualism_inspiration_voidcraft = { remove_trait = leader_trait_scientist_est_individualism_inspiration_voidcraft break = yes }
+				leader_trait_scientist_est_individualism_inspiration_field_manipulation = { remove_trait = leader_trait_scientist_est_individualism_inspiration_field_manipulation break = yes }
+				leader_trait_scientist_est_individualism_inspiration_particles = { remove_trait = leader_trait_scientist_est_individualism_inspiration_particles break = yes }
+				leader_trait_scientist_est_individualism_inspiration_computing = { remove_trait = leader_trait_scientist_est_individualism_inspiration_computing break = yes }
+				leader_trait_scientist_est_individualism_inspiration_new_worlds = { remove_trait = leader_trait_scientist_est_individualism_inspiration_new_worlds break = yes }
+				leader_trait_scientist_est_individualism_inspiration_military_theory = { remove_trait = leader_trait_scientist_est_individualism_inspiration_military_theory break = yes }
+			}
+			if = {
+				limit = {
+					has_ruler_trait = leader_trait_ruler_est_individualism_inspiration
+				}
+				remove_ruler_trait = leader_trait_ruler_est_individualism_inspiration
+			}
+		}
+	}
+}
+
+#Individualism Finish, bonus level to recruited leader.
+country_event = {
+	id = est_coll_indv.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_individualism_finish
+	}
+	
+	immediate = {
+		every_owned_leader = {
+			limit = {
+				Or = {
+					has_skill < 2
+					has_leader_flag = flag_est_new_leader
+				}
+			}
+			add_experience = 200
+		}
+	}
+}
+
+### PERSEVERANCE ###
+
+#Perseverance 1, updates when building built.
+planet_event = {
+	id = est_coll_indv.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_perseverance_1
+		}
+		from = {
+			Or = {
+				has_building = building_planetary_shield_generator
+				has_prev_building = building_planetary_shield_generator
+			}
+		}
+	}
+	
+	immediate = {
+		planet_event = {
+			id = est_coll_indv.10
+		}
+	}
+}
+
+#Perseverance 1, updates on planet gained.
+planet_event = {
+	id = est_coll_indv.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_swapped_tradition = tr_est_perseverance_IP_1
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_building = building_planetary_shield_generator
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_perseverance_1_shield
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_perseverance_1_shield"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_modifier = mod_est_perseverance_1_no_shield
+				}
+				remove_modifier = "mod_est_perseverance_1_no_shield"
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_perseverance_1_no_shield
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_perseverance_1_no_shield"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_modifier = mod_est_perseverance_1_shield
+				}
+				remove_modifier = "mod_est_perseverance_1_shield"
+			}
+		}
+	}
+}
+
+#Perseverance 5, fires when war have finished, fires next event with short delay.
+country_event = {
+	id = est_coll_indv.11
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_perseverance_5_picked_flag
+		fromfrom = {
+			any_war_participant = {
+				Or = {
+					has_swapped_tradition = tr_est_perseverance_5
+					has_swapped_tradition = tr_est_perseverance_IP_5
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		fromfrom = {
+			every_war_participant = {
+				limit = {
+					Or = {
+						has_swapped_tradition = tr_est_perseverance_5
+						has_swapped_tradition = tr_est_perseverance_IP_5
+					}
+				}
+				country_event = {
+					id = est_coll_indv.12
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+#Adds the bonus when loosing war, check that war have been lost.
+country_event = {
+	id = est_coll_indv.12
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		recently_lost_war = yes
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_modifier = mod_est_perseverance_5
+			}
+			remove_modifier = "mod_est_perseverance_5"
+		}
+		add_modifier = {
+			modifier = "mod_est_perseverance_5"
+			years = 10
+		}
+	}
+}

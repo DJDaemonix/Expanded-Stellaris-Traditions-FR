@@ -1,0 +1,170 @@
+##########################################################################
+# Empire edicts
+##########################################################################
+
+#Friendship Finish: Generates Colony Ships for other species.
+country_edict = {
+	name = "est_friendship_finish_invite_colonists"
+
+	cost = { influence = 50 }
+	
+	effect = {
+		custom_tooltip = "est_friendship_finish_invite_colonists_effect"
+		hidden_effect = {
+			set_timed_country_flag = {
+				flag = flag_est_friendship_finish_cd
+				years = 1
+			}
+			random_country = {
+				limit = {
+					is_country_type = default
+					has_communications = root
+					Not = {
+						has_closed_borders = root
+						has_ethic = ethic_gestalt_consciousness
+						is_at_war_with = root
+						is_same_species = root
+					}
+				}
+				save_global_event_target_as = event_target_est_friendship_finish_1
+				root = {
+					set_country_flag = flag_est_friendship_finish_has_target_1
+				}
+			}
+			random_country = {
+				limit = {
+					is_country_type = default
+					has_communications = root
+					Not = {
+						has_closed_borders = root
+						has_ethic = ethic_gestalt_consciousness
+						is_at_war_with = root
+						is_same_species = root
+						is_same_species = event_target:event_target_est_friendship_finish_1
+					}
+					root = {
+						has_country_flag = flag_est_friendship_finish_has_target_1
+					}
+				}
+				save_global_event_target_as = event_target_est_friendship_finish_2
+				root = {
+					set_country_flag = flag_est_friendship_finish_has_target_2
+				}
+			}
+			random_country = {
+				limit = {
+					is_country_type = default
+					has_communications = root
+					Not = {
+						has_closed_borders = root
+						has_ethic = ethic_gestalt_consciousness
+						is_at_war_with = root
+						is_same_species = root
+						is_same_species = event_target:event_target_est_friendship_finish_1
+						is_same_species = event_target:event_target_est_friendship_finish_2
+					}
+					root = {
+						has_country_flag = flag_est_friendship_finish_has_target_2
+					}
+				}
+				save_global_event_target_as = event_target_est_friendship_finish_3
+				root = {
+					set_country_flag = flag_est_friendship_finish_has_target_3
+				}
+			}
+			country_event = {
+				id = est_friendship.5
+			}
+		}
+	}
+
+	potential = {
+		has_non_swapped_tradition = tr_est_friendship_finish
+	}
+
+	allow = {
+		energy > 500
+		custom_tooltip = {
+			fail_text = "est_friendship_finish_invite_colonists_req_1"
+			Not = {
+				has_country_flag = flag_est_friendship_finish_cd
+			}
+		}
+		custom_tooltip = {
+			fail_text = "est_friendship_finish_invite_colonists_req_2"
+			any_country = {
+				is_country_type = default
+				has_communications = root
+				Not = {
+					has_closed_borders = root
+					has_ethic = ethic_gestalt_consciousness
+					is_at_war_with = root
+					is_same_species = root
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+#Greed 5, Bribe Factions
+country_edict = {
+	name = "est_greed_5_bribery"
+
+	cost = { influence = 0 }
+	
+	effect = {
+		custom_tooltip = "est_greed_5_bribery_tooltip"
+		hidden_effect = {
+			set_timed_country_flag = {
+				flag = flag_est_greed_5_count_factions_0
+				days = 1
+			}
+			every_pop_faction = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_greed_5
+					}
+				}
+				root = {
+					country_event = {
+						id = est_greed.9
+						scopes = {
+							from = prev
+						}
+					}
+				}
+			}
+			country_event = {
+				id =  est_greed.10
+			}
+		}
+	}
+
+	potential = {
+		has_non_swapped_tradition = tr_est_greed_5
+	}
+
+	allow = {
+		hidden_trigger = {
+			Not = {
+				has_edict = est_greed_5_bribery
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+
+
+
+
+
+
+

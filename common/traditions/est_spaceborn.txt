@@ -1,0 +1,242 @@
+tr_est_spaceborn_adopt = {
+	modifier = {
+		country_starbase_capacity_mult = 0.20
+	}
+
+	tradition_swap = {
+		name = tr_est_spaceborn_adopt_GC
+		inherit_effects = yes
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}
+		weight = { factor = 1 }
+	}
+	
+	ai_weight = {
+		factor = 15	
+		modifier = {
+			factor = 2
+			has_ai_personality = migrating_flock
+		}
+		modifier = {
+			factor = 2
+			has_ai_personality = erudite_explorers
+		}
+		modifier = {
+			factor = 3
+			has_ascension_perk = ap_voidborn	
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_galactic_wonders
+		}
+		modifier = {
+			factor = 0
+			est_no_fed_federation_builders = yes			
+		}
+	}
+}
+
+tr_est_spaceborn_finish = {	
+	modifier = {	
+		shipsize_mining_station_build_cost_mult = -0.222	
+		shipsize_research_station_build_cost_mult = -0.222
+		ascension_perks_add = 1
+	}
+}
+
+tr_est_spaceborn_1 = {
+	modifier = {
+		country_naval_cap_mult = 0.15
+		starbase_shipyard_build_cost_mult = -0.05
+	}
+
+	tradition_swap = {
+		name = tr_est_spaceborn_1_GC
+		inherit_effects = yes
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}
+		weight = { factor = 1 }
+	}
+	
+	ai_weight = {
+		factor = 4000
+	}
+}
+
+tr_est_spaceborn_2 = {
+	possible = {
+		has_tradition = tr_est_spaceborn_1
+	}
+	
+	modifier = {
+		shipclass_starbase_build_cost_mult = -0.25
+		starbase_upgrade_cost_mult = -0.25
+	}
+	
+	ai_weight = {
+		factor = 3000
+	}
+}
+
+tr_est_spaceborn_3 = {
+	possible = {
+		has_tradition = tr_est_spaceborn_2
+	}
+	
+	modifier = {
+		ship_speed_mult = 0.25
+		ship_interstellar_speed_mult = 0.25
+	}
+	
+	ai_weight = {
+		factor = 3000
+	}
+}
+
+tr_est_spaceborn_4 = {
+	possible = {
+		has_tradition = tr_est_spaceborn_3
+	}
+	
+	on_enabled = {
+		every_owned_planet = {
+			solar_system = {
+				star = {
+					if = {
+						limit = {
+							Or = {
+								is_planet_class = pc_b_star 
+								is_planet_class = pc_a_star
+								is_planet_class = pc_g_star
+								is_planet_class = pc_f_star
+								is_planet_class = pc_m_star
+								is_planet_class = pc_k_star
+							}
+							Not = {
+								has_deposit = d_est_spaceborn_4_sun_deposit
+							}
+						}
+						orbital_deposit_tile = {
+							add_deposit = d_est_spaceborn_4_sun_deposit
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = 4000
+	}
+}
+
+tr_est_spaceborn_5 = {
+	possible = {
+		has_tradition = tr_est_spaceborn_3
+	}
+	
+	modifier = {		
+		starbase_building_build_cost_mult = -0.20
+		starbase_building_build_speed_mult = 0.50
+		starbase_module_build_cost_mult = -0.20
+		starbase_module_build_speed_mult = 0.50
+	}
+
+	tradition_swap = {
+		name = tr_est_spaceborn_5_megastruct
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			has_ascension_perk = ap_galactic_wonders
+			Not = {
+				has_ascension_perk = ap_voidborn	
+			}
+		}
+
+		modifier = {
+			megastructure_build_speed_mult = 0.33
+			starbase_building_build_cost_mult = -0.20
+			starbase_building_build_speed_mult = 0.50
+		}
+
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_spaceborn_5_habitat
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			has_ascension_perk = ap_voidborn		
+			Not = {
+				has_ascension_perk = ap_galactic_wonders
+			}
+		}
+		modifier = {
+			starbase_module_build_cost_mult = -0.20
+			starbase_module_build_speed_mult = 0.50
+		}
+		on_enabled = {
+			every_owned_planet = {
+				limit = {
+					is_planet_class = pc_habitat
+					is_colony = yes
+				}
+				add_modifier = {
+					modifier = mod_est_spaceborn_5_habitat
+					days = -1
+				}
+			}
+		}
+
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_est_spaceborn_5_habitat_megastruct
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			And = {
+				has_ascension_perk = ap_voidborn	
+				has_ascension_perk = ap_galactic_wonders
+			}
+		}		
+		on_enabled = {
+			every_owned_planet = {
+				limit = {
+					is_planet_class = pc_habitat
+					is_colony = yes
+				}
+				add_modifier = {
+					modifier = mod_est_spaceborn_5_habitat
+					days = -1
+				}
+			}
+		}
+		modifier = {
+			megastructure_build_speed_mult = 0.33
+		}
+
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 3000
+	}
+}

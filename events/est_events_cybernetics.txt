@@ -1,0 +1,1078 @@
+namespace = est_cybernetics
+
+### CYBERNETICS ###
+
+#Cybernetics 1 and 2, adds Energy bonus to robots when built. May also add research.
+pop_event = {
+	id = est_cybernetics.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_swapped_tradition = tr_est_cybernetics_1_robots	
+		}
+	}
+	
+	immediate = {
+		switch = {
+			trigger = pop_has_trait			
+			trait_robotic_1 = { add_modifier = {modifier = "mod_est_cybernetics_1_robot" days = -1}}
+			trait_robotic_2 = { add_modifier = {modifier = "mod_est_cybernetics_1_droid" days = -1} }
+			trait_robotic_3 = {
+				if = {
+					limit = {
+						root = {
+							has_policy_flag = ai_outlawed
+						}
+					}
+					add_modifier = {modifier = "mod_est_cybernetics_1_synthetic_ai_outlawed" days = -1}
+				}
+				if = {
+					limit = {
+						root = {
+							has_policy_flag = ai_servitude
+						}
+					}
+					add_modifier = {modifier = "mod_est_cybernetics_1_synthetic_ai_servitude" days = -1}
+				}
+				if = {
+					limit = {
+						root = {
+							has_policy_flag = ai_full_rights
+						}
+					}
+					add_modifier = {modifier = "mod_est_cybernetics_1_synthetic" days = -1}
+				}
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					has_swapped_tradition = tr_est_cybernetics_2_robots
+				}
+			}
+			switch = {
+				trigger = pop_has_trait			
+				trait_robotic_1 = { add_modifier = {modifier = "mod_est_cybernetics_2_robot" days = -1} }
+				trait_robotic_2 = { add_modifier = {modifier = "mod_est_cybernetics_2_droid" days = -1} }
+				trait_robotic_3 = {
+					if = {
+						limit = {
+							root = {
+								has_policy_flag = ai_outlawed
+							}
+						}
+						add_modifier = {modifier = "mod_est_cybernetics_2_synthetic_ai_outlawed" days = -1}
+					}
+					if = {
+						limit = {
+							root = {
+								has_policy_flag = ai_servitude
+							}
+						}
+						add_modifier = {modifier = "mod_est_cybernetics_2_synthetic_ai_servitude" days = -1}
+					}
+					if = {
+						limit = {
+							root = {
+								has_policy_flag = ai_full_rights
+							}
+						}
+						add_modifier = {modifier = "mod_est_cybernetics_2_synthetic" days = -1}
+					}
+				}
+			}
+		}
+	}
+}
+
+#Cybernetics 1 and 2, adds Energy bonus to robots when conquered. May also add research.
+planet_event = {
+	id = est_cybernetics.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_swapped_tradition = tr_est_cybernetics_1_robots	
+		}
+	}
+	
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				Or = {
+					pop_has_trait = trait_robotic_1
+					pop_has_trait = trait_robotic_2
+					pop_has_trait = trait_robotic_3
+				}
+			}
+			if = {
+				limit = {
+					NOR = {
+						has_modifier = mod_est_cybernetics_1_robot
+						has_modifier = mod_est_cybernetics_1_droid
+						has_modifier = mod_est_cybernetics_1_synthetic
+						has_modifier = mod_est_cybernetics_1_synthetic_ai_servitude
+						has_modifier = mod_est_cybernetics_1_synthetic_ai_outlawed
+					}
+				}
+				switch = {
+					trigger = pop_has_trait			
+					trait_robotic_1 = { add_modifier = {modifier = "mod_est_cybernetics_1_robot" days = -1} }
+					trait_robotic_2 = { add_modifier = {modifier = "mod_est_cybernetics_1_droid" days = -1} }
+					trait_robotic_3 = {
+						if = {
+							limit = {
+								root = {
+									has_policy_flag = ai_outlawed
+								}
+							}
+							add_modifier = {modifier = "mod_est_cybernetics_1_synthetic_ai_outlawed" days = -1}
+						}
+						if = {
+							limit = {
+								root = {
+									has_policy_flag = ai_servitude
+								}
+							}
+							add_modifier = {modifier = "mod_est_cybernetics_1_synthetic_ai_servitude" days = -1}
+						}
+						if = {
+							limit = {
+								root = {
+									has_policy_flag = ai_full_rights
+								}
+							}
+							add_modifier = {modifier = "mod_est_cybernetics_1_synthetic" days = -1}
+						}
+					}
+				}	
+			}
+			if = {
+				limit = {
+					owner = {
+						has_swapped_tradition = tr_est_cybernetics_2_robots
+					}
+				}
+				if = {
+					limit = {
+						NOR = {
+							has_modifier = mod_est_cybernetics_2_robot
+							has_modifier = mod_est_cybernetics_2_droid
+							has_modifier = mod_est_cybernetics_2_synthetic
+							has_modifier = mod_est_cybernetics_2_synthetic_ai_servitude
+							has_modifier = mod_est_cybernetics_2_synthetic_ai_outlawed
+						}
+					}
+					switch = {
+						trigger = pop_has_trait			
+						trait_robotic_1 = { add_modifier = {modifier = "mod_est_cybernetics_2_robot" days = -1} }
+						trait_robotic_2 = { add_modifier = {modifier = "mod_est_cybernetics_2_droid" days = -1} }
+						trait_robotic_3 = {
+							if = {
+								limit = {
+									root = {
+										has_policy_flag = ai_outlawed
+									}
+								}
+								add_modifier = {modifier = "mod_est_cybernetics_2_synthetic_ai_outlawed" days = -1}
+							}
+							if = {
+								limit = {
+									root = {
+										has_policy_flag = ai_servitude
+									}
+								}
+								add_modifier = {modifier = "mod_est_cybernetics_2_synthetic_ai_servitude" days = -1}
+							}
+							if = {
+								limit = {
+									root = {
+										has_policy_flag = ai_full_rights
+									}
+								}
+								add_modifier = {modifier = "mod_est_cybernetics_2_synthetic" days = -1}
+							}
+						}
+					}	
+				}
+			}	
+		}
+	}
+}
+
+#Cybernetics 1 and 2, updates modifiers when new robot tech is researched.
+country_event = {
+	id = est_cybernetics.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_cybernetics_1_robots		
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				last_increased_tech = "tech_droid_workers"
+			}
+			every_owned_pop = {
+				limit = {
+					pop_has_trait = trait_robotic_1
+				}
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_cybernetics_1_droid			
+						}
+					}
+					add_modifier = {
+						modifier = "mod_est_cybernetics_1_droid" 
+						days = -1 
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_robot
+					}
+					remove_modifier = "mod_est_cybernetics_1_robot"
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_synthetic
+					}
+					remove_modifier = "mod_est_cybernetics_1_synthetic"
+				}
+			}		
+			if = {
+				limit = {
+					owner = {
+						has_swapped_tradition = tr_est_cybernetics_2_robots		
+					}
+				}
+				every_owned_pop = {
+					limit = {
+						pop_has_trait = trait_robotic_1
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_cybernetics_2_droid			
+							}
+						}
+						add_modifier = {
+							modifier = "mod_est_cybernetics_2_droid" 
+							days = -1 
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_robot
+						}
+						remove_modifier = "mod_est_cybernetics_2_robot"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_synthetic
+						}
+						remove_modifier = "mod_est_cybernetics_2_synthetic"
+					}
+				}		
+			}
+		}
+		if = {
+			limit = {
+				last_increased_tech = "tech_synthetic_workers"
+			}
+			every_owned_pop = {
+				limit = {
+					pop_has_trait = trait_robotic_2
+				}
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_cybernetics_1_synthetic
+							has_modifier = mod_est_cybernetics_1_synthetic_ai_outlawed
+							has_modifier = mod_est_cybernetics_1_synthetic_ai_servitude
+						}
+					}
+					if = {
+						limit = {
+							root = {
+								has_policy_flag = ai_outlawed
+							}
+						}
+						add_modifier = {modifier = "mod_est_cybernetics_1_synthetic_ai_outlawed" days = -1}
+					}
+					if = {
+						limit = {
+							root = {
+								has_policy_flag = ai_servitude
+							}
+						}
+						add_modifier = {modifier = "mod_est_cybernetics_1_synthetic_ai_servitude" days = -1}
+					}
+					if = {
+						limit = {
+							root = {
+								has_policy_flag = ai_full_rights
+							}
+						}
+						add_modifier = {modifier = "mod_est_cybernetics_1_synthetic" days = -1}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_robot
+					}
+					remove_modifier = "mod_est_cybernetics_1_robot"
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_droid
+					}
+					remove_modifier = "mod_est_cybernetics_1_droid"
+				}
+			}	
+			if = {
+				limit = {
+					owner = {
+						has_swapped_tradition = tr_est_cybernetics_2_robots		
+					}
+				}
+				every_owned_pop = {
+					limit = {
+						pop_has_trait = trait_robotic_2
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_cybernetics_2_synthetic
+								has_modifier = mod_est_cybernetics_2_synthetic_ai_outlawed
+								has_modifier = mod_est_cybernetics_2_synthetic_ai_servitude
+							}
+						}
+						if = {
+							limit = {
+								root = {
+									has_policy_flag = ai_outlawed
+								}
+							}
+							add_modifier = {modifier = "mod_est_cybernetics_2_synthetic_ai_outlawed" days = -1}
+						}
+						if = {
+							limit = {
+								root = {
+									has_policy_flag = ai_servitude
+								}
+							}
+							add_modifier = {modifier = "mod_est_cybernetics_2_synthetic_ai_servitude" days = -1}
+						}
+						if = {
+							limit = {
+								root = {
+									has_policy_flag = ai_full_rights
+								}
+							}
+							add_modifier = {modifier = "mod_est_cybernetics_2_synthetic" days = -1}
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_robot
+						}
+						remove_modifier = "mod_est_cybernetics_2_robot"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_droid
+						}
+						remove_modifier = "mod_est_cybernetics_2_droid"
+					}
+				}			
+			}			
+		}	
+	}
+}
+
+#Cybernetics 1 and 2, updates modifiers when synth rights changed.
+country_event = {
+	id = est_cybernetics.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_swapped_tradition = tr_est_cybernetics_1_robots	
+		has_technology = tech_synthetic_workers
+		Or = {
+			last_changed_policy = artificial_intelligence_policy
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_policy_flag = ai_outlawed
+			}
+			every_owned_pop = {
+				limit = {
+					pop_has_trait = trait_robotic_3
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_synthetic
+					}
+					remove_modifier = "mod_est_cybernetics_1_synthetic"
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_synthetic_ai_servitude
+					}
+					remove_modifier = "mod_est_cybernetics_1_synthetic_ai_servitude"
+				}
+				add_modifier = {
+					modifier = "mod_est_cybernetics_1_synthetic_ai_outlawed"
+					days = -1
+				}
+				if = {
+					limit = {
+						root = {
+							has_swapped_tradition = tr_est_cybernetics_2_robots	
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_synthetic
+						}
+						remove_modifier = "mod_est_cybernetics_2_synthetic"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_synthetic_ai_servitude
+						}
+						remove_modifier = "mod_est_cybernetics_2_synthetic_ai_servitude"
+					}
+					add_modifier = {
+						modifier = "mod_est_cybernetics_2_synthetic_ai_outlawed"
+						days = -1
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_policy_flag = ai_servitude
+			}
+			every_owned_pop = {
+				limit = {
+					pop_has_trait = trait_robotic_3
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_synthetic
+					}
+					remove_modifier = "mod_est_cybernetics_1_synthetic"
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_synthetic_ai_outlawed
+					}
+					remove_modifier = "mod_est_cybernetics_1_synthetic_ai_outlawed"
+				}
+				add_modifier = {
+					modifier = "mod_est_cybernetics_1_synthetic_ai_servitude"
+					days = -1
+				}
+				if = {
+					limit = {
+						root = {
+							has_swapped_tradition = tr_est_cybernetics_2_robots	
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_synthetic
+						}
+						remove_modifier = "mod_est_cybernetics_2_synthetic"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_synthetic_ai_outlawed
+						}
+						remove_modifier = "mod_est_cybernetics_2_synthetic_ai_outlawed"
+					}
+					add_modifier = {
+						modifier = "mod_est_cybernetics_2_synthetic_ai_servitude"
+						days = -1
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_policy_flag = ai_full_rights
+			}
+			every_owned_pop = {
+				limit = {
+					pop_has_trait = trait_robotic_3
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_synthetic_ai_outlawed
+					}
+					remove_modifier = "mod_est_cybernetics_1_synthetic_ai_outlawed"
+				}
+				if = {
+					limit = {
+						has_modifier = mod_est_cybernetics_1_synthetic_ai_servitude
+					}
+					remove_modifier = "mod_est_cybernetics_1_synthetic_ai_servitude"
+				}
+				add_modifier = {
+					modifier = "mod_est_cybernetics_1_synthetic"
+					days = -1
+				}
+				if = {
+					limit = {
+						root = {
+							has_swapped_tradition = tr_est_cybernetics_2_robots	
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_synthetic_ai_outlawed
+						}
+						remove_modifier = "mod_est_cybernetics_2_synthetic_ai_outlawed"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_2_synthetic_ai_servitude
+						}
+						remove_modifier = "mod_est_cybernetics_2_synthetic_ai_servitude"
+					}
+					add_modifier = {
+						modifier = "mod_est_cybernetics_2_synthetic"
+						days = -1
+					}
+				}
+			}
+		}
+	}
+}
+
+#Updates robots when synthetically ascended.
+event = {
+	id = est_cybernetics.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_cybernetics_1_robots_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_cybernetics_1_robots	
+				has_country_flag = synthetic_empire	
+				Not = {
+					has_country_flag = est_cybernetics_updated_synth_ascendacy
+				}
+			}		
+			set_country_flag = est_cybernetics_updated_synth_ascendacy
+			every_owned_pop = {
+				limit = {
+					Or = {
+						pop_has_trait = trait_robotic_1
+						pop_has_trait = trait_robotic_2
+						pop_has_trait = trait_robotic_3
+					}				
+				}
+				if = {
+					limit = {
+						pop_has_trait = trait_robotic_1
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_cybernetics_1_robot
+							}
+						}
+						add_modifier = {
+							modifier = "mod_est_cybernetics_1_robot" 
+							days = -1 
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_1_synthetic
+						}
+						remove_modifier = "mod_est_cybernetics_1_synthetic"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_1_droid
+						}
+						remove_modifier = "mod_est_cybernetics_1_droid"
+					}					
+				}
+				if = {
+					limit = {
+						pop_has_trait = trait_robotic_2
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_cybernetics_1_droid
+							}
+						}
+						add_modifier = {
+							modifier = "mod_est_cybernetics_1_droid" 
+							days = -1 
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_1_synthetic
+						}
+						remove_modifier = "mod_est_cybernetics_1_synthetic"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_1_robot
+						}
+						remove_modifier = "mod_est_cybernetics_1_robot"
+					}					
+				}
+				if = {
+					limit = {
+						pop_has_trait = trait_robotic_3
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_cybernetics_1_synthetic
+							}
+						}
+						add_modifier = {
+							modifier = "mod_est_cybernetics_1_synthetic" 
+							days = -1 
+						}
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_1_robot
+						}
+						remove_modifier = "mod_est_cybernetics_1_robot"
+					}
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_1_droid
+						}
+						remove_modifier = "mod_est_cybernetics_1_droid"
+					}					
+				}
+			}		
+			if = {
+				limit = {
+					has_swapped_tradition = tr_est_cybernetics_2_robots
+				}
+				every_owned_pop = {
+					limit = {
+						Or = {
+							pop_has_trait = trait_robotic_1
+							pop_has_trait = trait_robotic_2
+							pop_has_trait = trait_robotic_3
+						}				
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_robotic_1
+						}
+						if = {
+							limit = {
+								Not = {
+									has_modifier = mod_est_cybernetics_2_robot
+								}
+							}
+							add_modifier = {
+								modifier = "mod_est_cybernetics_2_robot" 
+								days = -1 
+							}
+						}
+						if = {
+							limit = {
+								has_modifier = mod_est_cybernetics_2_synthetic
+							}
+							remove_modifier = "mod_est_cybernetics_2_synthetic"
+						}
+						if = {
+							limit = {
+								has_modifier = mod_est_cybernetics_2_droid
+							}
+							remove_modifier = "mod_est_cybernetics_2_droid"
+						}					
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_robotic_2
+						}
+						if = {
+							limit = {
+								Not = {
+									has_modifier = mod_est_cybernetics_2_droid
+								}
+							}
+							add_modifier = {
+								modifier = "mod_est_cybernetics_2_droid" 
+								days = -1 
+							}
+						}
+						if = {
+							limit = {
+								has_modifier = mod_est_cybernetics_2_synthetic
+							}
+							remove_modifier = "mod_est_cybernetics_2_synthetic"
+						}
+						if = {
+							limit = {
+								has_modifier = mod_est_cybernetics_2_robot
+							}
+							remove_modifier = "mod_est_cybernetics_2_robot"
+						}					
+					}
+					if = {
+						limit = {
+							pop_has_trait = trait_robotic_3
+						}
+						if = {
+							limit = {
+								Not = {
+									has_modifier = mod_est_cybernetics_2_synthetic
+								}
+							}
+							add_modifier = {
+								modifier = "mod_est_cybernetics_2_synthetic" 
+								days = -1 
+							}
+						}
+						if = {
+							limit = {
+								has_modifier = mod_est_cybernetics_2_robot
+							}
+							remove_modifier = "mod_est_cybernetics_2_robot"
+						}
+						if = {
+							limit = {
+								has_modifier = mod_est_cybernetics_2_droid
+							}
+							remove_modifier = "mod_est_cybernetics_2_droid"
+						}					
+					}
+				}
+			}
+		}
+	}
+}
+
+#Cybernetics 4, adds bonus to fleets without an admiral.
+event = {
+	id = est_cybernetics.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_cybernetics_4_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_non_swapped_tradition = tr_est_cybernetics_4	
+			}		
+			every_owned_ship = {
+				if = {
+					limit = {
+						fleet = {
+							Not = {
+								exists = leader
+							}
+						}
+					}
+					if = {
+						limit = {
+							Not = {
+								has_modifier = mod_est_cybernetics_4
+							}
+						}
+						add_modifier = {
+							modifier = "mod_est_cybernetics_4"
+							days = -1
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_modifier = mod_est_cybernetics_4
+						}
+						remove_modifier = "mod_est_cybernetics_4"		
+					}
+				}
+			}
+		}
+	}
+}
+
+#Cybernetics 5, adds happiness to slaves when enslaved.
+pop_event = {
+	id = est_cybernetics.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_swapped_tradition = tr_est_cybernetics_5_slaves		
+		}
+		Not = {
+			has_modifier = mod_est_cybernetics_5_slave			
+		}
+	}
+	
+	immediate = {
+		add_modifier = {
+			modifier = "mod_est_cybernetics_5_slave"
+			days = -1
+		}
+	}
+}
+
+#Cybernetics 5, removes happiness to slaves when freed.
+pop_event = {
+	id = est_cybernetics.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_modifier = mod_est_cybernetics_5_slave	
+	}
+	
+	immediate = {
+		remove_modifier = "mod_est_cybernetics_5_slave"
+	}
+}
+
+#Cybernetics 5, add modifier to slaves when planet conquered.
+planet_event = {
+	id = est_cybernetics.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_modifier = mod_est_cybernetics_5_slave	
+		}
+	}
+	
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				is_enslaved = yes
+			}
+			add_modifier = {
+				modifier = "mod_est_cybernetics_5_slave"
+				days = -1
+			}
+		}
+	}
+}
+
+#Cybernetics 5, gives happiness when chemical bliss.
+pop_event = {
+	id = est_cybernetics.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			Or = {
+				has_non_swapped_tradition = tr_est_cybernetics_5
+				has_swapped_tradition = tr_est_cybernetics_5_slaves	
+			}
+		}
+		Not = {
+			has_modifier = mod_est_cybernetics_5_chemical_bliss		
+		}
+		has_living_standard = { 
+			country = owner 
+			type = living_standard_chemical_bliss 
+		}
+	}
+	
+	immediate = {
+		add_modifier = {
+			modifier = "mod_est_cybernetics_5_chemical_bliss"
+			days = -1
+		}
+	}
+}
+
+#Cybernetics 5, gives happiness when chemical bliss (on born).
+pop_event = {
+	id = est_cybernetics.11
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			Or = {
+				has_non_swapped_tradition = tr_est_cybernetics_5
+				has_swapped_tradition = tr_est_cybernetics_5_slaves	
+			}	
+		}
+		has_living_standard = { 
+			country = owner 
+			type = living_standard_chemical_bliss
+		}
+	}
+	
+	immediate = {
+		add_modifier = {
+			modifier = "mod_est_cybernetics_5_chemical_bliss"
+			days = -1
+		}
+	}
+}
+
+#Cybernetics 5, adds happiness when chemical bliss (on conquered).
+planet_event = {
+	id = est_cybernetics.12
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			Or = {
+				has_non_swapped_tradition = tr_est_cybernetics_5
+				has_swapped_tradition = tr_est_cybernetics_5_slaves	
+			}		
+		}
+	}
+	
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				has_living_standard = { 
+					country = owner 
+					type = living_standard_chemical_bliss 
+				}				
+				Not = {
+					has_modifier = mod_est_cybernetics_5_chemical_bliss		
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_cybernetics_5_chemical_bliss"
+				days = -1
+			}			
+		}
+	}
+}
+
+### SERVERBOUND ###
+
+#Serverbound 2 generates XP for leaders.
+event = {
+	id = est_cybernetics.13
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_processing_2_picked_flag
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_processing_2
+			}
+			every_owned_leader = {
+				add_experience = 5
+			}
+		}
+	}
+}
+
+#Serverboundg finish, more enery cap from techs.
+country_event = {
+	id = est_cybernetics.14
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = processing_finish
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				last_increased_tech = "tech_power_plant_2"
+			}
+			add_modifier = {
+				modifier = "mod_est_processing_finish_PP_1"
+			} 
+			break = yes
+		}
+		if = {
+			limit = {
+				last_increased_tech = "tech_power_plant_3"
+			}
+			add_modifier = {
+				modifier = "mod_est_processing_finish_PP_2"
+			} 
+			remove_modifier = "mod_est_processing_finish_PP_1"
+			break = yes
+		}
+		if = {
+			limit = {
+				last_increased_tech = "tech_power_plant_4"
+			}
+			add_modifier = {
+				modifier = "mod_est_processing_finish_PP_3"
+			} 
+			remove_modifier = "mod_est_processing_finish_PP_2"
+			break = yes
+		}		
+		if = {
+			limit = {
+				last_increased_tech = "tech_terrestrial_sculpting"
+			}
+			add_modifier = {
+				modifier = "mod_est_processing_finish_T_1"
+			} 
+			break = yes
+		}
+		if = {
+			limit = {
+				last_increased_tech = "tech_ecological_adaptation"
+			}
+			add_modifier = {
+				modifier = "mod_est_processing_finish_T_2"
+			} 
+			remove_modifier = "mod_est_processing_finish_T_1"
+			break = yes
+		}
+		if = {
+			limit = {
+				last_increased_tech = "tech_climate_restoration"
+			}
+			add_modifier = {
+				modifier = "mod_est_processing_finish_T_3"
+			} 
+			remove_modifier = "mod_est_processing_finish_T_2"
+			break = yes
+		}
+	}
+}
+

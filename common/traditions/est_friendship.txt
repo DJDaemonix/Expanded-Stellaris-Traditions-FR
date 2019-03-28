@@ -1,0 +1,598 @@
+tr_est_friendship_adopt = {
+	on_enabled = {	
+		every_country = {
+			limit = {
+				has_opinion_modifier = { 
+					who = root
+					modifier = opinion_new_contact
+				}
+			}
+			remove_opinion_modifier = { 
+				who = root
+				modifier = opinion_new_contact
+			}
+		}
+	}
+	
+	modifier = {
+		country_trust_growth = 0.20
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_adopt
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			is_ai = no
+			Not = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+			}
+		}	
+		on_enabled = {	
+			set_global_flag = est_malice_adopt_picked_flag
+			every_country = {
+				limit = {
+					has_opinion_modifier = { 
+						modifier = opinion_insult
+						who = root
+					}
+					Not = {
+						has_modifier = mod_est_malice_adopt
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_malice_adopt"
+					days = -1
+				}
+			}
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_adopt_alt
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			Or = {
+				is_ai = yes
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+			}
+		}	
+		modifier = {
+			country_naval_cap_mult = 0.15
+		}
+		weight = {factor =  1}
+	}	
+	
+	tradition_swap = {
+		name = tr_est_perseverance_IP_adopt
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_civic = civic_inwards_perfection
+		}	
+		modifier = {		
+			ship_hull_mult = 0.10
+			army_health = 0.1
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_egalitarian
+		}	
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophobe
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_egalitarian
+		}	
+		modifier = {
+			factor = 2
+			has_ai_personality = federation_builders
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = slaving_despots
+		}		
+		modifier = {
+			factor = 2
+			has_civic = civic_free_haven
+		}	
+		modifier = {
+			factor = 2
+			has_civic = civic_fanatic_purifiers
+		}	
+		modifier = {
+			factor = 2
+			has_civic = civic_slaver_guilds
+		}	
+		modifier = {
+			factor = 2
+			has_civic = civic_machine_terminator
+		}			
+		modifier = {
+			factor = 0
+			est_no_fed_federation_builders = yes			
+		}
+	}
+}
+
+tr_est_friendship_finish = {
+	modifier = {
+		ascension_perks_add = 1
+	}
+	
+	tradition_swap = {
+		name = tr_est_friendship_finish_ai
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = yes
+		trigger = {
+			is_ai = yes
+		}	
+		modifier = {	
+			pop_happiness = 0.05
+			ascension_perks_add = 1
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_finish
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+		}	
+		modifier = {	
+			ship_weapon_damage = 0.10
+			ascension_perks_add = 1
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_perseverance_IP_finish
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_civic = civic_inwards_perfection
+		}	
+		modifier = {		
+			leader_age = 25
+			ascension_perks_add = 1
+		}
+		weight = {factor =  1}
+	}
+}
+
+tr_est_friendship_1 = {
+	tradition_swap = {
+		name = tr_est_malice_1
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			has_policy_flag = slavery_allowed
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}	
+		on_enabled = {
+			every_owned_pop = {
+				limit = {
+					is_enslaved = yes
+				}
+				add_modifier = {
+					modifier = "mod_est_malice_1"
+				}
+			}
+		}
+		weight = {factor =  1}
+	}
+	tradition_swap = {
+		name = tr_est_malice_1_alt
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			Or = {
+				Not = {
+					has_policy_flag = slavery_allowed
+				}
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}	
+		weight = {factor =  1}
+	}	
+	
+	tradition_swap = {
+		name = tr_est_perseverance_IP_1
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_civic = civic_inwards_perfection
+		}	
+		on_enabled = {
+			every_owned_planet = {
+				if = {
+					limit = {
+						has_building = building_planetary_shield_generator
+					}
+					add_modifier = {
+						modifier = "mod_est_perseverance_1_IP_shield"
+						days = -1
+					}
+				}
+				else = {
+					add_modifier = {
+						modifier = "mod_est_perseverance_1_IP_no_shield"
+						days = -1
+					}
+				}
+			}
+		}
+		modifier = {		
+			ship_armor_mult = 0.15
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 2000
+	}
+}
+
+tr_est_friendship_2 = {
+	possible = {
+		has_tradition = tr_est_friendship_1
+	}
+	
+	modifier = {
+		country_border_friction_mult = -0.50
+		army_collateral_damage_mult = -0.50
+	}
+	
+	tradition_swap = {
+		name = tr_est_friendship_2_militarist
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			Or = {
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+			}
+			est_uses_malice_traditions = no
+			Not = {
+				has_civic = civic_inwards_perfection
+			}
+		}	
+		on_enabled = {
+			if = {
+				limit = {
+					any_war = {
+						Or = {
+							And = {
+								any_defender = {
+									is_same_value = root
+								}
+								any_defender = {
+									Not = {
+										is_same_value = root
+									}
+								}
+							}
+							And = {
+								any_attacker = {
+									is_same_value = root
+								}
+								any_attacker = {
+									Not = {
+										is_same_value = root
+									}
+								}
+							}
+						}
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_friendship_2_militarist"
+					days = -1
+				}
+			}
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_2
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			has_policy_flag = slavery_allowed
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}	
+		on_enabled = {
+			every_owned_pop = {
+				limit = {
+					is_enslaved = yes
+				}
+				remove_modifier = "mod_est_malice_1"
+				add_modifier = {
+					modifier = "mod_est_malice_2"
+				}
+			}
+		}	
+		modifier = {
+			country_unrest_unhappy_slave_effect_mult = -0.2
+		}
+		weight = {factor =  1}
+	}
+	tradition_swap = {
+		name = tr_est_malice_2_alt
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			Or = {
+				Not = {
+					has_policy_flag = slavery_allowed
+				}
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}	
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_perseverance_IP_2
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_civic = civic_inwards_perfection
+		}	
+		modifier = {		
+			shipclass_starbase_hull_mult = 0.5
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 3000
+	}
+}
+
+tr_est_friendship_3 = {
+	modifier = {
+		planet_migration_all_pull = 0.30
+		pop_ethic_xenophile_attraction_mult = 0.10
+	}
+	
+	tradition_swap = {
+		name = tr_est_friendship_3_not_xenophile
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			Not = {
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_xenophile
+			}
+			est_uses_malice_traditions = no
+			Not = {
+				has_civic = civic_inwards_perfection
+			}
+		}	
+		modifier = {
+			planet_migration_all_pull = 0.40
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_3
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			est_no_rivals = no
+		}	
+		modifier = {
+			max_rivalries = 3
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_3_no_rivals
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			est_no_rivals = yes
+		}	
+		modifier = {
+			army_damage_mult = 0.20
+			army_collateral_damage_mult = 0.33
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_perseverance_IP_3
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_civic = civic_inwards_perfection
+		}	
+		modifier = {		
+			ship_speed_mult = 0.15
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 4000
+	}
+}
+
+tr_est_friendship_4 = {
+	possible = {
+		has_tradition = tr_est_friendship_3
+	}	
+	
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_4
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			est_no_rivals = no
+		}	
+		modifier = {
+			rivalry_influence_gain = 0.3
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_4_no_rivals
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+			est_no_rivals = yes
+		}	
+		modifier = {
+			ship_fire_rate_mult = 0.05
+		}
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_perseverance_IP_4
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_civic = civic_inwards_perfection
+		}	
+		modifier = {		
+			country_war_exhaustion_mult = -0.2
+		}
+		weight = {factor =  1}
+	}
+
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_est_friendship_5 = {
+	possible = {
+		has_tradition = tr_est_friendship_2
+		has_tradition = tr_est_friendship_4
+	}
+	
+	on_enabled = {
+		every_owned_planet = {
+			if = {
+				limit = {
+					num_species > 2
+				}
+				add_modifier = {
+					modifier = "mod_est_friendship_5"
+					days = -1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_friendship_5_picked_flag
+				}
+			}
+			set_global_flag = est_friendship_5_picked_flag
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_est_malice_5
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			est_uses_malice_traditions = yes
+		}	
+		weight = {factor =  1}
+	}
+	
+	tradition_swap = {
+		name = tr_est_perseverance_IP_5
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_civic = civic_inwards_perfection
+		}	
+		on_enabled = {
+			if = {
+				limit = {
+					Not = {
+						has_global_flag = est_perseverance_5_picked_flag
+					}
+				}
+				set_global_flag = est_perseverance_5_picked_flag
+			}
+		}
+		modifier = {		
+			country_war_exhaustion_mult = -0.05
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}

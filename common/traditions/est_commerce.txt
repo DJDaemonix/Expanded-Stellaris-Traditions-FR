@@ -1,0 +1,538 @@
+tr_est_commerce_adopt = {
+	modifier = {
+		country_trade_attractiveness = 0.10
+	}
+	
+	tradition_swap = {
+		name = tr_est_commerce_adopt_no_dip
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			Or = {
+				has_civic = civic_inwards_perfection
+				has_civic = civic_fanatic_purifiers
+			}
+		}
+		modifier = {
+			country_resource_energy_mult = 0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_est_benevolence_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			diplomacy_influence_cost = -0.33
+		}
+		weight = {factor =  1}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 3
+			has_ai_personality = ruthless_capitalists
+		}		
+		modifier = {
+			factor = 3
+			has_ai_personality = peaceful_traders
+		}	
+		modifier = {
+			factor = 2
+			has_civic = civic_corporate_dominion
+		}	
+		modifier = {
+			factor = 3
+			has_civic = civic_machine_servitor
+		}	
+		modifier = {
+			factor = 0
+			est_no_fed_federation_builders = yes			
+		}
+	}
+}
+
+tr_est_commerce_finish = {
+	on_enabled = {		
+		if = {
+			limit = {
+				num_strategic_resources > 2
+				num_strategic_resources < 6
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_commerce_finish_1
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_finish_1"
+				}	
+			}
+		}
+		if = {
+			limit = {
+				num_strategic_resources > 5
+				num_strategic_resources < 9
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_commerce_finish_2
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_finish_2"
+				}	
+			}
+		}
+		if = {
+			limit = {
+				num_strategic_resources > 8
+				num_strategic_resources < 12
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_commerce_finish_3
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_finish_3"
+				}	
+			}
+		}
+		if = {
+			limit = {
+				num_strategic_resources > 11
+				num_strategic_resources < 15
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_commerce_finish_4
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_finish_4"
+				}	
+			}
+		}
+		if = {
+			limit = {
+				num_strategic_resources > 14
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_commerce_finish_5
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_finish_5"
+				}	
+			}
+		}
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_commerce_finish_picked_flag
+				}
+			}
+			set_global_flag = est_commerce_finish_picked_flag
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_est_benevolence_finish
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			damage_vs_country_type_swarm_mult = 0.20
+			damage_vs_country_type_extradimensional_mult = 0.20
+			damage_vs_country_type_extradimensional_2_mult = 0.20
+			damage_vs_country_type_extradimensional_3_mult = 0.20
+			damage_vs_country_type_ai_empire_mult = 0.20
+			damage_vs_country_type_fallen_empire_mult = 0.20
+			damage_vs_country_type_awakened_fallen_empire_mult = 0.20
+			ascension_perks_add = 1
+		}
+		weight = {factor =  1}
+	}
+	
+	modifier = {	
+		ascension_perks_add = 1
+	}
+}
+
+tr_est_commerce_1 = {
+	on_enabled = {
+		if = {
+			limit = {
+				running_balance > 0
+			}
+		}
+		add_modifier = {
+			modifier = "mod_est_commerce_1"
+		}
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_commerce_1_picked_flag
+				}
+			}
+			set_global_flag = est_commerce_1_picked_flag
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_est_benevolence_1
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			country_trade_attractiveness = 0.10
+			country_resource_energy_mult = 0.05
+		}
+		weight = {factor = 1 }
+	}
+	
+	
+	ai_weight = {
+		factor = 2000
+	}
+}
+
+tr_est_commerce_2 = {
+	tradition_swap = {
+		name = tr_est_commerce_2_AI
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			is_ai = yes
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}	
+		modifier = {
+			country_resource_minerals_mult = 0.05
+			country_resource_food_mult = 0.05
+			country_resource_energy_mult = 0.05
+		}
+		weight = {factor = 2 }
+	}
+	
+	tradition_swap = {
+		name = tr_est_benevolence_2
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			country_border_friction_mult = -0.50
+			country_trust_growth = 0.20
+		}
+		weight = {factor = 1 }
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_est_commerce_3 = {
+	possible = {
+		has_tradition = tr_est_commerce_1
+		has_tradition = tr_est_commerce_2
+	}
+	
+	on_enabled = {
+		if = {
+			limit = {
+				has_technology = "tech_power_plant_4"
+			}
+			add_modifier = {
+				modifier = "mod_est_commerce_3_PP_3"
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_technology = "tech_power_plant_3"
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_3_PP_2"
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_technology = "tech_power_plant_2"
+					}
+					add_modifier = {
+						modifier = "mod_est_commerce_3_PP_1"
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_technology = "tech_climate_restoration"
+			}
+			add_modifier = {
+				modifier = "mod_est_commerce_3_T_3"
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_technology = "tech_ecological_adaptation"
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_3_T_2"
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_technology = "tech_terrestrial_sculpting"
+					}
+					add_modifier = {
+						modifier = "mod_est_commerce_3_T_1"
+					}
+				}
+			}
+		}
+		
+		#esap compatibility
+		if = {
+			limit = {
+				has_ascension_perk = ap_esap_energy		
+			}	
+			add_modifier = {
+				modifier = "mod_est_esap_comp_commerce_3_energy"
+			}
+		}
+	}
+	
+	modifier = {
+		max_energy = 2500
+	}
+	
+	tradition_swap = {
+		name = tr_est_benevolence_3
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		weight = {factor = 1 }
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_est_commerce_4 = {
+	possible = {
+		has_tradition = tr_est_commerce_1
+	}
+	
+	on_enabled = {	
+		if = {	
+			limit = {
+				has_modifier = mod_est_commerce_4_neighbour
+			}
+			remove_modifier = "mod_est_commerce_4_neighbour"
+		}
+		set_timed_country_flag = {
+			flag = flag_est_commerce_4_0
+			days = 1
+		}
+		every_neighbor_country = {
+			limit = {
+				Not = {
+					has_closed_borders = prev
+					prev = {
+						has_closed_borders = prev
+					}
+				}
+				their_opinion = {
+					who = prev
+					value > 0
+				}
+				prev = {
+					their_opinion = {
+						who = prev
+						value > 0
+					}
+				}
+				Or = {
+					num_owned_planets < 4
+					prev = {
+						num_owned_planets < 4
+					}
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_non_swapped_tradition = tr_est_commerce_4
+						has_modifier = mod_est_commerce_4_neighbour
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_commerce_4_neighbour"
+					days = -1
+				}
+			}
+			prev = {
+				switch = {
+					trigger = has_modifier 
+					
+					mod_est_commerce_4_6 = { }
+					mod_est_commerce_4_5 = { 
+						remove_modifier = "mod_est_commerce_4_5" 
+						add_modifier = {
+							modifier = "mod_est_commerce_4_6"
+							days = -1
+						}
+					}
+					mod_est_commerce_4_4 = { 
+						remove_modifier = "mod_est_commerce_4_4" 
+						add_modifier = {
+							modifier = "mod_est_commerce_4_5"
+							days = -1
+						}
+					}
+					mod_est_commerce_4_3 = { 
+						remove_modifier = "mod_est_commerce_4_3" 
+						add_modifier = {
+							modifier = "mod_est_commerce_4_4"
+							days = -1
+						}
+					}
+					mod_est_commerce_4_2 = { 
+						remove_modifier = "mod_est_commerce_4_2" 
+						add_modifier = {
+							modifier = "mod_est_commerce_4_3"
+							days = -1
+						}
+					}
+					mod_est_commerce_4_1 = { 
+						remove_modifier = "mod_est_commerce_4_1" 
+						add_modifier = {
+							modifier = "mod_est_commerce_4_2"
+							days = -1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = flag_est_commerce_4_0
+					}
+					add_modifier = {
+						modifier = "mod_est_commerce_4_1"
+						days = -1
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				Not = {
+					has_global_flag = est_commerce_4_picked_flag
+				}
+			}
+			set_global_flag = est_commerce_4_picked_flag
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_est_commerce_4_no_dip
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			Or = {
+				has_civic = civic_inwards_perfection
+				has_civic = civic_fanatic_purifiers
+				has_civic = civic_hive_devouring_swarm
+				has_civic = civic_machine_terminator
+			}
+		}
+		modifier = {
+			country_strategic_resources_resource_unity_mult = 0.05
+			country_strategic_resources_resource_unity_max_mult = 0.3
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_est_commerce_5 = {
+	possible = {
+		has_tradition = tr_est_commerce_4
+	}
+	
+	tradition_swap = {
+		name = tr_est_commerce_5_AI
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			is_ai = yes
+			Not = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}	
+		modifier = {
+			country_resource_energy_mult = 0.10
+		}
+		weight = {factor = 2 }
+	}
+	
+	tradition_swap = {
+		name = tr_est_benevolence_5
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}	
+		modifier = {
+			all_technology_research_speed = 0.05
+		}
+		weight = {factor = 1 }
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}

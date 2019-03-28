@@ -1,0 +1,947 @@
+namespace = est_militarism
+
+### MILITARISM ###
+
+#Militarism Adopt, gives bonus production while not under Naval Capacity.
+event = {
+	id = est_militarism.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_militarism_adopt_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_non_swapped_tradition = tr_est_militarism_adopt	
+			}
+			if = {	
+				limit = {
+					Not = {
+						used_naval_capacity_percent < 1.0
+					}
+				}
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_militarism_adopt
+						}
+					}
+					add_modifier = {
+						modifier = "mod_est_militarism_adopt"
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_modifier = mod_est_militarism_adopt
+					}
+					remove_modifier = "mod_est_militarism_adopt"
+				}
+			}
+		}
+	}	
+}
+
+#Militarism 1, updates Militia Armies on a planet.
+event = {
+	id = est_militarism.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_militarism_1_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				Or = {
+					has_non_swapped_tradition = tr_est_militarism_1
+					has_swapped_tradition = tr_est_militarism_1_robots
+				}
+			}
+			every_owned_planet = {
+				limit = {
+					is_occupied_flag = no
+				}
+				every_planet_army = {
+					limit = {
+						Or = {
+							army_type = est_militarism_1_militia_army
+							army_type = est_militarism_1_slave_militia_army
+						}
+					}
+					remove_army = yes
+				}
+				every_owned_pop = {
+					limit = {
+						Not = {
+							pop_has_trait = trait_robotic_1
+							pop_has_trait = trait_robotic_2
+						}
+					}
+					if = {
+						limit = {
+							is_enslaved = no
+						}
+						planet = {
+							create_army = {
+								name = "A Militia Army"
+								species = prev
+								owner = owner
+								type = est_militarism_1_militia_army
+							}
+						}
+					}
+					else = {
+						planet = {
+							create_army = {
+								name = "A Drafted Slave Army"
+								species = prev
+								owner = owner
+								type = est_militarism_1_slave_militia_army
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}	
+
+#Militarism 4, bonus from fortresses.
+planet_event = {
+	id = est_militarism.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_non_swapped_tradition = tr_est_militarism_4
+		}
+		from = {
+			Or = {
+				has_building = building_stronghold
+				has_building = building_fortress
+				has_prev_building = building_stronghold
+				has_prev_building = building_fortress
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_building = building_fortress
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_militarism_4_2
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_4_2"
+					days = -1
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_modifier = mod_est_militarism_4_2
+				}
+				remove_modifier = "mod_est_militarism_4_2"
+			}
+		}
+		if = {
+			limit = {
+				has_building = building_stronghold
+				Not = {
+					has_building = building_fortress
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_modifier = mod_est_militarism_4_1
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_4_1"
+					days = -1
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_modifier = mod_est_militarism_4_1
+				}
+				remove_modifier = "mod_est_militarism_4_1"
+			}
+		}
+	}
+}
+
+#Militarism 4, updates when building built/removed.
+planet_event = {
+	id = est_militarism.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		owner = {
+			has_tradition = tr_est_militarism_4
+		}
+		from = {
+			Or = {
+				has_building = building_est_militarism_4_defence_cannon_1
+				has_building = building_est_militarism_4_defence_cannon_2
+				has_building = building_est_militarism_4_defence_cannon_3
+				has_prev_building = building_est_militarism_4_defence_cannon_1
+				has_prev_building = building_est_militarism_4_defence_cannon_2
+				has_prev_building = building_est_militarism_4_defence_cannon_3
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				from = {
+					has_building = building_est_militarism_4_defence_cannon_1
+				}
+			}
+			if = {
+				limit = {
+					Not = {
+						has_planet_flag = flag_est_militarism_4_defense_cannons 
+					}
+				}
+				set_planet_flag = flag_est_militarism_4_defense_cannons 
+				set_variable = { 
+					which = var_est_militarism_4_num_dc
+					value = 1
+				}
+				set_variable = { 
+					which = var_est_militarism_4_cannon_levels
+					value = 1
+				}
+			}	
+		}	
+		else = {
+			change_variable = { 
+				which = var_est_militarism_4_num_dc
+				value = 1
+			}
+			change_variable = { 
+				which = var_est_militarism_4_cannon_levels
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				Or = {
+					from = {
+						has_building = building_est_militarism_4_defence_cannon_2
+						has_building = building_est_militarism_4_defence_cannon_3
+					}
+				}
+			}
+			change_variable = { 
+				which = var_est_militarism_4_cannon_levels
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					Or = {
+						has_prev_building = building_est_militarism_4_defence_cannon_1
+						has_prev_building = building_est_militarism_4_defence_cannon_2
+						has_prev_building = building_est_militarism_4_defence_cannon_3
+					}
+					Nor = {
+						has_building = building_est_militarism_4_defence_cannon_1
+						has_building = building_est_militarism_4_defence_cannon_2
+						has_building = building_est_militarism_4_defence_cannon_3
+					}
+				}
+			}
+			change_variable = { 
+				which = var_est_militarism_4_num_dc
+				value = 1
+			}
+			if = {
+				limit = {
+					from = {
+						has_prev_building = building_est_militarism_4_defence_cannon_1
+					}
+				}
+				change_variable = { 
+					which = var_est_militarism_4_cannon_levels
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					from = {
+						has_prev_building = building_est_militarism_4_defence_cannon_2
+					}
+				}
+				change_variable = { 
+					which = var_est_militarism_4_cannon_levels
+					value = 2
+				}
+			}
+			if = {
+				limit = {
+					from = {
+						has_prev_building = building_est_militarism_4_defence_cannon_3
+					}
+				}
+				change_variable = { 
+					which = var_est_militarism_4_cannon_levels
+					value = 3
+				}
+			}
+			if = {
+				limit = {
+					Nor = {
+						has_building = building_est_militarism_4_defence_cannon_1
+						has_building = building_est_militarism_4_defence_cannon_2
+						has_building = building_est_militarism_4_defence_cannon_3
+					}
+				}
+				remove_planet_flag = flag_est_militarism_4_defense_cannons 
+			}
+		}
+	}
+}
+
+#Militarism 4, updates stuff when planet conquered.
+planet_event = {
+	id = est_militarism.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_militarism_4_picked_flag
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				Not = {
+					owner = {
+						has_tradition = tr_est_militarism_4
+					}
+				}
+			}
+			every_tile = {
+				limit = {
+					Or = {
+						has_building = building_est_militarism_4_defence_cannon_1
+						has_building = building_est_militarism_4_defence_cannon_2
+						has_building = building_est_militarism_4_defence_cannon_3
+					}
+				}
+				remove_building = yes
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					has_non_swapped_tradition = tr_est_militarism_4
+				}
+			}
+			if = {
+				limit = {
+					has_building = building_fortress
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_4_2"
+					days = -1
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_building = building_stronghold
+					}
+					add_modifier = {
+						modifier = "mod_est_militarism_4_1"
+						days = -1
+					}
+				}
+			}
+		}				
+	}
+}
+
+#Militarism 4, updates on war declared. Set flag for potential target when war begin.
+country_event = {
+	id = est_militarism.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_global_flag = est_militarism_4_picked_flag
+		from = {
+			any_war_participant = { 
+				is_at_war_with = root
+				has_tradition = tr_est_militarism_4
+			}
+		}
+		Not = {
+			has_country_flag = flag_est_militarism_4_opponent
+		}
+	}
+	
+	immediate = {
+		set_country_flag = flag_est_militarism_4_opponent
+	}
+}
+
+#Militarism 4, updates on war ends. Removes flag when war over and not needed.
+country_event = {
+	id = est_militarism.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {	
+		has_country_flag = flag_est_militarism_4_opponent
+		Or = {
+			is_at_war = no
+			Not = {
+				any_country = {
+					is_at_war_with = root
+					has_tradition = tr_est_militarism_4
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		remove_country_flag = flag_est_militarism_4_opponent
+	}
+}
+
+#Militarism 4, finds and deals damage to fleets.
+event = {
+	id = est_militarism.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_militarism_5_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_country_flag = flag_est_militarism_4_opponent
+			}
+			every_owned_fleet = {
+				limit = {
+					exists = orbit
+					orbit = {
+						has_planet_flag = flag_est_militarism_4_defense_cannons
+						has_orbital_bombardment = yes
+					}
+				}
+				orbit = {
+					set_variable = { 
+						which = var_est_piracy_2_militarism_4_count_hits
+						value = var_est_piracy_2_militarism_4_cannon_levels
+					}
+					while = {
+						limit = {
+							check_variable = {
+								which = var_est_piracy_2_militarism_4_count_hits
+								value > 0
+							}
+						}
+						subtract_variable = { 
+							which = var_est_piracy_2_nbr_resource_adds_2
+							value = 1
+						}
+						prev = {
+							random_owned_ship = {
+								reduce_hp = 100
+							}
+							
+						}
+					}			
+				}
+			}
+		}
+	}
+}
+
+#Militarism 5, first 5 admirals require no slot.
+event = {
+	id = est_militarism.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_militarism_5_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_non_swapped_tradition = tr_est_militarism_5
+			}
+			set_timed_country_flag = {
+				flag = est_militarism_5_0
+				days = 1
+			}
+			every_owned_leader = {
+				limit = {
+					leader_class = admiral
+				}
+				owner ={
+					if = {
+						limit = {
+							has_country_flag = est_militarism_5_4
+						}	
+						set_timed_country_flag = {
+							flag = est_militarism_5_5
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_militarism_5_3
+						}	
+						set_timed_country_flag = {
+							flag = est_militarism_5_4
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_militarism_5_2
+						}	
+						set_timed_country_flag = {
+							flag = est_militarism_5_3
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_militarism_5_1
+						}	
+						set_timed_country_flag = {
+							flag = est_militarism_5_2
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_militarism_5_0
+						}	
+						set_timed_country_flag = {
+							flag = est_militarism_5_1
+							days = 2
+						}
+					}
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_militarism_5_tmp"
+				days = -1
+			}	
+			switch = {
+				trigger = has_modifier
+				
+				mod_est_militarism_5_1 = { remove_modifier = "mod_est_militarism_5_1" }
+				mod_est_militarism_5_2 = { remove_modifier = "mod_est_militarism_5_2" }
+				mod_est_militarism_5_3 = { remove_modifier = "mod_est_militarism_5_3" }
+				mod_est_militarism_5_4 = { remove_modifier = "mod_est_militarism_5_4" }
+				mod_est_militarism_5_5 = { remove_modifier = "mod_est_militarism_5_5" }				
+			}
+			if = {
+				limit = {
+					has_country_flag = est_militarism_5_5				
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_5_5"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_militarism_5_4		
+					Not = {
+						has_country_flag = est_militarism_5_5		
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_5_4"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_militarism_5_3			
+					Not = {
+						has_country_flag = est_militarism_5_4		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_5_3"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_militarism_5_2			
+					Not = {
+						has_country_flag = est_militarism_5_3		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_5_2"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_militarism_5_1			
+					Not = {
+						has_country_flag = est_militarism_5_2		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_militarism_5_1"
+					days = -1
+				}
+			}
+			remove_modifier = "mod_est_militarism_5_tmp"
+		}
+	}
+}
+	
+#Militarism 5, leader gets xp trait.
+country_event = {
+	id = est_militarism.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_non_swapped_tradition = tr_est_militarism_5
+		from = {
+			Not = {
+				has_trait = leader_trait_admiral_est_militarism_5
+			}		
+			leader_class = admiral 
+		}
+	}
+
+	immediate = {
+		from = {
+			add_trait = leader_trait_admiral_est_militarism_5		
+		}
+	}
+}
+
+### MIGHT ###
+
+#Might Adopt, gives bonus production while not under Naval Capacity.
+event = {
+	id = est_militarism.11
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_might_adopt_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_might_adopt	
+			}
+			if = {	
+				limit = {
+					Not = {
+						used_naval_capacity_percent < 1.0
+					}
+				}
+				if = {
+					limit = {
+						Not = {
+							has_modifier = mod_est_might_adopt
+						}
+					}
+					add_modifier = {
+						modifier = "mod_est_might_adopt"
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_modifier = mod_est_might_adopt
+					}
+					remove_modifier = "mod_est_might_adopt"
+				}
+			}
+		}
+	}	
+}
+	
+#Might 1, updates Militia Armies on a planet (Hive Minds).
+event = {
+	id = est_militarism.12
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_might_1_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_might_1
+			}
+			every_owned_planet = {
+				every_planet_army = {
+					limit = {
+						army_type = est_militarism_1_drone_emergency_army
+					}
+					remove_army = yes
+				}
+				every_owned_pop = {
+					planet = {
+						create_army = {
+							name = "An Emergency Army"
+							species = prev
+							owner = owner
+							type = est_militarism_1_drone_emergency_army
+						}
+					}
+				}
+			}
+		}
+	}
+}	
+
+#Might 1, updates Militia Armies on a planet (Machine Empires).
+event = {
+	id = est_militarism.13
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_might_1_machines_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_might_1_machines
+			}
+			every_owned_planet = {
+				every_planet_army = {
+					limit = {
+						army_type = est_militarism_1_machine_emergency_army
+					}
+					remove_army = yes
+				}
+				every_owned_pop = {
+					limit = {
+						is_robot_pop = yes
+					}
+					planet = {
+						create_army = {
+							name = "An Emergency Army"
+							species = prev
+							owner = owner
+							type = est_militarism_1_machine_emergency_army
+						}
+					}
+				}
+			}
+		}
+	}
+}	
+
+#Might 5, first 5 admirals require no slot.
+event = {
+	id = est_militarism.15
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = est_might_5_picked_flag
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_swapped_tradition = tr_est_might_5
+			}
+			set_timed_country_flag = {
+				flag = est_might_5_0
+				days = 1
+			}
+			every_owned_leader = {
+				limit = {
+					leader_class = admiral
+				}
+				owner ={
+					if = {
+						limit = {
+							has_country_flag = est_might_5_4
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_5
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_3
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_4
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_2
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_3
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_1
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_2
+							days = 2
+						}
+					}
+					if = {
+						limit = {
+							has_country_flag = est_might_5_0
+						}	
+						set_timed_country_flag = {
+							flag = est_might_5_1
+							days = 2
+						}
+					}
+				}
+			}
+			add_modifier = {
+				modifier = "mod_est_might_5_tmp"
+				days = -1
+			}	
+			switch = {
+				trigger = has_modifier
+				
+				mod_est_might_5_1 = { remove_modifier = "mod_est_might_5_1" }
+				mod_est_might_5_2 = { remove_modifier = "mod_est_might_5_2" }
+				mod_est_might_5_3 = { remove_modifier = "mod_est_might_5_3" }
+				mod_est_might_5_4 = { remove_modifier = "mod_est_might_5_4" }
+				mod_est_might_5_5 = { remove_modifier = "mod_est_might_5_5" }				
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_5				
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_5"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_4		
+					Not = {
+						has_country_flag = est_might_5_5		
+					}
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_4"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_3			
+					Not = {
+						has_country_flag = est_might_5_4		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_3"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_2			
+					Not = {
+						has_country_flag = est_might_5_3		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_2"
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = est_might_5_1			
+					Not = {
+						has_country_flag = est_might_5_2		
+					}			
+				}
+				add_modifier = {
+					modifier = "mod_est_might_5_1"
+					days = -1
+				}
+			}
+			remove_modifier = "mod_est_might_5_tmp"
+		}
+	}
+}
+
+#Militarism 5, leader gets xp trait.
+country_event = {
+	id = est_militarism.16
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_swapped_tradition = tr_est_might_5
+		from = {
+			Not = {
+				has_trait = leader_trait_admiral_est_might_5
+			}		
+			leader_class = admiral 
+		}
+	}
+
+	immediate = {
+		from = {
+			add_trait = leader_trait_admiral_est_might_5
+		}
+	}
+}
+
